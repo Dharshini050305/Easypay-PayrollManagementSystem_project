@@ -1,18 +1,22 @@
 package com.hexaware.easypay.services;
 
-import com.hexaware.easypay.entity.Employee;
+import java.util.List;
 
-public class IEmployeeService {
-	Employee addEmployee(Employee employee);
-    Employee updateEmployee(Long id, EmployeeDTO employeeDTO) throws ResourceNotFoundException;
-    Employee getEmployeeById(Long id) throws ResourceNotFoundException;
-    List<Employee> getAllEmployees();
-    List<Employee> getActiveEmployees();
-    void deleteEmployee(Long id) throws ResourceNotFoundException;
-    List<Employee> getEmployeesByManager(Long managerId);
-    
- // New method for employee verification
-    boolean verifyEmployeeDetails(String employeeCode, String email);
-    
-    Optional<Employee> findByEmail(String email);
+import com.hexaware.easypay.dto.AttendanceDTO;
+import com.hexaware.easypay.dto.EmpDTO;
+import com.hexaware.easypay.dto.LeavesDTO;
+import com.hexaware.easypay.entities.Attendance;
+import com.hexaware.easypay.entities.Employee;
+import com.hexaware.easypay.entities.Leaves;
+import com.hexaware.easypay.entities.Payroll;
+
+public interface IEmployeeService {
+	Employee updatePersonalInformation(int employeeId, EmpDTO updatedInfo);
+
+    List<Payroll> getPayStubs(int employeeId);
+
+    Attendance submitAttendance(int employeeId, AttendanceDTO attendancedto);
+
+    Leaves requestLeave(int employeeId, LeavesDTO leavesDto);
+
 }
