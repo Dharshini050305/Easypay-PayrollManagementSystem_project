@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
+import com.hexaware.easypay.dto.EmployeeDTO;
 import com.hexaware.easypay.entities.Benefits;
 import com.hexaware.easypay.entities.ComplianceReport;
 import com.hexaware.easypay.entities.Deductions;
@@ -11,6 +12,7 @@ import com.hexaware.easypay.entities.Employee;
 import com.hexaware.easypay.entities.PayrollPolicy;
 import com.hexaware.easypay.entities.Role;
 import com.hexaware.easypay.entities.User;
+import com.hexaware.easypay.exceptions.EmployeeNotFoundException;
 import com.hexaware.easypay.repositories.BenefitsRepository;
 import com.hexaware.easypay.repositories.ComplianceReportRepository;
 import com.hexaware.easypay.repositories.DeductionsRepository;
@@ -19,7 +21,7 @@ import com.hexaware.easypay.repositories.PayrollPolicyRepository;
 import com.hexaware.easypay.repositories.RoleRepository;
 import com.hexaware.easypay.repositories.UserRepository;
 
-public class AdminHrManagerServiceImp implements IAdminHrManagerService {
+public class AdminHrManagerServiceImpl implements IAdminHrManagerService {
 
 	@Autowired
     private EmployeeRepository employeeRepo;
@@ -46,35 +48,35 @@ public class AdminHrManagerServiceImp implements IAdminHrManagerService {
     
     // Employee Management
     @Override
-    public Employee addEmployee(EmployeeDTO employeeDto) {
+    public Employee addEmployee(EmployeeDTO employeeDTO) {
     	
     	
-    	   User user = userRepo.findById(employeeDto.getUserId())
-    	            .orElseThrow(() -> new RuntimeException("User not found with ID: " + employeeDto.getUserId()));
+    	   User user = userRepo.findById(employeeDTO.getUserId())
+    	            .orElseThrow(() -> new RuntimeException("User not found with ID: " + employeeDTO.getUserId()));
     	    
-    	   Deductions deductions = deductionsRepo.findById(employeeDto.getDeductionId())
-    	            .orElseThrow(() -> new RuntimeException("Deductions not found with ID: " + employeeDto.getDeductionId()));
+    	   Deductions deductions = deductionsRepo.findById(employeeDTO.getDeductionId())
+    	            .orElseThrow(() -> new RuntimeException("Deductions not found with ID: " + employeeDTO.getDeductionId()));
     	    
-    	   Benefits benefits = benefitsRepo.findById(employeeDto.getBenefitId())
-    	            .orElseThrow(() -> new RuntimeException("Benefits not found with ID: " + employeeDto.getBenefitId()));
+    	   Benefits benefits = benefitsRepo.findById(employeeDTO.getBenefitId())
+    	            .orElseThrow(() -> new RuntimeException("Benefits not found with ID: " + employeeDTO.getBenefitId()));
     	    
-    	   Role role = roleRepo.findById(employeeDto.getRoleId())
-    	            .orElseThrow(() -> new RuntimeException("Role not found with ID: " + employeeDto.getRoleId()));
+    	   Role role = roleRepo.findById(employeeDTO.getRoleId())
+    	            .orElseThrow(() -> new RuntimeException("Role not found with ID: " + employeeDTO.getRoleId()));
 
     	
         Employee employee = new Employee();
-        employee.setEmpName(employeeDto.getEmpName());
-        employee.setPosition(employeeDto.getPosition());
-        employee.setEmpDepartment(employeeDto.getEmpDepartment());
-        employee.setEmpsalary(employeeDto.getEmpsalary());
-        employee.setJoinDate(employeeDto.getJoinDate());
+        employee.setEmployeeName(employeeDTO.getEmployeeName());
+        employee.setPosition(employeeDTO.getPosition());
+        employee.setEmployeeDepartment(employeeDTO.getEmployeeDepartment());
+        employee.setEmployeeSalary(employeeDTO.getEmployeesalary());
+        employee.setJoinDate(employeeDTO.getJoinDate());
         employee.setUser(user);
         employee.setDeductions(deductions);
         employee.setBenefits(benefits);
         employee.setRole(role);
         
-        if (employeeDto.getManagerId() != null) {
-            Employee manager = employeeRepo.findById(employeeDto.getManagerId())
+        if (employeeDTO.getManagerId() != null) {
+            Employee manager = employeeRepo.findById(employeeDTO.getManagerId())
                     .orElseThrow(() -> new RuntimeException("Manager not found"));
             employee.setManager(manager);
         }
@@ -85,47 +87,47 @@ public class AdminHrManagerServiceImp implements IAdminHrManagerService {
     }
 
     @Override
-    public Employee updateEmployee(int empId ,EmployeeDto employeeDto) {
+    public Employee updateEmployee(int empId ,EmployeeDTO employeeDTO) {
     	
         Employee employee = employeeRepo.findById(empId)
                 .orElseThrow(()-> new EmployeeNotFoundException("Employee with Id: "+empId+" not found"));
         // Fetch the existing Employee
-        Employee existingEmployee = employeeRepo.findById(employeeDto.getUserId())
-                .orElseThrow(() -> new RuntimeException("Employee not found with ID: " + employeeDto.getUserId()));
+        Employee existingEmployee = employeeRepo.findById(employeeDTO.getUserId())
+                .orElseThrow(() -> new RuntimeException("Employee not found with ID: " + employeeDTO.getUserId()));
 
         // Fetch related entities if provided in the DTO
-        if (employeeDto.getDeductionId() != 0) {
-            Deductions deductions = deductionsRepo.findById(employeeDto.getDeductionId())
-                    .orElseThrow(() -> new RuntimeException("Deductions not found with ID: " + employeeDto.getDeductionId()));
+        if (employeeDTO.getDeductionId() != 0) {
+            Deductions deductions = deductionsRepo.findById(employeeDTO.getDeductionId())
+                    .orElseThrow(() -> new RuntimeException("Deductions not found with ID: " + employeeDTO.getDeductionId()));
             existingEmployee.setDeductions(deductions);
         }
 
-        if (employeeDto.getBenefitId() != 0) {
-            Benefits benefits = benefitsRepo.findById(employeeDto.getBenefitId())
-                    .orElseThrow(() -> new RuntimeException("Benefits not found with ID: " + employeeDto.getBenefitId()));
+        if (employeeDTO.getBenefitId() != 0) {
+            Benefits benefits = benefitsRepo.findById(employeeDTO.getBenefitId())
+                    .orElseThrow(() -> new RuntimeException("Benefits not found with ID: " + employeeDTO.getBenefitId()));
             existingEmployee.setBenefits(benefits);
         }
 
-        if (employeeDto.getRoleId() != 0) {
-            Role role = roleRepo.findById(employeeDto.getRoleId())
-                    .orElseThrow(() -> new RuntimeException("Role not found with ID: " + employeeDto.getRoleId()));
+        if (employeeDTO.getRoleId() != 0) {
+            Role role = roleRepo.findById(employeeDTO.getRoleId())
+                    .orElseThrow(() -> new RuntimeException("Role not found with ID: " + employeeDTO.getRoleId()));
             existingEmployee.setRole(role);
         }
 
         Employee manager = null;
         
-        if (employeeDto.getManagerId() != null) {
-            manager = employeeRepo.findById(employeeDto.getManagerId())
-                    .orElseThrow(() -> new RuntimeException("Manager not found with ID: " + employeeDto.getManagerId()));
+        if (employeeDTO.getManagerId() != null) {
+            manager = employeeRepo.findById(employeeDTO.getManagerId())
+                    .orElseThrow(() -> new RuntimeException("Manager not found with ID: " + employeeDTO.getManagerId()));
             existingEmployee.setManager(manager);
         }
 
         // Update other fields
-        existingEmployee.setEmpName(employeeDto.getEmpName());
-        existingEmployee.setPosition(employeeDto.getPosition());
-        existingEmployee.setEmpDepartment(employeeDto.getEmpDepartment());
-        existingEmployee.setEmpsalary(employeeDto.getEmpsalary());
-        existingEmployee.setJoinDate(employeeDto.getJoinDate());
+        existingEmployee.setEmployeeName(employeeDTO.getEmployeeName());
+        existingEmployee.setPosition(employeeDTO.getPosition());
+        existingEmployee.setEmployeeDepartment(employeeDTO.getEmployeeDepartment());
+        existingEmployee.setEmployeeSalary(employeeDTO.getEmployeesalary());
+        existingEmployee.setJoinDate(employeeDTO.getJoinDate());
         existingEmployee.setManager(manager);
 
         // Save the updated employee
@@ -133,13 +135,13 @@ public class AdminHrManagerServiceImp implements IAdminHrManagerService {
     }
 
     @Override
-    public void deleteEmployee(int empId) {
-        employeeRepo.deleteById(empId);
+    public void deleteEmployee(int employeeId) {
+        employeeRepo.deleteById(employeeId);
     }
 
     @Override
-    public Employee getEmployeeById(int empId) {
-        return employeeRepo.findById(empId).orElse(null);
+    public Employee getEmployeeById(int employeeId) {
+        return employeeRepo.findById(employeeId).orElse(null);
     }
 
     @Override
