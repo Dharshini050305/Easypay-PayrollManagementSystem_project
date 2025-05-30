@@ -11,26 +11,28 @@ import com.hexaware.easypay.exceptions.DeductionNotFoundException;
 import com.hexaware.easypay.exceptions.PayrollNotFoundException;
 
 public interface IPayrollProcessorService {
-	 Payroll calculatePayroll(int empId, LocalDate payrollDate) throws PayrollNotFoundException;
+	 
+	// Payroll Calculation
+    Payroll calculatePayroll(int empId, LocalDate payrollDate) throws PayrollNotFoundException;
 
-	    // Payroll Data Verification
-	    boolean verifyPayrollData(Payroll payroll) throws PayrollNotFoundException;
+    // Payroll Data Verification
+    boolean verifyPayrollData(Payroll payroll) throws PayrollNotFoundException;
 
-	    // Benefits Management
-	    Benefits addBenefit(Benefits benefit) throws BenefitNotFoundException;
-	    Benefits updateBenefit(int benefitId,Benefits benefit) throws BenefitNotFoundException;
-	    void deleteBenefit(int benefitId) throws BenefitNotFoundException;
-	    Benefits getBenefitById(int benefitId) throws BenefitNotFoundException;
-	    List<Benefits> getAllBenefits();
+    // Benefits Management
+    Benefits addBenefit(Benefits benefit) throws BenefitNotFoundException;
+    Benefits updateBenefit(int benefitId,Benefits benefit) throws BenefitNotFoundException;
+    void deleteBenefit(int benefitId) throws BenefitNotFoundException;
+    Benefits getBenefitById(int benefitId) throws BenefitNotFoundException;
+    List<Benefits> getAllBenefits();
 
-	    // Deductions Management
-	    Deductions addDeduction(Deductions deduction) throws DeductionNotFoundException;
-	    Deductions updateDeduction(int deductionId,Deductions deduction) throws DeductionNotFoundException;
-	    void deleteDeduction(int deductionId) throws DeductionNotFoundException;
-	    Deductions getDeductionById(int deductionId) throws DeductionNotFoundException;
-	    List<Deductions> getAllDeductions();
+    // Deductions Management
+    Deductions addDeduction(Deductions deduction) throws DeductionNotFoundException;
+    Deductions updateDeduction(int deductionId,Deductions deduction) throws DeductionNotFoundException;
+    void deleteDeduction(int deductionId) throws DeductionNotFoundException;
+    Deductions getDeductionById(int deductionId) throws DeductionNotFoundException;
+    List<Deductions> getAllDeductions();
 
-	    // Payment Processing
-	    void processPayment(int empId, LocalDate payrollDate) throws PayrollNotFoundException;
+    // Payment Processing
+    void processPayment(int empId, LocalDate payrollDate) throws PayrollNotFoundException;
 
 }

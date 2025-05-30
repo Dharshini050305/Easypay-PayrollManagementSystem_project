@@ -2,7 +2,8 @@ package com.hexaware.easypay.services;
 
 import java.util.List;
 
-import com.hexaware.easypay.dto.EmployeeDTO;
+
+import com.hexaware.easypay.dto.EmployeeDto;
 import com.hexaware.easypay.entities.ComplianceReport;
 import com.hexaware.easypay.entities.Employee;
 import com.hexaware.easypay.entities.PayrollPolicy;
@@ -14,8 +15,8 @@ import com.hexaware.easypay.exceptions.UserNotFoundException;
 
 public interface IAdminHrManagerService {
 	// Employee Management
-    Employee addEmployee(EmployeeDTO employee);
-    Employee updateEmployee(int empId,EmployeeDTO employeeDto);
+    Employee addEmployee(EmployeeDto employee);
+    Employee updateEmployee(int empId,EmployeeDto employeeDto);
     void deleteEmployee(int empId) throws EmployeeNotFoundException;
     Employee getEmployeeById(int empId) throws EmployeeNotFoundException;
     List<Employee> getAllEmployees()throws EmployeeNotFoundException;

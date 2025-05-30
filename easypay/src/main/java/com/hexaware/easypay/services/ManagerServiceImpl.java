@@ -49,5 +49,4 @@ public class ManagerServiceImpl implements IManagerService{
         
         return leaveRequestRepository.save(leavesRequest);
     }
-
 }

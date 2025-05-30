@@ -3,7 +3,7 @@ package com.hexaware.easypay.dto;
 import com.hexaware.easypay.entities.Role;
 
 public class EmployeeRoleVO {
-	private  EmpMicroDTO employee;
+	private  EmpMicroDto employee;
 	private  Role role;
 	
 	public EmployeeRoleVO() {
@@ -11,17 +11,17 @@ public class EmployeeRoleVO {
 		
 	}
 
-	public EmployeeRoleVO(EmpMicroDTO employee, Role role) {
+	public EmployeeRoleVO(EmpMicroDto employee, Role role) {
 		super();
 		this.employee = employee;
 		this.role = role;
 	}
 
-	public EmpMicroDTO getEmployee() {
+	public EmpMicroDto getEmployee() {
 		return employee;
 	}
 
-	public void setEmployee(EmpMicroDTO employee) {
+	public void setEmployee(EmpMicroDto employee) {
 		this.employee = employee;
 	}
 

@@ -10,7 +10,7 @@ import com.hexaware.easypay.entities.Leaves;
 
 @Repository
 public interface LeavesRepository extends JpaRepository<Leaves ,Integer>{
+	
 	@Query("select l from Leaves l where l.manager.empId =:managerId")
 	List <Leaves> findByManagerEmpId(int managerId);
-
 }

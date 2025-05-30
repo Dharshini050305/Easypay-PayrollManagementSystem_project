@@ -1,17 +1,17 @@
 package com.hexaware.easypay.dto;
 
-public class EmpMicroDTO {
+public class EmpMicroDto {
 	private String employeeName;
 	private String employeeDepartment;
 	private String position;
 	private int roleId;
 	
-	public EmpMicroDTO() {
+	public EmpMicroDto() {
 		super();
 		
 	}
 
-	public EmpMicroDTO(String employeeName, String employeeDepartment, String position, int roleId) {
+	public EmpMicroDto(String employeeName, String employeeDepartment, String position, int roleId) {
 		super();
 		this.employeeName = employeeName;
 		this.employeeDepartment = employeeDepartment;

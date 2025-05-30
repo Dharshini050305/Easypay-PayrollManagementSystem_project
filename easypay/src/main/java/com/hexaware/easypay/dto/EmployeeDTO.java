@@ -2,7 +2,7 @@ package com.hexaware.easypay.dto;
 
 import java.time.LocalDate;
 
-public class EmployeeDTO {
+public class EmployeeDto {
 	 private String employeeName;
 	    private String position;
 	    private String employeeDepartment;
@@ -14,12 +14,12 @@ public class EmployeeDTO {
 	    private int roleId;      
 	    private Integer managerId;
 	    
-		public EmployeeDTO() {
+		public EmployeeDto() {
 			super();
 			
 		}
 
-		public EmployeeDTO(String employeeName, String position, String employeeDepartment, double employeesalary,
+		public EmployeeDto(String employeeName, String position, String employeeDepartment, double employeesalary,
 				LocalDate joinDate, int userId, int deductionId, int benefitId, int roleId, Integer managerId) {
 			super();
 			this.employeeName = employeeName;

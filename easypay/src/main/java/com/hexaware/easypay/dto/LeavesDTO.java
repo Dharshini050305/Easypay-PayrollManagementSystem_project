@@ -2,16 +2,16 @@ package com.hexaware.easypay.dto;
 
 import java.time.LocalDate;
 
-public class LeavesDTO {
+public class LeavesDto {
 	private int employeeId;
     private LocalDate startDate;
     private LocalDate endDate;
     private String leaveType;
-	public LeavesDTO() {
+	public LeavesDto() {
 		super();
 		
 	}
-	public LeavesDTO(int employeeId, LocalDate startDate, LocalDate endDate, String leaveType) {
+	public LeavesDto(int employeeId, LocalDate startDate, LocalDate endDate, String leaveType) {
 		super();
 		this.employeeId = employeeId;
 		this.startDate = startDate;

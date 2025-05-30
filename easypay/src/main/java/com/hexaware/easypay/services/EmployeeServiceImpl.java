@@ -3,10 +3,11 @@ package com.hexaware.easypay.services;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
-import com.hexaware.easypay.dto.AttendanceDTO;
-import com.hexaware.easypay.dto.EmpDTO;
-import com.hexaware.easypay.dto.LeavesDTO;
+import com.hexaware.easypay.dto.AttendanceDto;
+import com.hexaware.easypay.dto.EmpDto;
+import com.hexaware.easypay.dto.LeavesDto;
 import com.hexaware.easypay.entities.Attendance;
 import com.hexaware.easypay.entities.Employee;
 import com.hexaware.easypay.entities.Leaves;
@@ -18,6 +19,10 @@ import com.hexaware.easypay.repositories.EmployeeRepository;
 import com.hexaware.easypay.repositories.LeavesRepository;
 import com.hexaware.easypay.repositories.PayrollRepository;
 
+import jakarta.transaction.Transactional;
+
+@Service
+@Transactional
 public class EmployeeServiceImpl implements IEmployeeService{
 	@Autowired
 	private EmployeeRepository employeeRepository ;
@@ -34,9 +39,9 @@ public class EmployeeServiceImpl implements IEmployeeService{
 	
 	
 
-	public Employee updatePersonalInformation(int employeeId, EmpDTO updatedInfo) {
-        Employee employee = employeeRepository.findById(employeeId)
-                .orElseThrow(()-> new EmployeeNotFoundException("Employee with Id: "+employeeId+" not found"));
+	public Employee updatePersonalInformation(int empId, EmpDto updatedInfo) {
+        Employee employee = employeeRepository.findById(empId)
+                .orElseThrow(()-> new EmployeeNotFoundException("Employee with Id: "+empId+" not found"));
         employee.setEmployeeName(updatedInfo.getEmployeeName());
         employee.setEmployeeDepartment(updatedInfo.getEmployeeDepartment());
         employee.setPosition(updatedInfo.getPosition());
@@ -44,34 +49,34 @@ public class EmployeeServiceImpl implements IEmployeeService{
     }
 
     @Override
-    public List<Payroll> getPayStubs(int employeeId) {
+    public List<Payroll> getPayStubs(int empId) {
     	
-        List<Payroll> payroll = payrollRepository.findByEmployeeEmpId(employeeId);
+        List<Payroll> payroll = payrollRepository.findByEmployeeEmpId(empId);
         
         if(payroll.isEmpty()) {
-        	throw new PayrollNotFoundException("No Payroll records found for Employee Id:"+employeeId); 	
+        	throw new PayrollNotFoundException("No Payroll records found for Employee Id:"+empId); 	
         }
         return payroll;
     }
 
     @Override
-    public Attendance submitAttendance(int employeeId, AttendanceDTO attendanceDTO) {
-        Employee employee = employeeRepository.findById(employeeId)
-                .orElseThrow(() -> new EmployeeNotFoundException("Employee with Id: " + employeeId + " not found"));
+    public Attendance submitAttendance(int empId, AttendanceDto attendanceDto) {
+        Employee employee = employeeRepository.findById(empId)
+                .orElseThrow(() -> new EmployeeNotFoundException("Employee with Id: " + empId + " not found"));
         
         Attendance attendance = new Attendance();
         attendance.setEmployee(employee); 
-        attendance.setWorkDate(attendanceDTO.getWorkDate());
-        attendance.setHoursWorked(attendanceDTO.getHoursWorked());
-        attendance.setAttendanceStatus(attendanceDTO.getStatus());
+        attendance.setWorkDate(attendanceDto.getWorkDate());
+        attendance.setHoursWorked(attendanceDto.getHoursWorked());
+        attendance.setAttendanceStatus(attendanceDto.getStatus());
         return attendanceRepository.save(attendance);
     }
 
     @Override
-    public Leaves requestLeave(int employeeId, LeavesDTO leavesDto) {
+    public Leaves requestLeave(int empId, LeavesDto leavesDto) {
     	
-        Employee employee = employeeRepository.findById(employeeId)
-                .orElseThrow(()-> new EmployeeNotFoundException("Employee with Id:"+employeeId+" not found"));
+        Employee employee = employeeRepository.findById(empId)
+                .orElseThrow(()-> new EmployeeNotFoundException("Employee with Id:"+empId+" not found"));
         
         
         Leaves leaves= new Leaves();

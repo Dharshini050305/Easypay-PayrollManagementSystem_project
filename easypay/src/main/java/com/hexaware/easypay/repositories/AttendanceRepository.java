@@ -10,7 +10,9 @@ import org.springframework.stereotype.Repository;
 import com.hexaware.easypay.entities.Attendance;
 @Repository
 public interface AttendanceRepository extends JpaRepository<Attendance ,Integer>{
-	 @Query("SELECT a FROM Attendance a WHERE a.employee.empId = :empId AND FUNCTION('MONTH', a.workDate) = :month")
-	    List<Attendance> findByEmployeeIdAndMonth(@Param("empId") int empId, @Param("month") int month);
+	
+	// Custom query to fetch attendance by employee ID and month
+    @Query("SELECT a FROM Attendance a WHERE a.employee.empId = :empId AND FUNCTION('MONTH', a.workDate) = :month")
+    List<Attendance> findByEmployeeIdAndMonth(@Param("empId") int empId, @Param("month") int month);
 
 }
