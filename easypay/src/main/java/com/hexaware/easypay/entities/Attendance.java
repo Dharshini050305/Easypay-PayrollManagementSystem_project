@@ -20,7 +20,7 @@ public class Attendance {
 	private int attendanceId;
 	
 	@ManyToOne
-	@JoinColumn(name = "emp_id",nullable= false)
+	@JoinColumn(name = "employee_id",nullable= false)
 	@NotNull(message= "Employee cannot be null")
 	private Employee employee;
 	

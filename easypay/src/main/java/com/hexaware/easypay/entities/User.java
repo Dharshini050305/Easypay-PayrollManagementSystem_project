@@ -34,7 +34,7 @@ public class User {
 	private int roleId;
 	
 	@OneToOne(mappedBy = "user", cascade = CascadeType.ALL)
-	private Employee employee;
+    private Employee employee;
 	
 	public User() {
 		super();

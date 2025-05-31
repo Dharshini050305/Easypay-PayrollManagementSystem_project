@@ -1,4 +1,4 @@
-package com.hexaware.easypay.restcontrollers;
+package com.hexaware.easypay.restcontroller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -17,11 +17,11 @@ public class RoleRestController {
 	IRoleService service;
 	
 	
-	@GetMapping("/get/employee-role/{empId}")
+	@GetMapping("/get/employee-role/{employeeId}")
 	@PreAuthorize("hasAuthority('HR')")
-	public EmployeeRoleVO getEmployeeAndRoleById(@PathVariable int  empId) {
+	public EmployeeRoleVO getEmployeeAndRoleById(@PathVariable int  employeeId) {
 		
-		return service.getEmployeeAndRoleById(empId);
+		return service.getEmployeeAndRoleById(employeeId);
 		
 	}
 

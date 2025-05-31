@@ -8,6 +8,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.Transient;
 import jakarta.validation.constraints.DecimalMin;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.PastOrPresent;
@@ -34,11 +35,11 @@ public class Payroll {
     @PastOrPresent(message = "Payroll date cannot be in the future.")
 	private LocalDate payrollDate;
 	
-	
+	@Transient
 	private double netPay;
 	
 	@ManyToOne
-    @JoinColumn(name = "empId", nullable = false) 
+    @JoinColumn(name = "employee_Id", nullable = false) 
 	private Employee employee;
 	public Payroll() {
 		super();

@@ -12,7 +12,7 @@ import com.hexaware.easypay.entities.Employee;
 @Repository
 public interface EmployeeRepository extends JpaRepository<Employee,Integer> {
 	
-	@Query("SELECT new com.hexaware.easyspay.dto.EmpMicroDto(e.empName, e.empDepartment, e.position, e.role.roleID) " +
-            "FROM Employee e WHERE e.empId = :empId")
-     EmpMicroDto findEmployeeDetailsById(@Param("empId") int empId);
+	@Query("SELECT new com.hexaware.easypay.dto.EmpMicroDto(e.employeeName, e.employeeDepartment, e.position, e.role.roleID) " +
+            "FROM Employee e WHERE e.employeeId = :employeeId")
+     EmpMicroDto findEmployeeDetailsById(@Param("employeeId") int employeeId);
 }

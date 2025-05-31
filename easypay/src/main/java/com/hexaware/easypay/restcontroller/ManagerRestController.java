@@ -1,4 +1,4 @@
-package com.hexaware.easypay.restcontrollers;
+package com.hexaware.easypay.restcontroller;
 
 import java.util.List;
 

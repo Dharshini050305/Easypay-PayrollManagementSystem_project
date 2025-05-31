@@ -1,4 +1,4 @@
-package com.hexaware.easypay.restcontrollers;
+package com.hexaware.easypay.restcontroller;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -28,9 +28,9 @@ public class PayrollProcessorRestController {
     private IPayrollProcessorService service;
 
     // Payroll Calculation
-    @PostMapping("/calculate/{empId}")
-    public Payroll calculatePayroll(@PathVariable int empId, @Valid @RequestBody LocalDate payrollDate) {
-        return service.calculatePayroll(empId, payrollDate);
+    @PostMapping("/calculate/{employeeId}")
+    public Payroll calculatePayroll(@PathVariable int employeeId, @Valid @RequestBody LocalDate payrollDate) {
+        return service.calculatePayroll(employeeId, payrollDate);
     }
 
     // Payroll Verification
@@ -104,14 +104,14 @@ public class PayrollProcessorRestController {
     }
 
     // Payment Processing
-    @PostMapping("payment/process/{empId}/{payrollDate}")
+    @PostMapping("payment/process/{employeeId}/{payrollDate}")
     @PreAuthorize("hasAuthority('PAYROLL_PROCESSOR')")
-    public String processPayment(@PathVariable int empId, @PathVariable String payrollDate) {
+    public String processPayment(@PathVariable int employeeId, @PathVariable String payrollDate) {
         try {
             // Convert payrollDate (String) to LocalDate
             LocalDate date = LocalDate.parse(payrollDate);
-            service.processPayment(empId, date);
-            return "Payroll processed successfully for Employee ID: " + empId;
+            service.processPayment(employeeId, date);
+            return "Payroll processed successfully for Employee ID: " + employeeId;
         } catch (Exception e) {
             return "Error processing payroll: " + e.getMessage();
         }

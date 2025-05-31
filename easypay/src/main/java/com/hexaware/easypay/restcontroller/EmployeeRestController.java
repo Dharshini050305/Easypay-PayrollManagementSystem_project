@@ -1,4 +1,4 @@
-package com.hexaware.easypay.restcontrollers;
+package com.hexaware.easypay.restcontroller;
 
 import java.util.List;
 
@@ -32,13 +32,13 @@ public class EmployeeRestController {
 	
 	//View PayStubs
 	
-	@GetMapping("/paystubs/{empid}")
+	@GetMapping("/paystubs/{employeeid}")
     @PreAuthorize("hasAuthority('EMPLOYEE')")
-	public ResponseEntity < List<Payroll>> getPayStubs(@PathVariable int empid){
+	public ResponseEntity < List<Payroll>> getPayStubs(@PathVariable int employeeid){
 		
 		
-		List<Payroll> paystubs= service.getPayStubs(empid);
-		logger.info(" Paystubs for Employee: "+empid);
+		List<Payroll> paystubs= service.getPayStubs(employeeid);
+		logger.info(" Paystubs for Employee: "+employeeid);
 		return new ResponseEntity<List<Payroll>>(paystubs,HttpStatus.ACCEPTED);
 		
 	}
@@ -46,22 +46,22 @@ public class EmployeeRestController {
 	
 	//Update Personal Information
 	
-	@PutMapping("/updatepersonalinfo/{empId}")
+	@PutMapping("/updatepersonalinfo/{employeeId}")
 	@PreAuthorize("hasAuthority('EMPLOYEE')")
-	public Employee updatePersonalInformation( @PathVariable int empId,  @RequestBody EmpDto updatedInfo){
+	public Employee updatePersonalInformation( @PathVariable int employeeId,  @RequestBody EmpDto updatedInfo){
 		
 		logger.info("Updated Personal Information");
-		return service.updatePersonalInformation(empId, updatedInfo);
+		return service.updatePersonalInformation(employeeId, updatedInfo);
 		
 	}
 	
 	//Submit Attendance
 	
-	@PostMapping("/submitattendance/{empId}")
+	@PostMapping("/submitattendance/{employeeId}")
 	@PreAuthorize("hasAuthority('EMPLOYEE')")
-	public ResponseEntity<Attendance> submitAttendance(@PathVariable int empId, @RequestBody AttendanceDto attendance){
+	public ResponseEntity<Attendance> submitAttendance(@PathVariable int employeeId, @RequestBody AttendanceDto attendance){
 		
-		Attendance savedAttendance= service.submitAttendance(empId, attendance);
+		Attendance savedAttendance= service.submitAttendance(employeeId, attendance);
 		ResponseEntity<Attendance>responseEntity = new ResponseEntity<Attendance>(savedAttendance,HttpStatus.CREATED);
 		logger.info("Attendance Submission Succesful");
 		return responseEntity;
@@ -71,11 +71,11 @@ public class EmployeeRestController {
 	
 	//RequestForLeaves
 	
-	@PostMapping("/requestleave/{empId}")
+	@PostMapping("/requestleave/{employeeId}")
 	@PreAuthorize("hasAuthority('EMPLOYEE')")
-	public ResponseEntity<Leaves> requestLeave(@PathVariable int empId, @RequestBody LeavesDto leavesDto) {
+	public ResponseEntity<Leaves> requestLeave(@PathVariable int employeeId, @RequestBody LeavesDto leavesDto) {
         // Create a new leave request
-        Leaves leavesrequest = service.requestLeave(empId, leavesDto);
+        Leaves leavesrequest = service.requestLeave(employeeId, leavesDto);
         ResponseEntity<Leaves>responseEntity = new ResponseEntity<Leaves>(leavesrequest,HttpStatus.CREATED);
 		logger.info("Leave Request Submission Succesful");
 		return responseEntity;

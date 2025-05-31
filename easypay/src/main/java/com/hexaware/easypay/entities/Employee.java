@@ -57,7 +57,7 @@ public class Employee {
     private Deductions deductions;
 
     @ManyToOne
-    @JoinColumn(name = "benefit_id", referencedColumnName = "benifitId")
+    @JoinColumn(name = "benefit_id", referencedColumnName = "benefitId")
     private Benefits benefits;
     
 	public Employee() {

@@ -16,9 +16,9 @@ import com.hexaware.easypay.exceptions.UserNotFoundException;
 public interface IAdminHrManagerService {
 	// Employee Management
     Employee addEmployee(EmployeeDto employee);
-    Employee updateEmployee(int empId,EmployeeDto employeeDto);
-    void deleteEmployee(int empId) throws EmployeeNotFoundException;
-    Employee getEmployeeById(int empId) throws EmployeeNotFoundException;
+    Employee updateEmployee(int employeeId,EmployeeDto employeeDto);
+    void deleteEmployee(int employeeId) throws EmployeeNotFoundException;
+    Employee getEmployeeById(int employeeId) throws EmployeeNotFoundException;
     List<Employee> getAllEmployees()throws EmployeeNotFoundException;
 
     // User Management

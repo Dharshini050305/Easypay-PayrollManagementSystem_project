@@ -1,4 +1,4 @@
-package com.hexaware.easypay.restcontrollers;
+package com.hexaware.easypay.restcontroller;
 
 import java.util.List;
 
@@ -26,7 +26,7 @@ import com.hexaware.easypay.services.IAdminHrManagerService;
 @RestController
 @RequestMapping("/api/adminhr")
 public class AdminHrManagerRestController {
-	Logger logger = LoggerFactory.getLogger(AdminHrManagerRestController.class);
+    private static final Logger logger = LoggerFactory.getLogger(AdminHrManagerRestController.class);
 
     @Autowired
     private IAdminHrManagerService service;
@@ -41,29 +41,29 @@ public class AdminHrManagerRestController {
         return addedEmployee;
     }
 
-    @PutMapping("/employee/update/{empId}")
+    @PutMapping("/employee/update/{employeeId}")
     @PreAuthorize("hasAuthority('HR')")
-    public Employee updateEmployee( @PathVariable int empId,@RequestBody EmployeeDto employeeDto) {
-        logger.info("Updating employee : {}", employeeDto);
-        Employee updatedEmployee = service.updateEmployee(empId,employeeDto);
+    public Employee updateEmployee(@PathVariable int employeeId, @RequestBody EmployeeDto employeeDto) {
+        logger.info("Updating employee with ID: {}", employeeId);
+        Employee updatedEmployee = service.updateEmployee(employeeId, employeeDto);
         logger.info("Employee updated successfully: {}", updatedEmployee);
         return updatedEmployee;
     }
 
-    @DeleteMapping("/employee/delete/{empId}")
+    @DeleteMapping("/employee/delete/{employeeId}")
     @PreAuthorize("hasAuthority('HR')")
-    public String deleteEmployee(@PathVariable int empId) {
-        logger.info("Deleting employee with ID: {}", empId);
-        service.deleteEmployee(empId);
-        logger.info("Employee with ID {} deleted successfully.", empId);
-        return "Employee with ID " + empId + " deleted successfully.";
+    public String deleteEmployee(@PathVariable int employeeId) {
+        logger.info("Deleting employee with ID: {}", employeeId);
+        service.deleteEmployee(employeeId);
+        logger.info("Employee with ID {} deleted successfully.", employeeId);
+        return "Employee with ID " + employeeId + " deleted successfully.";
     }
 
-    @GetMapping("/employee/{empId}")
+    @GetMapping("/employee/{employeeId}")
     @PreAuthorize("hasAuthority('HR')")
-    public Employee getEmployeeById(@PathVariable int empId) {
-        logger.info("Fetching employee with ID: {}", empId);
-        Employee employee = service.getEmployeeById(empId);
+    public Employee getEmployeeById(@PathVariable int employeeId) {
+        logger.info("Fetching employee with ID: {}", employeeId);
+        Employee employee = service.getEmployeeById(employeeId);
         logger.info("Employee fetched successfully: {}", employee);
         return employee;
     }
@@ -89,9 +89,9 @@ public class AdminHrManagerRestController {
 
     @PutMapping("/user/update/{userId}")
     @PreAuthorize("hasAuthority('HR')")
-    public User updateUser(@PathVariable int uerId,@RequestBody User user) {
-        logger.info("Updating user with ID: {}", user.getUserId());
-        User updatedUser = service.updateUser( uerId,user);
+    public User updateUser(@PathVariable int userId, @RequestBody User user) {
+        logger.info("Updating user with ID: {}", userId);
+        User updatedUser = service.updateUser(userId, user);
         logger.info("User updated successfully: {}", updatedUser);
         return updatedUser;
     }
@@ -135,9 +135,9 @@ public class AdminHrManagerRestController {
 
     @PutMapping("/payrollPolicy/update/{policyId}")
     @PreAuthorize("hasAuthority('HR')")
-    public PayrollPolicy updatePayrollPolicy(@PathVariable int policyId,@RequestBody PayrollPolicy policy) {
-        logger.info("Updating payroll policy with ID: {}", policy.getPolicyId());
-        PayrollPolicy updatedPolicy = service.updatePayrollPolicy(policyId,policy);
+    public PayrollPolicy updatePayrollPolicy(@PathVariable int policyId, @RequestBody PayrollPolicy policy) {
+        logger.info("Updating payroll policy with ID: {}", policyId);
+        PayrollPolicy updatedPolicy = service.updatePayrollPolicy(policyId, policy);
         logger.info("Payroll policy updated successfully: {}", updatedPolicy);
         return updatedPolicy;
     }
@@ -179,11 +179,11 @@ public class AdminHrManagerRestController {
         return addedReport;
     }
 
-    @PutMapping("/complianceReport/update{reportId}")
+    @PutMapping("/complianceReport/update/{reportId}")
     @PreAuthorize("hasAuthority('HR')")
-    public ComplianceReport updateComplianceReport(@PathVariable int reportId,@RequestBody ComplianceReport report) {
-        logger.info("Updating compliance report with ID: {}", report.getReportId());
-        ComplianceReport updatedReport = service.updateComplianceReport(reportId,report);
+    public ComplianceReport updateComplianceReport(@PathVariable int reportId, @RequestBody ComplianceReport report) {
+        logger.info("Updating compliance report with ID: {}", reportId);
+        ComplianceReport updatedReport = service.updateComplianceReport(reportId, report);
         logger.info("Compliance report updated successfully: {}", updatedReport);
         return updatedReport;
     }

@@ -31,9 +31,10 @@ public class ComplianceReport {
 	private String complianceStatus;
 	
 	@ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "emp_id")
+    @JoinColumn(name = "employee_id")
     @NotNull(message = "Employee reference must not be null.")
 	private Employee employee;
+	
 	public ComplianceReport() {
 		super();
 		

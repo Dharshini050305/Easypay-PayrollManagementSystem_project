@@ -9,7 +9,7 @@ import com.hexaware.easypay.entities.Benefits;
 public interface BenefitsRepository extends JpaRepository<Benefits,Integer>{
 	  
 	// Custom query to find the benefit amount by employee ID
-    @Query("SELECT b.benefitAmount FROM Benefits b WHERE b.benifitId = (SELECT e.benefits.benifitId FROM Employee e WHERE e.empId = :empId)")
-    Double findBenefitAmountByEmployeeId( int empId);
+    @Query("SELECT b.benefitAmount FROM Benefits b WHERE b.benefitId = (SELECT e.benefits.benefitId FROM Employee e WHERE e.employeeId = :employeeId)")
+    Double findBenefitAmountByEmployeeId( int employeeId);
 
 }

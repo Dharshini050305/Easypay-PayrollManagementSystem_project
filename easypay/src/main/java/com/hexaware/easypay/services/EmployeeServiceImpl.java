@@ -39,9 +39,9 @@ public class EmployeeServiceImpl implements IEmployeeService{
 	
 	
 
-	public Employee updatePersonalInformation(int empId, EmpDto updatedInfo) {
-        Employee employee = employeeRepository.findById(empId)
-                .orElseThrow(()-> new EmployeeNotFoundException("Employee with Id: "+empId+" not found"));
+	public Employee updatePersonalInformation(int employeeId, EmpDto updatedInfo) {
+        Employee employee = employeeRepository.findById(employeeId)
+                .orElseThrow(()-> new EmployeeNotFoundException("Employee with Id: "+employeeId+" not found"));
         employee.setEmployeeName(updatedInfo.getEmployeeName());
         employee.setEmployeeDepartment(updatedInfo.getEmployeeDepartment());
         employee.setPosition(updatedInfo.getPosition());
@@ -49,20 +49,20 @@ public class EmployeeServiceImpl implements IEmployeeService{
     }
 
     @Override
-    public List<Payroll> getPayStubs(int empId) {
+    public List<Payroll> getPayStubs(int employeeId) {
     	
-        List<Payroll> payroll = payrollRepository.findByEmployeeEmpId(empId);
+        List<Payroll> payroll = payrollRepository.findByEmployeeEmployeeId(employeeId);
         
         if(payroll.isEmpty()) {
-        	throw new PayrollNotFoundException("No Payroll records found for Employee Id:"+empId); 	
+        	throw new PayrollNotFoundException("No Payroll records found for Employee Id:"+employeeId); 	
         }
         return payroll;
     }
 
     @Override
-    public Attendance submitAttendance(int empId, AttendanceDto attendanceDto) {
-        Employee employee = employeeRepository.findById(empId)
-                .orElseThrow(() -> new EmployeeNotFoundException("Employee with Id: " + empId + " not found"));
+    public Attendance submitAttendance(int employeeId, AttendanceDto attendanceDto) {
+        Employee employee = employeeRepository.findById(employeeId)
+                .orElseThrow(() -> new EmployeeNotFoundException("Employee with Id: " + employeeId + " not found"));
         
         Attendance attendance = new Attendance();
         attendance.setEmployee(employee); 
@@ -73,10 +73,10 @@ public class EmployeeServiceImpl implements IEmployeeService{
     }
 
     @Override
-    public Leaves requestLeave(int empId, LeavesDto leavesDto) {
+    public Leaves requestLeave(int employeeId, LeavesDto leavesDto) {
     	
-        Employee employee = employeeRepository.findById(empId)
-                .orElseThrow(()-> new EmployeeNotFoundException("Employee with Id:"+empId+" not found"));
+        Employee employee = employeeRepository.findById(employeeId)
+                .orElseThrow(()-> new EmployeeNotFoundException("Employee with Id:"+employeeId+" not found"));
         
         
         Leaves leaves= new Leaves();

@@ -89,10 +89,10 @@ public class AdminHrManagerServiceImpl implements IAdminHrManagerService {
     }
 
     @Override
-    public Employee updateEmployee(int empId ,EmployeeDto employeeDto) {
+    public Employee updateEmployee(int employeeId ,EmployeeDto employeeDto) {
     	
-        Employee employee = employeeRepo.findById(empId)
-                .orElseThrow(()-> new EmployeeNotFoundException("Employee with Id: "+empId+" not found"));
+        Employee employee = employeeRepo.findById(employeeId)
+                .orElseThrow(()-> new EmployeeNotFoundException("Employee with Id: "+employeeId+" not found"));
         // Fetch the existing Employee
         Employee existingEmployee = employeeRepo.findById(employeeDto.getUserId())
                 .orElseThrow(() -> new RuntimeException("Employee not found with ID: " + employeeDto.getUserId()));
@@ -137,13 +137,13 @@ public class AdminHrManagerServiceImpl implements IAdminHrManagerService {
     }
 
     @Override
-    public void deleteEmployee(int empId) {
-        employeeRepo.deleteById(empId);
+    public void deleteEmployee(int employeeId) {
+        employeeRepo.deleteById(employeeId);
     }
 
     @Override
-    public Employee getEmployeeById(int empId) {
-        return employeeRepo.findById(empId).orElse(null);
+    public Employee getEmployeeById(int employeeId) {
+        return employeeRepo.findById(employeeId).orElse(null);
     }
 
     @Override

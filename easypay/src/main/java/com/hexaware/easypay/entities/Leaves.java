@@ -15,22 +15,27 @@ import jakarta.validation.constraints.NotBlank;
 @Table(name ="leaves")
 public class Leaves {
 	
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int leaveId;
-	private Employee employee;
-    private LocalDate startDate;
-	private LocalDate endDate;
-	
-	@NotBlank(message="LeaveType should not be null")
-	private String leaveType;
-	
-	@NotBlank(message="LeaveStatus should not be null")
-	private String leaveStatus;
-	
-	@ManyToOne
-	@JoinColumn(name= "manager_id")
-	private Employee manager;
+	 @Id
+	    @GeneratedValue(strategy = GenerationType.IDENTITY)
+	    private int leaveId;
+
+	    @ManyToOne
+	    @JoinColumn(name = "employee_id")
+	    private Employee employee;
+
+	    private LocalDate startDate;
+	    private LocalDate endDate;
+
+	    @NotBlank(message="LeaveType should not be null")
+	    private String leaveType;
+
+	    @NotBlank(message="LeaveStatus should not be null")
+	    private String leaveStatus;
+
+	    @ManyToOne
+	    @JoinColumn(name= "manager_id")
+	    private Employee manager;
+
 	
 	
 	public Leaves() {

@@ -1,4 +1,4 @@
-package com.hexaware.easypay.restcontrollers;
+package com.hexaware.easypay.restcontroller;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

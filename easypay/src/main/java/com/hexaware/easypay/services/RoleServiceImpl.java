@@ -19,9 +19,9 @@ public class RoleServiceImpl implements IRoleService{
 	    private RestTemplate restTemplate;
 
 	    @Override
-	    public EmployeeRoleVO getEmployeeAndRoleById(int empId) {
+	    public EmployeeRoleVO getEmployeeAndRoleById(int employeeId) {
 	        // Fetch only the necessary fields using the repository query
-	        EmpMicroDto empDto = employeeRepo.findEmployeeDetailsById(empId);
+	        EmpMicroDto empDto = employeeRepo.findEmployeeDetailsById(employeeId);
 
 	        // Use RestTemplate to get the Role details
 	        Role role = restTemplate.getForObject(

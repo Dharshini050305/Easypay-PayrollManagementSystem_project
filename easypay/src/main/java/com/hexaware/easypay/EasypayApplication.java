@@ -12,10 +12,12 @@ public class EasypayApplication {
 		SpringApplication.run(EasypayApplication.class, args);
 	}
 	@Bean
-	public RestTemplate  getRestTemplate() {
+	public RestTemplate getRestTemplate() {
+		
 		
 		return new RestTemplate();
 		
 	}
+	
 
 }

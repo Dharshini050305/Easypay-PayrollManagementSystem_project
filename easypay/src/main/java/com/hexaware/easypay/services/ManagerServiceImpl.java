@@ -26,7 +26,7 @@ public class ManagerServiceImpl implements IManagerService{
 
     @Override
     public List<Payroll> reviewTeamPayrolls(int managerId) {
-        List<Payroll> payrolls =  payrollRepository.findByEmployeeManagerEmpId(managerId);
+        List<Payroll> payrolls =  payrollRepository.findByEmployeeManagerEmployeeId(managerId);
         if (payrolls.isEmpty()) {
             throw new PayrollNotFoundException("No payroll records found for manager with ID " + managerId);
         }
