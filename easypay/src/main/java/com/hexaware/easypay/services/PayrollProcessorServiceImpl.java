@@ -42,22 +42,22 @@ public class PayrollProcessorServiceImpl implements IPayrollProcessorService {
 
 	    // Payroll Calculation
 	    @Override
-	    public Payroll calculatePayroll(int employeeId, LocalDate payrollDate) {
+	    public Payroll calculatePayroll(int empId, LocalDate payrollDate) {
 	        Payroll payroll = new Payroll();
-	        Employee employee = employeeRepo.findById(employeeId)
-	            .orElseThrow(() -> new RuntimeException("Employee not found with ID: " + employeeId));
+	        Employee employee = employeeRepo.findById(empId)
+	            .orElseThrow(() -> new RuntimeException("Employee not found with ID: " + empId));
 	        payroll.setEmployee(employee);
 	        payroll.setPayrollDate(payrollDate);
 	 
 	        // Get attendance for the month
-	        List<Attendance> monthlyAttendance = attendanceRepo.findByEmployeeIdAndMonth(employeeId, payrollDate.getMonthValue());
+	        List<Attendance> monthlyAttendance = attendanceRepo.findByEmployeeIdAndMonth(empId, payrollDate.getMonthValue());
 	        
 	        // Calculate present days and salary deductions
 	        int totalDaysInMonth = payrollDate.lengthOfMonth();
 	        int presentDays = monthlyAttendance.size();
 	        int absentDays = totalDaysInMonth - presentDays;
-	        double perDaySalary = employee.getEmployeeSalary() / totalDaysInMonth;
-	        double salaryAfterAbsence = employee.getEmployeeSalary() - (absentDays * perDaySalary);
+	        double perDaySalary = employee.getEmpsalary() / totalDaysInMonth;
+	        double salaryAfterAbsence = employee.getEmpsalary() - (absentDays * perDaySalary);
 	        
 	        // Calculate overtime
 	        double totalOvertimeHours = 0;
@@ -67,17 +67,17 @@ public class PayrollProcessorServiceImpl implements IPayrollProcessorService {
 	            }
 	        }
 
-	        PayrollPolicy policy = payrollPolicyRepo.findById(employeeId)
-	            .orElseThrow(() -> new RuntimeException("Payroll policy not found for employee ID: " + employeeId));
+	        PayrollPolicy policy = payrollPolicyRepo.findById(empId)
+	            .orElseThrow(() -> new RuntimeException("Payroll policy not found for employee ID: " + empId));
 	        double overtimePay = totalOvertimeHours * policy.getOvertimeRate();
 	        
 	        // Fetch benefits using the repository method
-	        Double benefitAmount = benefitsRepo.findBenefitAmountByEmployeeId(employeeId);
+	        Double benefitAmount = benefitsRepo.findBenefitAmountByEmployeeId(empId);
 	        
 	        // If benefitAmount is not null, add it to the payroll
 	        double totalBenefits = (benefitAmount != null) ? benefitAmount : 0;
 
-	        Double totalDeductions = deductionsRepo.findDeductionAmountByEmployeeId(employeeId);
+	        Double totalDeductions = deductionsRepo.findDeductionAmountByEmployeeId(empId);
 
 
 	        
@@ -103,8 +103,8 @@ public class PayrollProcessorServiceImpl implements IPayrollProcessorService {
 
 	        // Check if Employee exists
 	        Employee employee = payroll.getEmployee();
-	        if (employee == null || employeeRepo.findById(employee.getEmployeeId()).isEmpty()) {
-	            System.out.println("Employee not found for ID: " + (employee != null ? employee.getEmployeeId() : "null"));
+	        if (employee == null || employeeRepo.findById(employee.getEmpId()).isEmpty()) {
+	            System.out.println("Employee not found for ID: " + (employee != null ? employee.getEmpId() : "null"));
 	            return false;
 	        }
 
@@ -124,11 +124,11 @@ public class PayrollProcessorServiceImpl implements IPayrollProcessorService {
 	            return false;
 	        }
 
-	        System.out.println("Payroll data verification successful for Employee ID: " + payroll.getEmployee().getEmployeeId());
+	        System.out.println("Payroll data verification successful for Employee ID: " + payroll.getEmployee().getEmpId());
 	        return true;
 	    }
 	    
-	    // Benefits Management
+	    //------------------------------Benefits Management-----------------------------------------------------
 	    @Override
 	    public Benefits addBenefit(Benefits benefit) {
 	        return benefitsRepo.save(benefit);
@@ -181,16 +181,16 @@ public class PayrollProcessorServiceImpl implements IPayrollProcessorService {
 	    }
 
 	    // Payment Processing
-	    public void processPayroll(int employeeId, LocalDate payrollDate) {
+	    public void processPayroll(int empId, LocalDate payrollDate) {
 
 	    }
 
 
 
 		@Override
-		public void processPayment(int employeeId, LocalDate payrollDate) throws PayrollNotFoundException {
+		public void processPayment(int empId, LocalDate payrollDate) throws PayrollNotFoundException {
 	        // Step 1: Calculate payroll
-	        Payroll payroll = calculatePayroll(employeeId, payrollDate);
+	        Payroll payroll = calculatePayroll(empId, payrollDate);
 
 	        // Step 2: Verify payroll data
 	        if (!verifyPayrollData(payroll)) {
@@ -200,9 +200,8 @@ public class PayrollProcessorServiceImpl implements IPayrollProcessorService {
 
 	        // Step 3: Save to database
 	        payrollRepo.save(payroll);
-	        System.out.println("Payroll processed successfully and saved for Employee ID: " + employeeId);	
+	        System.out.println("Payroll processed successfully and saved for Employee ID: " + empId);	
 			
 			
 		}
-
-}
+	}

@@ -4,6 +4,6 @@ import com.hexaware.easypay.dto.EmployeeRoleVO;
 
 public interface IRoleService {
 	
-	public   EmployeeRoleVO  getEmployeeAndRoleById(int employeeId);
+	public   EmployeeRoleVO  getEmployeeAndRoleById(int empId);
 
 }

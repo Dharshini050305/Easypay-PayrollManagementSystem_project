@@ -63,4 +63,5 @@ public class UserRestController {
 		return token;
 
 	}
+
 }

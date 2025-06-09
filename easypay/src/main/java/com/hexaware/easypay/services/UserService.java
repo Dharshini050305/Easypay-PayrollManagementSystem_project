@@ -16,7 +16,7 @@ public class UserService {
     private PasswordEncoder passwordEncoder;
 	
 	
-	public String addUser(User userInfo) {  // user registration
+    public String addUser(User userInfo) {  // user registration
         userInfo.setPassword(passwordEncoder.encode(userInfo.getPassword()));
         repository.save(userInfo);
         return "user added to system ";

@@ -3,10 +3,10 @@ package com.hexaware.easypay.dto;
 import java.time.LocalDate;
 
 public class EmployeeDto {
-	 private String employeeName;
+	  private String empName;
 	    private String position;
-	    private String employeeDepartment;
-	    private double employeesalary;
+	    private String empDepartment;
+	    private double empsalary;
 	    private LocalDate joinDate;
 	    private int userId;      
 	    private int deductionId; 
@@ -16,16 +16,15 @@ public class EmployeeDto {
 	    
 		public EmployeeDto() {
 			super();
-			
 		}
 
-		public EmployeeDto(String employeeName, String position, String employeeDepartment, double employeesalary,
-				LocalDate joinDate, int userId, int deductionId, int benefitId, int roleId, Integer managerId) {
+		public EmployeeDto(String empName, String position, String empDepartment, double empsalary, LocalDate joinDate,
+				int userId, int deductionId, int benefitId, int roleId, Integer managerId) {
 			super();
-			this.employeeName = employeeName;
+			this.empName = empName;
 			this.position = position;
-			this.employeeDepartment = employeeDepartment;
-			this.employeesalary = employeesalary;
+			this.empDepartment = empDepartment;
+			this.empsalary = empsalary;
 			this.joinDate = joinDate;
 			this.userId = userId;
 			this.deductionId = deductionId;
@@ -34,12 +33,12 @@ public class EmployeeDto {
 			this.managerId = managerId;
 		}
 
-		public String getEmployeeName() {
-			return employeeName;
+		public String getEmpName() {
+			return empName;
 		}
 
-		public void setEmployeeName(String employeeName) {
-			this.employeeName = employeeName;
+		public void setEmpName(String empName) {
+			this.empName = empName;
 		}
 
 		public String getPosition() {
@@ -50,20 +49,20 @@ public class EmployeeDto {
 			this.position = position;
 		}
 
-		public String getEmployeeDepartment() {
-			return employeeDepartment;
+		public String getEmpDepartment() {
+			return empDepartment;
 		}
 
-		public void setEmployeeDepartment(String employeeDepartment) {
-			this.employeeDepartment = employeeDepartment;
+		public void setEmpDepartment(String empDepartment) {
+			this.empDepartment = empDepartment;
 		}
 
-		public double getEmployeesalary() {
-			return employeesalary;
+		public double getEmpsalary() {
+			return empsalary;
 		}
 
-		public void setEmployeesalary(double employeesalary) {
-			this.employeesalary = employeesalary;
+		public void setEmpsalary(double empsalary) {
+			this.empsalary = empsalary;
 		}
 
 		public LocalDate getJoinDate() {
@@ -114,14 +113,6 @@ public class EmployeeDto {
 			this.managerId = managerId;
 		}
 
-		@Override
-		public String toString() {
-			return "EmployeeDTO [employeeName=" + employeeName + ", position=" + position + ", employeeDepartment="
-					+ employeeDepartment + ", employeesalary=" + employeesalary + ", joinDate=" + joinDate + ", userId="
-					+ userId + ", deductionId=" + deductionId + ", benefitId=" + benefitId + ", roleId=" + roleId
-					+ ", managerId=" + managerId + "]";
-		}
 	    
 	    
-
-}
+	}

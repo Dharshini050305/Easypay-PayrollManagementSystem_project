@@ -8,12 +8,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import com.hexaware.easypay.dto.AttendanceDto;
 import com.hexaware.easypay.dto.EmpDto;
@@ -23,7 +25,9 @@ import com.hexaware.easypay.entities.Employee;
 import com.hexaware.easypay.entities.Leaves;
 import com.hexaware.easypay.entities.Payroll;
 import com.hexaware.easypay.services.IEmployeeService;
-
+@RestController
+@RequestMapping("/api/employeeservice")
+@CrossOrigin(origins= "http://localhost:4200/")
 public class EmployeeRestController {
 	@Autowired
 	IEmployeeService service;
@@ -32,13 +36,13 @@ public class EmployeeRestController {
 	
 	//View PayStubs
 	
-	@GetMapping("/paystubs/{employeeid}")
+	@GetMapping("/paystubs/{empid}")
     @PreAuthorize("hasAuthority('EMPLOYEE')")
-	public ResponseEntity < List<Payroll>> getPayStubs(@PathVariable int employeeid){
+	public ResponseEntity < List<Payroll>> getPayStubs(@PathVariable int empid){
 		
 		
-		List<Payroll> paystubs= service.getPayStubs(employeeid);
-		logger.info(" Paystubs for Employee: "+employeeid);
+		List<Payroll> paystubs= service.getPayStubs(empid);
+		logger.info(" Paystubs for Employee: "+empid);
 		return new ResponseEntity<List<Payroll>>(paystubs,HttpStatus.ACCEPTED);
 		
 	}
@@ -46,22 +50,22 @@ public class EmployeeRestController {
 	
 	//Update Personal Information
 	
-	@PutMapping("/updatepersonalinfo/{employeeId}")
+	@PutMapping("/updatepersonalinfo/{empId}")
 	@PreAuthorize("hasAuthority('EMPLOYEE')")
-	public Employee updatePersonalInformation( @PathVariable int employeeId,  @RequestBody EmpDto updatedInfo){
+	public Employee updatePersonalInformation( @PathVariable int empId,  @RequestBody EmpDto updatedInfo){
 		
 		logger.info("Updated Personal Information");
-		return service.updatePersonalInformation(employeeId, updatedInfo);
+		return service.updatePersonalInformation(empId, updatedInfo);
 		
 	}
 	
 	//Submit Attendance
 	
-	@PostMapping("/submitattendance/{employeeId}")
+	@PostMapping("/submitattendance/{empId}")
 	@PreAuthorize("hasAuthority('EMPLOYEE')")
-	public ResponseEntity<Attendance> submitAttendance(@PathVariable int employeeId, @RequestBody AttendanceDto attendance){
+	public ResponseEntity<Attendance> submitAttendance(@PathVariable int empId, @RequestBody AttendanceDto attendance){
 		
-		Attendance savedAttendance= service.submitAttendance(employeeId, attendance);
+		Attendance savedAttendance= service.submitAttendance(empId, attendance);
 		ResponseEntity<Attendance>responseEntity = new ResponseEntity<Attendance>(savedAttendance,HttpStatus.CREATED);
 		logger.info("Attendance Submission Succesful");
 		return responseEntity;
@@ -71,15 +75,16 @@ public class EmployeeRestController {
 	
 	//RequestForLeaves
 	
-	@PostMapping("/requestleave/{employeeId}")
+	@PostMapping("/requestleave/{empId}")
 	@PreAuthorize("hasAuthority('EMPLOYEE')")
-	public ResponseEntity<Leaves> requestLeave(@PathVariable int employeeId, @RequestBody LeavesDto leavesDto) {
+	public ResponseEntity<Leaves> requestLeave(@PathVariable int empId, @RequestBody LeavesDto leavesDto) {
         // Create a new leave request
-        Leaves leavesrequest = service.requestLeave(employeeId, leavesDto);
+        Leaves leavesrequest = service.requestLeave(empId, leavesDto);
         ResponseEntity<Leaves>responseEntity = new ResponseEntity<Leaves>(leavesrequest,HttpStatus.CREATED);
 		logger.info("Leave Request Submission Succesful");
 		return responseEntity;
         
     }
 	
+
 }

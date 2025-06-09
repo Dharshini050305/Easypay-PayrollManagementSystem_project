@@ -11,5 +11,5 @@ import com.hexaware.easypay.entities.User;
 public interface UserRepository extends JpaRepository<User,Integer>{
 	
 	Optional<User> findByUserName(String username);
-
-}
+	
+	}

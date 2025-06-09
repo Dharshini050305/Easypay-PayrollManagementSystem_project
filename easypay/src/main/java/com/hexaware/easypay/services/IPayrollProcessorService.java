@@ -12,8 +12,8 @@ import com.hexaware.easypay.exceptions.PayrollNotFoundException;
 
 public interface IPayrollProcessorService {
 	 
-	// Payroll Calculation
-    Payroll calculatePayroll(int employeeId, LocalDate payrollDate) throws PayrollNotFoundException;
+	 // Payroll Calculation
+    Payroll calculatePayroll(int empId, LocalDate payrollDate) throws PayrollNotFoundException;
 
     // Payroll Data Verification
     boolean verifyPayrollData(Payroll payroll) throws PayrollNotFoundException;
@@ -33,6 +33,5 @@ public interface IPayrollProcessorService {
     List<Deductions> getAllDeductions();
 
     // Payment Processing
-    void processPayment(int employeeId, LocalDate payrollDate) throws PayrollNotFoundException;
-
+    void processPayment(int empId, LocalDate payrollDate) throws PayrollNotFoundException;
 }

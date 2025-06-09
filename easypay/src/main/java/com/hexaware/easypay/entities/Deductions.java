@@ -14,60 +14,60 @@ import jakarta.validation.constraints.Size;
 @Entity
 @Table(name = "deductions")
 public class Deductions {
-	 @Id
+	   @Id
 	    @GeneratedValue(strategy = GenerationType.IDENTITY)
 	    private int deductionId;
-	    
+
 	    @NotBlank(message = "Deduction name must not be blank.")
 	    @Size(min = 3, max = 50, message = "Deduction name must be between 3 and 50 characters.")
 	    @Pattern(regexp = "[A-Za-z ]+", message = "Deduction name must only contain letters and spaces.")
 	    private String deductionName;
-	    
+
 	    @NotNull(message = "Deduction amount must not be null.")
 	    @DecimalMin(value = "0.01", message = "Deduction amount must be greater than 0.")
 	    private double deductionAmount;
-	    
-		public Deductions() {
-			super();
-			
-		}
 
-		public Deductions(int deductionId, String deductionName, double deductionAmount) {
-			super();
-			this.deductionId = deductionId;
-			this.deductionName = deductionName;
-			this.deductionAmount = deductionAmount;
-		}
+	 
 
-		public int getDeductionId() {
-			return deductionId;
-		}
+	    public Deductions() {}
 
-		public void setDeductionId(int deductionId) {
-			this.deductionId = deductionId;
-		}
+	    public Deductions(int deductionId, String deductionName, double deductionAmount, Employee employee) {
+	        this.deductionId = deductionId;
+	        this.deductionName = deductionName;
+	        this.deductionAmount = deductionAmount;
+	    }
 
-		public String getDeductionName() {
-			return deductionName;
-		}
+	    // Getters and Setters
+	    public int getDeductionId() {
+	        return deductionId;
+	    }
 
-		public void setDeductionName(String deductionName) {
-			this.deductionName = deductionName;
-		}
+	    public void setDeductionId(int deductionId) {
+	        this.deductionId = deductionId;
+	    }
 
-		public double getDeductionAmount() {
-			return deductionAmount;
-		}
+	    public String getDeductionName() {
+	        return deductionName;
+	    }
 
-		public void setDeductionAmount(double deductionAmount) {
-			this.deductionAmount = deductionAmount;
-		}
+	    public void setDeductionName(String deductionName) {
+	        this.deductionName = deductionName;
+	    }
 
-		@Override
-		public String toString() {
-			return "Deductions [deductionId=" + deductionId + ", deductionName=" + deductionName + ", deductionAmount="
-					+ deductionAmount + "]";
-		}
+	    public double getDeductionAmount() {
+	        return deductionAmount;
+	    }
 
-	    
-}
+	    public void setDeductionAmount(double deductionAmount) {
+	        this.deductionAmount = deductionAmount;
+	    }
+
+
+	  
+
+	    @Override
+	    public String toString() {
+	        return "Deductions [deductionId=" + deductionId + ", deductionName=" + deductionName + 
+	               ", deductionAmount=" + deductionAmount + ", employee=" +  "]";
+	    }
+	}

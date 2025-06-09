@@ -27,10 +27,10 @@ public class PayrollProcessorRestController {
 	@Autowired
     private IPayrollProcessorService service;
 
-    // Payroll Calculation
-    @PostMapping("/calculate/{employeeId}")
-    public Payroll calculatePayroll(@PathVariable int employeeId, @Valid @RequestBody LocalDate payrollDate) {
-        return service.calculatePayroll(employeeId, payrollDate);
+	// Payroll Calculation
+    @PostMapping("/calculate/{empId}")
+    public Payroll calculatePayroll(@PathVariable int empId, @Valid @RequestBody LocalDate payrollDate) {
+        return service.calculatePayroll(empId, payrollDate);
     }
 
     // Payroll Verification
@@ -39,14 +39,15 @@ public class PayrollProcessorRestController {
         return service.verifyPayrollData(payroll);
     }
 
-    // Benefits Management
+    //------------------------------------------ Benefits Management-----------------------------------------
+    
     @PostMapping("/benefits/add")
     @PreAuthorize("hasAuthority('PAYROLL_PROCESSOR')")
     public Benefits addBenefit(@Valid @RequestBody Benefits benefit) {
         return service.addBenefit(benefit);
     }
 
-    @PutMapping("/benefits/update")
+    @PutMapping("/benefits/update/{benefitId}")
     @PreAuthorize("hasAuthority('PAYROLL_PROCESSOR')")
     public Benefits updateBenefit(@Valid @PathVariable int benefitId, @RequestBody Benefits benefit) {
         return service.updateBenefit(benefitId,benefit);
@@ -71,14 +72,15 @@ public class PayrollProcessorRestController {
         return service.getAllBenefits();
     }
 
-    // Deductions Management
+    // ------------------------------------------Deductions Management-------------------------------------------
+    
     @PostMapping("/deductions/add")
     @PreAuthorize("hasAuthority('PAYROLL_PROCESSOR')")
     public Deductions addDeduction(@Valid @RequestBody Deductions deduction) {
         return service.addDeduction(deduction);
     }
 
-    @PutMapping("/deductions/update")
+    @PutMapping("/deductions/update/{deductionId}")
     @PreAuthorize("hasAuthority('PAYROLL_PROCESSOR')")
     public Deductions updateDeduction(@Valid @PathVariable int deductionId,@RequestBody Deductions deduction) {
         return service.updateDeduction(deductionId,deduction);
@@ -103,17 +105,17 @@ public class PayrollProcessorRestController {
         return service.getAllDeductions();
     }
 
-    // Payment Processing
-    @PostMapping("payment/process/{employeeId}/{payrollDate}")
+    // ----------------------------------------------------Payment Processing---------------------------------------
+    @PostMapping("payment/process/{empId}/{payrollDate}")
     @PreAuthorize("hasAuthority('PAYROLL_PROCESSOR')")
-    public String processPayment(@PathVariable int employeeId, @PathVariable String payrollDate) {
+    public String processPayment(@PathVariable int empId, @PathVariable String payrollDate) {
         try {
             // Convert payrollDate (String) to LocalDate
             LocalDate date = LocalDate.parse(payrollDate);
-            service.processPayment(employeeId, date);
-            return "Payroll processed successfully for Employee ID: " + employeeId;
+            service.processPayment(empId, date);
+            return "Payroll processed successfully for Employee ID: " + empId;
         } catch (Exception e) {
             return "Error processing payroll: " + e.getMessage();
         }
     }
-}
+  }

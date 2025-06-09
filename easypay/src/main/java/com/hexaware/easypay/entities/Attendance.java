@@ -20,11 +20,11 @@ public class Attendance {
 	private int attendanceId;
 	
 	@ManyToOne
-	@JoinColumn(name = "employee_id",nullable= false)
+	@JoinColumn(name = "emp_id",nullable= false)
 	@NotNull(message= "Employee cannot be null")
 	private Employee employee;
 	
-	@NotNull(message = "Work date is required")
+	 @NotNull(message = "Work date is required")
 	private LocalDate workDate;
 	
 	@PositiveOrZero(message = "Hours worked cannot be negative")
@@ -33,13 +33,18 @@ public class Attendance {
 	@NotBlank(message = "Attendance status is required")
 	@Pattern(regexp = "Present|Absent|Leave", message = "Attendance status must be 'Present', 'Absent', or 'Leave'")
 	private String attendanceStatus;
-	
+
 	public Attendance() {
 		super();
-		
 	}
-	public Attendance(int attendanceId, Employee employee, LocalDate workDate, double hoursWorked,
-			String attendanceStatus) {
+
+
+
+
+	public Attendance(int attendanceId, @NotNull(message = "Employee cannot be null") Employee employee,
+			@NotNull(message = "Work date is required") LocalDate workDate,
+			@PositiveOrZero(message = "Hours worked cannot be negative") double hoursWorked,
+			@NotBlank(message = "Attendance status is required") @Pattern(regexp = "Present|Absent|Leave", message = "Attendance status must be 'Present', 'Absent', or 'Leave'") String attendanceStatus) {
 		super();
 		this.attendanceId = attendanceId;
 		this.employee = employee;
@@ -47,44 +52,59 @@ public class Attendance {
 		this.hoursWorked = hoursWorked;
 		this.attendanceStatus = attendanceStatus;
 	}
+
+
+
+
+
 	public int getAttendanceId() {
 		return attendanceId;
 	}
+
 	public void setAttendanceId(int attendanceId) {
 		this.attendanceId = attendanceId;
 	}
+
 	public Employee getEmployee() {
 		return employee;
 	}
+
 	public void setEmployee(Employee employee) {
 		this.employee = employee;
 	}
+
 	public LocalDate getWorkDate() {
 		return workDate;
 	}
+
 	public void setWorkDate(LocalDate workDate) {
 		this.workDate = workDate;
 	}
+
 	public double getHoursWorked() {
 		return hoursWorked;
 	}
+
 	public void setHoursWorked(double hoursWorked) {
 		this.hoursWorked = hoursWorked;
 	}
+
 	public String getAttendanceStatus() {
 		return attendanceStatus;
 	}
+
 	public void setAttendanceStatus(String attendanceStatus) {
 		this.attendanceStatus = attendanceStatus;
 	}
+
 	@Override
 	public String toString() {
 		return "Attendance [attendanceId=" + attendanceId + ", employee=" + employee + ", workDate=" + workDate
 				+ ", hoursWorked=" + hoursWorked + ", attendanceStatus=" + attendanceStatus + "]";
 	}
-
 	
+	
+	
+
 }
-
-
 

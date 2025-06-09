@@ -17,11 +17,11 @@ public class RoleRestController {
 	IRoleService service;
 	
 	
-	@GetMapping("/get/employee-role/{employeeId}")
+	@GetMapping("/get/employee-role/{empId}")
 	@PreAuthorize("hasAuthority('HR')")
-	public EmployeeRoleVO getEmployeeAndRoleById(@PathVariable int  employeeId) {
+	public EmployeeRoleVO getEmployeeAndRoleById(@PathVariable int  empId) {
 		
-		return service.getEmployeeAndRoleById(employeeId);
+		return service.getEmployeeAndRoleById(empId);
 		
 	}
 

@@ -3,30 +3,29 @@ package com.hexaware.easypay.dto;
 import java.time.LocalDate;
 
 public class AttendanceDto {
-	private int employeeId;
+	private int empId;
 	private LocalDate workDate;
 	private double hoursWorked;
 	private String status;
 	
 	public AttendanceDto() {
 		super();
-		
 	}
 
-	public AttendanceDto(int employeeId, LocalDate workDate, double hoursWorked, String status) {
+	public AttendanceDto(int empId, LocalDate workDate, double hoursWorked, String status) {
 		super();
-		this.employeeId = employeeId;
+		this.empId = empId;
 		this.workDate = workDate;
 		this.hoursWorked = hoursWorked;
 		this.status = status;
 	}
 
-	public int getEmployeeId() {
-		return employeeId;
+	public int getEmpId() {
+		return empId;
 	}
 
-	public void setEmployeeId(int employeeId) {
-		this.employeeId = employeeId;
+	public void setEmpId(int empId) {
+		this.empId = empId;
 	}
 
 	public LocalDate getWorkDate() {
@@ -52,15 +51,6 @@ public class AttendanceDto {
 	public void setStatus(String status) {
 		this.status = status;
 	}
-
-	@Override
-	public String toString() {
-		return "AttendanceDto [employeeId=" + employeeId + ", workDate=" + workDate + ", hoursWorked=" + hoursWorked
-				+ ", status=" + status + "]";
-	}
-
 	
 	
-	
-
 }

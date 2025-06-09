@@ -1,50 +1,57 @@
 package com.hexaware.easypay.dto;
 
 public class EmpDto {
-	private String employeeName;
-	private String employeeDepartment;
+	private String empName;
+	private String empDepartment;
 	private String position;
+	
 	
 	public EmpDto() {
 		super();
-		
 	}
 
-	public EmpDto(String employeeName, String employeeDepartment, String position) {
+
+	public EmpDto(String empName, String empDepartment, String position) {
 		super();
-		this.employeeName = employeeName;
-		this.employeeDepartment = employeeDepartment;
+		this.empName = empName;
+		this.empDepartment = empDepartment;
 		this.position = position;
 	}
 
-	public String getEmployeeName() {
-		return employeeName;
+
+	public String getEmpName() {
+		return empName;
 	}
 
-	public void setEmployeeName(String employeeName) {
-		this.employeeName = employeeName;
+
+	public void setEmpName(String empName) {
+		this.empName = empName;
 	}
 
-	public String getEmployeeDepartment() {
-		return employeeDepartment;
+
+	public String getEmpDepartment() {
+		return empDepartment;
 	}
 
-	public void setEmployeeDepartment(String employeeDepartment) {
-		this.employeeDepartment = employeeDepartment;
+
+	public void setEmpDepartment(String empDepartment) {
+		this.empDepartment = empDepartment;
 	}
+
 
 	public String getPosition() {
 		return position;
 	}
 
+
 	public void setPosition(String position) {
 		this.position = position;
 	}
 
+
 	@Override
 	public String toString() {
-		return "EmpDTO [employeeName=" + employeeName + ", employeeDepartment=" + employeeDepartment + ", position="
-				+ position + "]";
+		return "EmpDto [empName=" + empName + ", empDepartment=" + empDepartment + ", positon=" + position + "]";
 	}
 	
 	

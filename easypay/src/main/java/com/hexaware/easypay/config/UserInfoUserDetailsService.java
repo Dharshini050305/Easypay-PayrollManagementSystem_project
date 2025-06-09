@@ -16,14 +16,12 @@ public class UserInfoUserDetailsService implements UserDetailsService{
 	@Autowired
     private UserRepository repository;
 
-    @Override
-    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        Optional<User> userInfo = repository.findByUserName(username);
-        
-        return userInfo.map(UserInfoUserDetails::new) 
-                .orElseThrow(() -> new UsernameNotFoundException("user not found " + username));
+	 @Override
+	    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+	        Optional<User> userInfo = repository.findByUserName(username);
+	        
+	        return userInfo.map(UserInfoUserDetails::new) 
+	                .orElseThrow(() -> new UsernameNotFoundException("user not found " + username));
 
-    }
-	
-
-}
+	    }
+	}

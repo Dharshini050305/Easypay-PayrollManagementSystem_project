@@ -2,8 +2,10 @@ package com.hexaware.easypay.services;
 
 import java.util.List;
 
-
+import com.hexaware.easypay.dto.ComplianceReportDTO;
+import com.hexaware.easypay.dto.ComplianceReportReceiveDTO;
 import com.hexaware.easypay.dto.EmployeeDto;
+import com.hexaware.easypay.dto.EmployeeReceiveDTO;
 import com.hexaware.easypay.entities.ComplianceReport;
 import com.hexaware.easypay.entities.Employee;
 import com.hexaware.easypay.entities.PayrollPolicy;
@@ -14,19 +16,19 @@ import com.hexaware.easypay.exceptions.PayrollPolicyNotFoundException;
 import com.hexaware.easypay.exceptions.UserNotFoundException;
 
 public interface IAdminHrManagerService {
-	// Employee Management
+	  // Employee Management
     Employee addEmployee(EmployeeDto employee);
-    Employee updateEmployee(int employeeId,EmployeeDto employeeDto);
-    void deleteEmployee(int employeeId) throws EmployeeNotFoundException;
-    Employee getEmployeeById(int employeeId) throws EmployeeNotFoundException;
-    List<Employee> getAllEmployees()throws EmployeeNotFoundException;
+    Employee updateEmployee(int empId,EmployeeReceiveDTO employeeDto);
+    void deleteEmployee(int empId) throws EmployeeNotFoundException;
+    EmployeeReceiveDTO getEmployeeById(int empId) throws EmployeeNotFoundException;
+    List<EmployeeReceiveDTO> getAllEmployees()throws EmployeeNotFoundException;
 
     // User Management
     User addUser(User user);
     User updateUser(int userId,User user)throws UserNotFoundException;;
     void deleteUser(int userId) throws UserNotFoundException;
     User getUserById(int userId) throws UserNotFoundException;
-    List<User> getAllUsers()throws UserNotFoundException;;
+    List<User> getAllUsers()throws UserNotFoundException;
 
     // Payroll Policy Management
     PayrollPolicy addPayrollPolicy(PayrollPolicy policy);
@@ -36,10 +38,9 @@ public interface IAdminHrManagerService {
     List<PayrollPolicy> getAllPayrollPolicies()throws PayrollPolicyNotFoundException;
 
     // Compliance Reporting
-    ComplianceReport addComplianceReport(ComplianceReport report);
-    ComplianceReport updateComplianceReport(int reportId,ComplianceReport report);
+    ComplianceReport addComplianceReport(ComplianceReportDTO report);
+    ComplianceReport updateComplianceReport(int reportId,ComplianceReportReceiveDTO report);
     void deleteComplianceReport(int reportId) throws ComplianceReportNotFoundException;
-    ComplianceReport getComplianceReportById(int reportId) throws ComplianceReportNotFoundException;
+    ComplianceReportReceiveDTO getComplianceReportById(int reportId) throws ComplianceReportNotFoundException;
     List<ComplianceReport> getAllComplianceReports();
-
 }
