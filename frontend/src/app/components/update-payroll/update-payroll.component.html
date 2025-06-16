@@ -1,0 +1,127 @@
+<h1>Update Payroll</h1>
+
+<div *ngIf="payroll" class="mt-4">
+  <h2 class="mb-4">Edit Payroll</h2>
+  <form (ngSubmit)="updatePayroll()" #payrollForm="ngForm" class="w-50 mx-auto">
+
+    <!-- Payroll ID (readonly) -->
+    <div class="mb-3">
+      <label for="payrollId" class="form-label">Payroll ID:</label>
+      <input
+        type="number"
+        id="payrollId"
+        class="form-control"
+        [(ngModel)]="payroll.payrollId"
+        name="payrollId"
+        readonly
+      />
+    </div>
+
+    <!-- Benefits -->
+    <div class="mb-3">
+      <label for="benefits" class="form-label">Benefits:</label>
+      <input
+        type="number"
+        id="benefits"
+        class="form-control"
+        [(ngModel)]="payroll.benefits"
+        name="benefits"
+        required
+        #benefits="ngModel"
+      />
+      <div *ngIf="benefits.invalid && benefits.touched" class="text-danger">
+        Benefits is required.
+      </div>
+    </div>
+
+    <!-- Deductions -->
+    <div class="mb-3">
+      <label for="deductions" class="form-label">Deductions:</label>
+      <input
+        type="number"
+        id="deductions"
+        class="form-control"
+        [(ngModel)]="payroll.deductions"
+        name="deductions"
+        required
+        #deductions="ngModel"
+      />
+      <div *ngIf="deductions.invalid && deductions.touched" class="text-danger">
+        Deductions is required.
+      </div>
+    </div>
+
+    <!-- Gross Pay -->
+    <div class="mb-3">
+      <label for="grossPay" class="form-label">Gross Pay:</label>
+      <input
+        type="number"
+        id="grossPay"
+        class="form-control"
+        [(ngModel)]="payroll.grossPay"
+        name="grossPay"
+        required
+        #grossPay="ngModel"
+      />
+      <div *ngIf="grossPay.invalid && grossPay.touched" class="text-danger">
+        Gross Pay is required.
+      </div>
+    </div>
+
+    <!-- Net Pay -->
+    <div class="mb-3">
+      <label for="netPay" class="form-label">Net Pay:</label>
+      <input
+        type="number"
+        id="netPay"
+        class="form-control"
+        [(ngModel)]="payroll.netPay"
+        name="netPay"
+        required
+        #netPay="ngModel"
+      />
+      <div *ngIf="netPay.invalid && netPay.touched" class="text-danger">
+        Net Pay is required.
+      </div>
+    </div>
+
+    <!-- Payroll Date -->
+    <div class="mb-3">
+      <label for="payrollDate" class="form-label">Payroll Date:</label>
+      <input
+        type="date"
+        id="payrollDate"
+        class="form-control"
+        [(ngModel)]="payroll.payrollDate"
+        name="payrollDate"
+        required
+        #payrollDate="ngModel"
+      />
+      <div *ngIf="payrollDate.invalid && payrollDate.touched" class="text-danger">
+        Payroll Date is required.
+      </div>
+    </div>
+
+    <!-- Employee ID -->
+    <div class="mb-3">
+      <label for="employeeId" class="form-label">Employee ID:</label>
+      <input
+        type="number"
+        id="employeeId"
+        class="form-control"
+        [(ngModel)]="payroll.employeeId"
+        name="employeeId"
+        required
+        #employeeId="ngModel"
+      />
+      <div *ngIf="employeeId.invalid && employeeId.touched" class="text-danger">
+        Employee ID is required.
+      </div>
+    </div>
+
+    <!-- Submit Button -->
+    <button type="submit" class="btn btn-primary" [disabled]="payrollForm.invalid">
+      Update Payroll
+    </button>
+  </form>
+</div>

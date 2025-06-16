@@ -1,0 +1,110 @@
+<h1>Display Payroll</h1>
+
+<div class="container">
+  <div class="button-group">
+    <!-- Search Payroll by ID -->
+    <form #payrollForm="ngForm" (ngSubmit)="getPayrollById(payrollForm.value.payrollId)" class="search-form">
+      <label for="payrollId" class="sr-only">Search Payroll by ID:</label>
+      <div class="input-group">
+        <input
+          type="number"
+          id="payrollId"
+          name="payrollId"
+          class="form-control"
+          ngModel
+          required
+          placeholder="Enter Payroll ID"
+        />
+        <button type="submit" class="btn btn-primary">Search</button>
+      </div>
+    </form>
+
+    <!-- View All Payrolls Button -->
+    <button type="button" class="btn btn-success" (click)="getAllPayrolls()">View All Payrolls</button>
+  </div>
+
+  <br />
+
+  <!-- Single Payroll Details -->
+  <div *ngIf="selectedPayroll" class="mt-4">
+    <h3>Payroll Details</h3>
+    <table class="table table-bordered">
+      <tr><th>Field</th><th>Value</th></tr>
+      <tr><td>Payroll ID</td><td>{{selectedPayroll.payrollId}}</td></tr>
+      <tr><td>Benefits</td><td>{{selectedPayroll.benefits}}</td></tr>
+      <tr><td>Deductions</td><td>{{selectedPayroll.deductions}}</td></tr>
+      <tr><td>Gross Pay</td><td>{{selectedPayroll.grossPay}}</td></tr>
+      <tr><td>Net Pay</td><td>{{selectedPayroll.netPay}}</td></tr>
+      <tr><td>Payroll Date</td><td>{{selectedPayroll.payrollDate | date:'mediumDate'}}</td></tr>
+      <tr><td>Employee ID</td><td>{{selectedPayroll.employeeId}}</td></tr>
+    </table>
+
+    <button
+      *ngIf="selectedPayroll.payrollId !== undefined"
+      [routerLink]="['/admin-dashboard/editpay', selectedPayroll.payrollId!]"
+      class="btn btn-warning btn-sm"
+    >
+      Update
+    </button>
+
+    <button
+      *ngIf="selectedPayroll.payrollId !== undefined"
+      type="button"
+      class="btn btn-danger"
+      (click)="deletePayroll(selectedPayroll.payrollId!)"
+    >
+      Delete
+    </button>
+  </div>
+
+  <br />
+
+  <!-- All Payrolls -->
+  <div *ngIf="payrollList.length > 0" class="mt-4">
+    <h3>All Payrolls</h3>
+    <table class="table table-dark">
+      <thead>
+        <tr>
+          <th>Payroll ID</th>
+          <th>Benefits</th>
+          <th>Deductions</th>
+          <th>Gross Pay</th>
+          <th>Net Pay</th>
+          <th>Payroll Date</th>
+          <th>Employee ID</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let payroll of payrollList">
+          <td>{{payroll.payrollId}}</td>
+          <td>{{payroll.benefits}}</td>
+          <td>{{payroll.deductions}}</td>
+          <td>{{payroll.grossPay}}</td>
+          <td>{{payroll.netPay}}</td>
+          <td>{{payroll.payrollDate | date:'mediumDate'}}</td>
+          <td>{{payroll.employeeId}}</td>
+          <td>
+            <button
+              *ngIf="payroll.payrollId !== undefined"
+              [routerLink]="['/admin-dashboard/editpay', payroll.payrollId!]"
+              class="btn btn-warning btn-sm"
+            >
+              Update
+            </button>
+            <button
+              *ngIf="payroll.payrollId !== undefined"
+              type="button"
+              (click)="deletePayroll(payroll.payrollId!)"
+              class="btn btn-danger"
+            >
+              Delete
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<router-outlet></router-outlet>

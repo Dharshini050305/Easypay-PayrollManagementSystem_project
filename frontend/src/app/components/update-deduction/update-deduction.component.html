@@ -1,0 +1,52 @@
+<h1>Update Deduction</h1>
+
+<div *ngIf="deduction" class="mt-4">
+  <h2 class="mb-4">Edit Deduction</h2>
+  <form (ngSubmit)="updateDeduction()" #deductionForm="ngForm" class="w-50 mx-auto">
+
+    <!-- Deduction ID -->
+    <div class="mb-3">
+      <label for="deductionId" class="form-label">Deduction ID:</label>
+      <input
+        type="number"
+        id="deductionId"
+        class="form-control"
+        [(ngModel)]="deduction.deductionId"
+        name="deductionId"
+        required
+        readonly
+      />
+    </div>
+
+    <!-- Deduction Name -->
+    <div class="mb-3">
+      <label for="deductionName" class="form-label">Deduction Name:</label>
+      <input
+        type="text"
+        id="deductionName"
+        class="form-control"
+        [(ngModel)]="deduction.deductionName"
+        name="deductionName"
+        required
+      />
+    </div>
+
+    <!-- Deduction Amount -->
+    <div class="mb-3">
+      <label for="deductionAmount" class="form-label">Deduction Amount:</label>
+      <input
+        type="number"
+        id="deductionAmount"
+        class="form-control"
+        [(ngModel)]="deduction.deductionAmount"
+        name="deductionAmount"
+        required
+      />
+    </div>
+
+    <!-- Submit Button -->
+    <button type="submit" class="btn btn-primary" [disabled]="deductionForm.invalid">
+      Update Deduction
+    </button>
+  </form>
+</div>

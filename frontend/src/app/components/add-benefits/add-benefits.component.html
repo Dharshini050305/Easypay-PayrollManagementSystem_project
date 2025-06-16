@@ -1,0 +1,16 @@
+<h1>Add Benefit Details Here</h1>
+
+
+<form class="container col-md-6" #benefitsForm="ngForm" (ngSubmit)="submitBenefit(benefitsForm.value)">
+
+    Enter Benefit Name: 
+    <input type="text" class="form-control" name="benefitName" ngModel required placeholder="Enter Benefit Name"> 
+    <br>
+
+    Enter Benefit Amount: 
+    <input type="number" class="form-control" name="benefitAmount" ngModel required placeholder="Enter Benefit Amount"> 
+    <br>
+
+    <button type="submit" class="btn btn-primary">Submit</button>
+
+</form>

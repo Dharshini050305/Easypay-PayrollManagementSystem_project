@@ -1,0 +1,97 @@
+body {
+    background-color: #000; /* Black background for the entire page */
+    color: #fff; /* White text color */
+    font-family: 'Arial', sans-serif; /* Font style for the entire app */
+    margin: 0; /* Remove default margin */
+}
+
+.container {
+    padding: 20px; /* Padding for the container */
+}
+
+h1 {
+    font-size: 2.5em; /* Increase font size */
+    color: #050505; /* Bright color for the text */
+    text-align: center; /* Center the heading */
+    margin-bottom: 20px; /* Space below the heading */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); /* Add a shadow for depth */
+    font-family: 'Arial Black', sans-serif; /* Use a bold font */
+    letter-spacing: 2px; /* Increase spacing between letters */
+    text-transform: uppercase; /* Make text uppercase */
+}
+
+.button-group {
+    display: flex; /* Use flexbox for layout */
+    justify-content: space-between; /* Space between items */
+    align-items: center; /* Center items vertically */
+    margin-bottom: 20px; /* Space below the button group */
+}
+
+.search-form {
+    flex: 1; /* Allow the form to take available space */
+}
+
+.input-group {
+    display: flex; /* Use flexbox for the input group */
+    align-items: center; /* Center items vertically */
+}
+
+.form-control {
+    padding: 10px; /* Padding for the input */
+    border: 1px solid #444; /* Border color */
+    border-radius: 4px; /* Rounded corners */
+    background-color: #fff; /* Dark background for input */
+    color: #000000; /* White text color */
+}
+
+.form-control::placeholder {
+    color: #aaa; /* Placeholder color */
+}
+
+.btn {
+    transition: background-color 0.3s, transform 0.2s; /* Transition for hover effects */
+}
+
+.btn-primary {
+    background-color: #007bff; /* Bootstrap primary color */
+}
+
+.btn-primary:hover {
+    background-color: #0056b3; /* Darker shade on hover */
+}
+
+.btn-success {
+    background-color: #28a745; /* Bootstrap success color */
+}
+
+.btn-success:hover {
+    background-color: #218838; /* Darker shade on hover */
+}
+
+.table {
+    width: 100%; /* Full width for tables */
+    margin-top: 20px; /* Space above the table */
+    border-collapse: collapse; /* Collapse borders */
+}
+
+.table th, .table td {
+    padding: 10px; /* Padding for table cells */
+    text-align: left; /* Align text to the left */
+}
+
+.table-bordered {
+    border: 1px solid #444; /* Border color for the table */
+}
+
+.table-dark {
+    background-color: #343a40; /* Dark background for the table */
+    color: #fff; /* White text color for table */
+}
+
+.table-dark th {
+    background-color: #495057; /* Darker background for table headers */
+}
+
+.table-dark td {
+    border-top: 1px solid #444; /* Border for table cells */
+}

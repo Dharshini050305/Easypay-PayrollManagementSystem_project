@@ -1,0 +1,23 @@
+.dashboard-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.management-sections {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    margin-bottom: 40px;
+    flex-wrap: wrap;
+    width: 100%;
+}
+
+.display-benefits-container {
+    width: 85%;
+    background-color: #111;
+    padding: 30px;
+    border-radius: 10px;
+    text-align: center;
+    color: white;
+}

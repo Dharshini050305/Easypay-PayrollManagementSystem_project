@@ -1,0 +1,96 @@
+<h1>Display Employee</h1>
+
+<div class="container">
+  <div class="button-group">
+    <!-- Form to Search for an Employee by ID -->
+    <form #formData="ngForm" (ngSubmit)="getEmployeeById(formData.value.employeeId)" class="search-form">
+      <label for="employeeId" class="sr-only">Search Employee by ID:</label>
+      <div class="input-group">
+        <input
+          type="number"
+          id="employeeId"
+          name="employeeId"
+          class="form-control"
+          ngModel
+          required
+          placeholder="Enter Employee ID"
+        />
+        <button type="submit" class="btn btn-primary">Search</button>
+      </div>
+    </form>
+
+    <!-- Button to View All Employees -->
+    <button type="button" class="btn btn-success" (click)="getAllEmployees()">View All Employees</button>
+  </div>
+
+  <br />
+
+  <!-- Display Employee Details -->
+  <div *ngIf="selectedEmployee" class="mt-4">
+    <h3>Employee Details</h3>
+    <table class="table table-bordered">
+      <tr><th>Field</th><th>Value</th></tr>
+      <tr><td>Employee ID</td><td>{{selectedEmployee.employeeId}}</td></tr>
+      <tr><td>Name</td><td>{{selectedEmployee.employeeName}}</td></tr>
+      <tr><td>Email</td><td>{{selectedEmployee.email}}</td></tr>
+      <tr><td>Position</td><td>{{selectedEmployee.position}}</td></tr>
+      <tr><td>Salary</td><td>{{selectedEmployee.employeeSalary}}</td></tr>
+      <tr><td>Joining Date</td><td>{{selectedEmployee.joinDate | date}}</td></tr>
+      <tr><td>User ID</td><td>{{selectedEmployee.userId}}</td></tr>
+      <tr><td>Deduction ID</td><td>{{selectedEmployee.deductionId}}</td></tr>
+      <tr><td>Benefit ID</td><td>{{selectedEmployee.benefitId}}</td></tr>
+      <tr>
+        <td>Manager ID</td>
+        <td>{{selectedEmployee.managerId || 'N/A'}}</td>
+        <td>
+          <button [routerLink]="['/admin-dashboard/edit', selectedEmployee.employeeId]" class="btn btn-warning btn-sm">Update</button>
+          <button type="button" (click)="deleteEmployee(selectedEmployee.employeeId!)" class="btn btn-danger">Delete</button>
+        </td>
+      </tr>
+    </table>
+  </div>
+
+  <br />
+
+  <!-- Display All Employees -->
+  <div *ngIf="employeeList.length > 0" class="mt-4">
+    <h3>All Employees</h3>
+    <table class="table table-dark">
+      <thead>
+        <tr>
+          <th>Employee ID</th>
+          <th>Name</th>
+          <th>Position</th>
+          <th>Email</th>
+          <th>Salary</th>
+          <th>Joining Date</th>
+          <th>User ID</th>
+          <th>Deduction ID</th>
+          <th>Benefit ID</th>
+          <th>Manager ID</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let employee of employeeList">
+          <td>{{employee.employeeId}}</td>
+          <td>{{employee.employeeName}}</td>
+          <td>{{employee.position}}</td>
+          <td>{{employee.email}}</td>
+          <td>{{employee.employeeSalary}}</td>
+          <td>{{employee.joinDate | date}}</td>
+          <td>{{employee.userId}}</td>
+          <td>{{employee.deductionId}}</td>
+          <td>{{employee.benefitId}}</td>
+          <td>{{employee.managerId || 'N/A'}}</td>
+          <td>
+            <button [routerLink]="['/admin-dashboard/edit', employee.employeeId]" class="btn btn-warning btn-sm">Update</button>
+            <button type="button" (click)="deleteEmployee(employee.employeeId!)" class="btn btn-danger">Delete</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<router-outlet></router-outlet>

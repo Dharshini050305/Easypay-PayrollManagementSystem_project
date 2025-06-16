@@ -1,0 +1,15 @@
+<h1>Add Deduction Details Here</h1>
+
+<form class="container col-md-6" #deductionForm="ngForm" (ngSubmit)="submitDeduction(deductionForm.value)">
+
+    Enter Deduction Name: 
+    <input type="text" class="form-control" name="deductionName" ngModel required placeholder="Enter Deduction Name"> 
+    <br>
+
+    Enter Deduction Amount: 
+    <input type="number" class="form-control" name="deductionAmount" ngModel required placeholder="Enter Deduction Amount"> 
+    <br>
+
+    <button type="submit" class="btn btn-primary">Submit</button>
+
+</form>

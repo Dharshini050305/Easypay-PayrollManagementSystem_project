@@ -1,0 +1,78 @@
+
+
+  <div class="dashboard-wrapper">
+  <!-- Management Section Row (already present elsewhere in your main page) -->
+  <div class="management-sections">
+    <!-- These should already exist in your parent component: -->
+    <!-- Deductions | Benefits | Payment -->
+  </div>
+
+  <!-- Your Display Benefits Section -->
+  <div class="display-benefits-container">
+    <h1>Display Benefits</h1>
+
+    <div class="container">
+      <!-- Search Form -->
+      <div class="button-group">
+        <form #benefitForm="ngForm" (ngSubmit)="getBenefitById(benefitForm.value.benefitId)" class="search-form">
+          <label for="benefitId" class="sr-only">Search Benefit by ID:</label>
+          <div class="input-group">
+            <input type="number" id="benefitId" name="benefitId" class="form-control" ngModel required placeholder="Enter Benefit ID" />
+            <button type="submit" class="btn btn-primary">Search</button>
+          </div>
+        </form>
+
+        <button type="button" class="btn btn-success" (click)="getAllBenefits()">View All Benefits</button>
+      </div>
+
+      <br />
+
+      <!-- Selected Benefit -->
+      <div *ngIf="selectedBenefit" class="mt-4">
+        <h3>Benefit Details</h3>
+        <table class="table table-bordered">
+          <tr><th>Field</th><th>Value</th></tr>
+          <tr><td>Benefit ID</td><td>{{selectedBenefit.benefitId}}</td></tr>
+          <tr><td>Benefit Name</td><td>{{selectedBenefit.benefitName}}</td></tr>
+          <tr>
+            <td>Benefit Amount</td>
+            <td>{{selectedBenefit.benefitAmount}}</td>
+            <td>
+              <button [routerLink]="['/payroll-processor-dashboard/editben', selectedBenefit.benefitId]" class="btn btn-warning btn-sm">Update</button>
+              <button type="button" (click)="deleteBenefit(selectedBenefit.benefitId!)" class="btn btn-danger">Delete</button>
+            </td>
+          </tr>
+        </table>
+      </div>
+
+      <!-- All Benefits List -->
+      <div *ngIf="benefitList.length > 0" class="mt-4">
+        <h3>All Benefits</h3>
+        <table class="table table-dark">
+          <thead>
+            <tr>
+              <th>Benefit ID</th>
+              <th>Benefit Name</th>
+              <th>Benefit Amount</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let benefit of benefitList">
+              <td>{{benefit.benefitId}}</td>
+              <td>{{benefit.benefitName}}</td>
+              <td>{{benefit.benefitAmount}}</td>
+              <td>
+                <button [routerLink]="['/payroll-processor-dashboard/editben', benefit.benefitId]" class="btn btn-warning btn-sm">Update</button>
+                <button type="button" (click)="deleteBenefit(benefit.benefitId!)" class="btn btn-danger">Delete</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+
+<router-outlet></router-outlet>
+

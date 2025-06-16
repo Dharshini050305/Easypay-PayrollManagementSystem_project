@@ -1,0 +1,14 @@
+<div class="logo-container">
+  <img src="assets/logo.png" alt="Easy Pay Logo" class="logo-img">
+</div>
+
+
+<button routerLink="/home">Home</button>
+
+
+<button routerLink="/login" [queryParams]="{redirect: 'admin-dashboard'}">Admin Dashboard</button>
+<button routerLink="/login" [queryParams]="{redirect: 'employee-dashboard'}">Employee Dashboard</button>
+<button routerLink="/login" [queryParams]="{redirect: 'payroll-processor-dashboard'}">Payroll Processor Dashboard</button>
+<button routerLink="/login" [queryParams]="{redirect: 'manager-dashboard'}">Manager Dashboard</button>
+
+<router-outlet></router-outlet>
