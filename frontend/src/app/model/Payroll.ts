@@ -4,6 +4,9 @@ export interface Payroll {
   deductions: number;
   grossPay: number;
   netPay: number;
-  payrollDate: string;      
-  employeeId?: number;
+  payrollDate: Date;      
+ employee: {
+    employeeId: number;
+  };
+  
 }

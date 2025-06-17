@@ -1,5 +1,5 @@
 body {
-    background-color: #000; /* Black background for the entire page */
+    background-color: #006400; /* Black background for the entire page */
     color: #fff; /* White text color */
     font-family: Arial, sans-serif; /* Font style for the entire app */
     margin: 0; /* Remove default margin */
@@ -16,7 +16,7 @@ body {
 }
 
 .section {
-    background-color: #1a1a1a; /* Darker background for each section */
+    background-color: #006400; /* Darker background for each section */
     padding: 15px; /* Padding for the section */
     border-radius: 5px; /* Rounded corners */
     margin-right: 20px; /* Space between sections */

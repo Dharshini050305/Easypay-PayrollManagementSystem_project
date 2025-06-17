@@ -1,0 +1,96 @@
+<div class="container mt-5">
+  <h2>Get Pay Stubs</h2>
+
+  <!-- Form to input empId -->
+  <div class="mb-3">
+    <label for="employeeId" class="form-label">Employee ID</label>
+    <input
+      type="number"
+      [(ngModel)]="employeeId"
+      #empIdInput="ngModel"
+      name="employeeId"
+      id="employeeId"
+      class="form-control"
+      required
+    />
+    <!-- Validation Error Message -->
+    <div *ngIf="empIdInput.invalid && empIdInput.touched" class="text-danger">
+      Employee ID is required and must be valid.
+    </div>
+  </div>
+
+  <!-- Submit Button -->
+  <button
+    (click)="onEmployeeIdSubmit()"
+    class="btn btn-primary"
+    [disabled]="empIdInput.invalid">Get Pay Stubs</button>
+ 
+
+  <!-- Error Message -->
+  <div *ngIf="errorMessage" class="alert alert-danger mt-3">
+    {{ errorMessage }}
+  </div>
+
+ 
+  <!-- Pay Stubs Table -->
+  <div *ngIf="paystubs.length > 0" class="mt-4">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th scope="col">Payroll ID</th>
+          <th scope="col">Payroll Date</th>
+          <th scope="col">Gross Pay</th>
+          <th scope="col">Net Pay</th>
+          <th scope="col">Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let paystub of paystubs">
+          <td>{{ paystub.payrollId }}</td>
+          <td>{{ formatDate(paystub.payrollDate) }}</td>
+          <td>{{ formatCurrency(paystub.grossPay) }}</td>
+          <td>{{ formatCurrency(paystub.netPay) }}</td>
+          <td>
+            <button
+              class="btn btn-info"
+              (click)="viewPaystubDetails(paystub)"
+            >
+              View Details
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Paystub Details -->
+  <div *ngIf="selectedPaystub" class="mt-4">
+    <h4>Paystub Details</h4>
+    <div>
+      <strong>Payroll ID:</strong> {{ selectedPaystub.payrollId }}
+    </div>
+    <div>
+      <strong>Payroll Date:</strong> {{ formatDate(selectedPaystub.payrollDate) }}
+    </div>
+    <div>
+      <strong>Gross Pay:</strong> {{ formatCurrency(selectedPaystub.grossPay) }}
+    </div>
+    <div>
+      <strong>Net Pay:</strong> {{ formatCurrency(selectedPaystub.netPay) }}
+    </div>
+    <div>
+      <strong>Benefits:</strong> {{ formatCurrency(selectedPaystub.benefits) }}
+    </div>
+    <div>
+      <strong>Deductions:</strong> {{ formatCurrency(selectedPaystub.deductions) }}
+    </div>
+    <div>
+      <button
+        (click)="closeDetails()"
+        class="btn btn-secondary mt-3"
+      >
+        Close
+      </button>
+    </div>
+  </div>
+</div>

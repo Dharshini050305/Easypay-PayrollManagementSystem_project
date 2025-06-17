@@ -31,19 +31,18 @@ export class GetAllEmployeeComponent {
 
 
 
-  getEmployeeById(id: number) {
-    this.service.getEmployeeById(id).subscribe(
+  getEmployeeById(employeeId: number) {
+    this.service.getEmployeeById(employeeId).subscribe(
       (employee) => {
         this.selectedEmployee = employee;
         console.log(this.selectedEmployee);
       },
       (err) => {
         console.error('Error fetching employee by ID:', err);
-         // Handle specific error status (e.g., 404 Not Found)
+        
       if (err.status === 404) {
-        alert(`Employee with ID ${id} not found.`);
+        alert(`Employee with ID ${employeeId} not found.`);
       } else {
-        // Handle other errors (e.g., 500 Internal Server Error)
         alert('An unexpected error occurred. Please try again later.');
       }
       }

@@ -1,0 +1,12 @@
+.container {
+    max-width: 800px;
+  }
+  
+  .table {
+    margin-top: 20px;
+  }
+  
+  .spinner-border {
+    display: block;
+    margin: 20px auto;
+  }

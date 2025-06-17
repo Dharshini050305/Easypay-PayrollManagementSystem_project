@@ -31,8 +31,8 @@ export class GetDeductionComponent {
 
 
 
-  getDeductionById(id: number) {
-    this.service.getDeductionById(id).subscribe(
+   getDeductionById(deductionId: number) {
+    this.service.getDeductionById(deductionId).subscribe(
       (deduction) => {
         this.selectedDeduction = deduction;
         console.log(this.selectedDeduction);
@@ -41,7 +41,7 @@ export class GetDeductionComponent {
         console.error('Error fetching employee by ID:', err);
                  // Handle specific error status (e.g., 404 Not Found)
       if (err.status === 404) {
-        alert(`deduction with ID ${id} not found.`);
+        alert(`deduction with ID ${deductionId} not found.`);
       } else {
         // Handle other errors (e.g., 500 Internal Server Error)
         alert('An unexpected error occurred. Please try again later.');

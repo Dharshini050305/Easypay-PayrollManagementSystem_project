@@ -103,21 +103,22 @@
     </div>
 
     <!-- Employee ID -->
-    <div class="mb-3">
-      <label for="employeeId" class="form-label">Employee ID:</label>
-      <input
-        type="number"
-        id="employeeId"
-        class="form-control"
-        [(ngModel)]="payroll.employeeId"
-        name="employeeId"
-        required
-        #employeeId="ngModel"
-      />
-      <div *ngIf="employeeId.invalid && employeeId.touched" class="text-danger">
-        Employee ID is required.
-      </div>
-    </div>
+<div class="mb-3">
+  <label for="employeeId" class="form-label">Employee ID:</label>
+  <input
+    type="number"
+    id="employeeId"
+    class="form-control"
+    [(ngModel)]="payroll.employee.employeeId"
+    name="employeeId"
+    required
+    #employeeId="ngModel"
+  />
+  <div *ngIf="employeeId.invalid && employeeId.touched" class="text-danger">
+    Employee ID is required.
+  </div>
+</div>
+
 
     <!-- Submit Button -->
     <button type="submit" class="btn btn-primary" [disabled]="payrollForm.invalid">

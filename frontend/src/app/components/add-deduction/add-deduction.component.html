@@ -2,14 +2,19 @@
 
 <form class="container col-md-6" #deductionForm="ngForm" (ngSubmit)="submitDeduction(deductionForm.value)">
 
-    Enter Deduction Name: 
-    <input type="text" class="form-control" name="deductionName" ngModel required placeholder="Enter Deduction Name"> 
-    <br>
+  <!-- Deduction Name -->
+  <div class="form-group">
+    <label>Enter Deduction Name:</label>
+    <input type="text" class="form-control" name="deductionName" ngModel required placeholder="Enter Deduction Name">
+  </div><br>
 
-    Enter Deduction Amount: 
-    <input type="number" class="form-control" name="deductionAmount" ngModel required placeholder="Enter Deduction Amount"> 
-    <br>
+  <!-- Deduction Amount -->
+  <div class="form-group">
+    <label>Enter Deduction Amount:</label>
+    <input type="number" class="form-control" name="deductionAmount" ngModel required placeholder="Enter Deduction Amount">
+  </div><br>
 
-    <button type="submit" class="btn btn-primary">Submit</button>
+  <!-- Submit Button -->
+  <button type="submit" class="btn btn-success" [disabled]="deductionForm.invalid">Submit</button>
 
 </form>

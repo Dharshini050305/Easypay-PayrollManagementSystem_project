@@ -28,8 +28,8 @@ export class GetPayrollComponent {
   }
 
   // Fetch a single payroll by ID
-  getPayrollById(id: number) {
-    this.service.getPayrollById(id).subscribe(
+  getPayrollById(payrollId: number) {
+    this.service.getPayrollById(payrollId).subscribe(
       (payroll) => {
         this.selectedPayroll = payroll;
         console.log(this.selectedPayroll);
@@ -37,7 +37,7 @@ export class GetPayrollComponent {
       (error) => {
         console.error('Error fetching payroll:', error);
         if (error.status === 404) {
-          alert(`Payroll with ID ${id} not found.`);
+          alert(`Payroll with ID ${payrollId} not found.`);
         } else {
           alert('An unexpected error occurred. Please try again later.');
         }
@@ -46,11 +46,11 @@ export class GetPayrollComponent {
   }
 
   // Delete payroll by ID
-  deletePayroll(id: number) {
-    this.service.deletePayroll(id).subscribe(
+  deletePayroll(payrollId: number) {
+    this.service.deletePayroll(payrollId).subscribe(
       () => {
-        this.payrollList = this.payrollList.filter(p => p.payrollId !== id);
-        console.log(`Payroll with ID ${id} deleted successfully.`);
+        this.payrollList = this.payrollList.filter(p => p.payrollId !== payrollId);
+        console.log(`Payroll with ID ${payrollId} deleted successfully.`);
       },
       (error) => {
         console.error('Error deleting payroll:', error);

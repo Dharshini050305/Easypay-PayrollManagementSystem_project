@@ -1,23 +1,30 @@
-.dashboard-wrapper {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+.container {
+  margin-top: 20px;
 }
 
-.management-sections {
-    display: flex;
-    justify-content: center;
-    gap: 30px;
-    margin-bottom: 40px;
-    flex-wrap: wrap;
-    width: 100%;
+.button-group {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 15px;
+  flex-wrap: wrap;
 }
 
-.display-benefits-container {
-    width: 85%;
-    background-color: #111;
-    padding: 30px;
-    border-radius: 10px;
-    text-align: center;
-    color: white;
+.search-form {
+  flex-grow: 1;
+  display: flex;
+}
+
+.search-form .input-group {
+  flex-grow: 1;
+}
+
+.table {
+  margin-top: 10px;
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 25px;
+  font-weight: bold;
+  color: #2c3e50;
 }

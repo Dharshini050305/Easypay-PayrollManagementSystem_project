@@ -5,6 +5,8 @@ employeeId: number;
 startDate: Date;
 endDate: Date;
 leaveType: String;
-leaveStatus: string;
-managerId : number;
+leaveStatus: 'PENDING';
+ managerID:{
+        managerId :number;
+    }
   }

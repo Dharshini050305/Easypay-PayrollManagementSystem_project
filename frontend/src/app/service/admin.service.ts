@@ -22,15 +22,15 @@ export class AdminService {
   // --------------------------employee service--------------------
 
   submitEmployee(employee: Employee): Observable<Employee> {
-    const token = localStorage.getItem('authToken');  // Retrieve token from localStorage
+    const token = localStorage.getItem('authToken');  
     if (!token) {
       return new Observable(observer => {
-        observer.error('No token found'); // Handle case where token is not found
+        observer.error('No token found'); 
       });
     }
 
     const headers = new HttpHeaders({
-      'Authorization': `Bearer ${token}`, // Add token to the Authorization header
+      'Authorization': `Bearer ${token}`, 
       'Content-Type': 'application/json'
     });
 
@@ -54,7 +54,7 @@ export class AdminService {
     return this.http.get<Employee[]>(url, { headers });
   }
      
-  getEmployeeById(id: number): Observable<Employee> {
+  getEmployeeById(employeeId: number): Observable<Employee> {
     const token = localStorage.getItem('authToken');
     if (!token) {
       return new Observable(observer => {
@@ -67,13 +67,13 @@ export class AdminService {
       'Content-Type': 'application/json'
     });
 
-    const url = `${this.baseURL}employee/${id}`;
+    const url = `${this.baseURL}employee/${employeeId}`;
     return this.http.get<Employee>(url, { headers });
   }
 
     
     
-  deleteEmployee(id: number): Observable<void> {
+  deleteEmployee(employeeId: number): Observable<void> {
     const token = localStorage.getItem('authToken');
     if (!token) {
       return new Observable(observer => {
@@ -86,7 +86,7 @@ export class AdminService {
       'Content-Type': 'application/json'
     });
 
-    const url = `${this.baseURL}employee/delete/${id}`;
+    const url = `${this.baseURL}employee/delete/${employeeId}`;
     return this.http.delete<void>(url, { headers });
   }
 
@@ -124,8 +124,7 @@ submitPayroll(payroll: Payroll): Observable<Payroll> {
   });
 
   return this.http.post<Payroll>(`${this.baseURL}payroll/add`, payroll, { headers });
- }
-
+}
 
  getAllPayrolls(): Observable<Payroll[]> {
   const token = localStorage.getItem('authToken');
@@ -139,11 +138,11 @@ submitPayroll(payroll: Payroll): Observable<Payroll> {
     'Authorization': `Bearer ${token}`
   });
 
-  return this.http.get<Payroll[]>(`${this.baseURL}payrolls`, { headers });
+  return this.http.get<Payroll[]>(`${this.baseURL}payroll`, { headers });
 }
     
      
-getPayrollById(id: number): Observable<Payroll> {
+getPayrollById(payrollId: number): Observable<Payroll> {
   const token = localStorage.getItem('authToken');
   if (!token) {
     return new Observable(observer => {
@@ -155,12 +154,12 @@ getPayrollById(id: number): Observable<Payroll> {
     'Authorization': `Bearer ${token}`
   });
 
-  const url = `${this.baseURL}payroll/${id}`;
+  const url = `${this.baseURL}payroll/${payrollId}`;
   return this.http.get<Payroll>(url, { headers });
 }
     
     
-deletePayroll(id: number): Observable<void> {
+deletePayroll(payrollId: number): Observable<void> {
   const token = localStorage.getItem('authToken');
   if (!token) {
     return new Observable(observer => {
@@ -172,12 +171,12 @@ deletePayroll(id: number): Observable<void> {
     'Authorization': `Bearer ${token}`
   });
 
-  const url = `${this.baseURL}payroll/delete/${id}`;
+  const url = `${this.baseURL}payroll/delete/${payrollId}`;
   return this.http.delete<void>(url, { headers });
 }
 
 
-updatePayroll(policyId: number, payroll: Payroll): Observable<Payroll> {
+updatePayroll(payrollId: number, payroll: Payroll): Observable<Payroll> {
   const token = localStorage.getItem('authToken');
   
   if (!token) {
@@ -191,7 +190,7 @@ updatePayroll(policyId: number, payroll: Payroll): Observable<Payroll> {
     'Content-Type': 'application/json'
   });
 
-  const url = `${this.baseURL}pay/update/${policyId}`;
+  const url = `${this.baseURL}payroll/update/${payrollId}`;
   return this.http.put<Payroll>(url, payroll, { headers });
 }
 }

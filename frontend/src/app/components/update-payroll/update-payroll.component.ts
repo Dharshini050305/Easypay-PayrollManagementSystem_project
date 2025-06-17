@@ -15,8 +15,10 @@ export class UpdatePayrollComponent implements OnInit {
     deductions: 0,
     grossPay: 0,
     netPay: 0,
-    payrollDate: '',
+    payrollDate:new Date(),
+    employee: {
     employeeId: 0
+  }
   };
 
   constructor(

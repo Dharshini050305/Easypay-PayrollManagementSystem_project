@@ -25,7 +25,7 @@
         <td>Deduction Amount</td>
         <td>{{selectedDeduction.deductionAmount}}</td>
         <td>
-          <button [routerLink]="['/payroll-processor-dashboard/editded', selectedDeduction.deductionId]" class="btn btn-warning btn-sm">Update</button>
+          <button [routerLink]="['/payroll-processor-dashboard/edited', selectedDeduction.deductionId]" class="btn btn-warning btn-sm">Update</button>
           <button type="button" (click)="deleteDeduction(selectedDeduction.deductionId!)" class="btn btn-danger">Delete</button>
         </td>
       </tr>
@@ -51,7 +51,7 @@
           <td>{{deduction.deductionName}}</td>
           <td>{{deduction.deductionAmount}}</td>
           <td>
-            <button [routerLink]="['/payroll-processor-dashboard/editded', deduction.deductionId]" class="btn btn-warning btn-sm">Update</button>
+            <button [routerLink]="['/payroll-processor-dashboard/edited', deduction.deductionId]" class="btn btn-warning btn-sm">Update</button>
             <button type="button" (click)="deleteDeduction(deduction.deductionId!)" class="btn btn-danger">Delete</button>
           </td>
         </tr>

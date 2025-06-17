@@ -36,7 +36,7 @@
       <tr><td>Gross Pay</td><td>{{selectedPayroll.grossPay}}</td></tr>
       <tr><td>Net Pay</td><td>{{selectedPayroll.netPay}}</td></tr>
       <tr><td>Payroll Date</td><td>{{selectedPayroll.payrollDate | date:'mediumDate'}}</td></tr>
-      <tr><td>Employee ID</td><td>{{selectedPayroll.employeeId}}</td></tr>
+      <tr><td>Employee ID</td><td>{{selectedPayroll.employee?.employeeId}}</td></tr>
     </table>
 
     <button
@@ -83,7 +83,7 @@
           <td>{{payroll.grossPay}}</td>
           <td>{{payroll.netPay}}</td>
           <td>{{payroll.payrollDate | date:'mediumDate'}}</td>
-          <td>{{payroll.employeeId}}</td>
+          <td>{{payroll.employee?.employeeId}}</td>
           <td>
             <button
               *ngIf="payroll.payrollId !== undefined"

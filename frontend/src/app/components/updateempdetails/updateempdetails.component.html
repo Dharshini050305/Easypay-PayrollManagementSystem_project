@@ -1,0 +1,88 @@
+<div class="container mt-4">
+  <form #empForm="ngForm" (ngSubmit)="updateEmpPersonalInformation(empForm.value)" novalidate>
+    <h3>Update Employee Information</h3>
+
+    <!-- Employee ID -->
+    <div class="form-group">
+      <label for="employeeId">Employee ID</label>
+      <input
+        type="number"
+        id="employeeId"
+        name="employeeId"
+        class="form-control"
+        [(ngModel)]="empDto.employeeId"
+        required
+        #employeeId="ngModel"
+      />
+      <div *ngIf="employeeId.invalid && employeeId.touched" class="text-danger">
+        Employee ID is required.
+      </div>
+    </div>
+
+    <!-- Employee Name -->
+    <div class="form-group">
+      <label for="employeeName">Employee Name</label>
+      <input
+        type="text"
+        id="employeeName"
+        name="employeeName"
+        class="form-control"
+        [(ngModel)]="empDto.employeeName"
+        required
+        minlength="3"
+        #employeeName="ngModel"
+      />
+      <div *ngIf="employeeName.invalid && employeeName.touched" class="text-danger">
+        <div *ngIf="employeeName.errors?.['required']">Employee Name is required.</div>
+        <div *ngIf="employeeName.errors?.['minlength']">
+          Employee Name must be at least 3 characters long.
+        </div>
+      </div>
+    </div>
+
+    <!-- Position -->
+    <div class="form-group">
+      <label for="position">Position</label>
+      <input
+        type="text"
+        id="position"
+        name="position"
+        class="form-control"
+        [(ngModel)]="empDto.position"
+        required
+        #position="ngModel"
+      />
+      <div *ngIf="position.invalid && position.touched" class="text-danger">
+        Position is required.
+      </div>
+    </div>
+
+    <!-- Email -->
+    <div class="form-group">
+      <label for="email">Email</label>
+      <input
+        type="email"
+        id="email"
+        name="email"
+        class="form-control"
+        [(ngModel)]="empDto.email"
+        required
+        email
+        #email="ngModel"
+      />
+      <div *ngIf="email.invalid && email.touched" class="text-danger">
+        <div *ngIf="email.errors?.['required']">Email is required.</div>
+        <div *ngIf="email.errors?.['email']">Enter a valid email.</div>
+      </div>
+    </div>
+
+    <!-- Submit Button -->
+    <button
+      type="submit"
+      class="btn btn-primary mt-3"
+      [disabled]="empForm.invalid"
+    >
+      Update Details
+    </button>
+  </form>
+</div>

@@ -2,6 +2,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Payroll } from '../model/Payroll';
+import { LeavesDTO } from '../model/LeavesDTO';
 
 
 
@@ -35,7 +36,22 @@ export class ManagerService {
     return this.http.get<Payroll[]>(url ,{headers});
    }
 
+getAllLeavesByManagerId(managerId: number): Observable<LeavesDTO[]> {
+  const token = localStorage.getItem('authToken');
+  if (!token) {
+    return new Observable(observer => {
+      observer.error('No token found');
+    });
+  }
 
+  const headers = new HttpHeaders({
+    'Authorization': `Bearer ${token}`,
+    'Content-Type': 'application/json'
+  });
+
+  const url = `${this.baseUrl}/leave-requests/${managerId}`; // Adjust this URL based on your API
+  return this.http.get<LeavesDTO[]>(url, { headers });
+}
 
 
   updateLeaveStatus(managerId: number, leaveId: number, status: string): Observable<any> {
@@ -51,7 +67,7 @@ export class ManagerService {
       'Content-Type': 'application/json'
     });
 
-    const url = `${this.baseUrl}/approveleave/${managerId}/${leaveId}?status=${status}`;
+    const url = `${this.baseUrl}/approveleave/${managerId}/${leaveId}`;
     return this.http.put<any>(url,{}, {headers});
   }
 }

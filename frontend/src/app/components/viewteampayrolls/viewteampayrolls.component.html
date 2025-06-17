@@ -1,0 +1,60 @@
+<div class="container mt-5">
+  <h2>Review Team Payrolls</h2>
+
+  <!-- Form to input Manager ID -->
+  <div class="mb-3">
+    <label for="managerId" class="form-label">Manager ID</label>
+    <input
+      type="number"
+      [(ngModel)]="managerId"
+      id="managerId"
+      class="form-control"
+      name="managerId"
+      placeholder="Enter Manager ID"
+      required
+      [class.is-invalid]="formSubmitted && (managerId === null || managerId <= 0)"
+    />
+    <div *ngIf="formSubmitted && (managerId === null || managerId <= 0)" class="invalid-feedback">
+      Please enter a valid Manager ID.
+    </div>
+  </div>
+
+  <!-- Submit Button -->
+  <button class="btn btn-primary" (click)="fetchTeamPayrolls()" [disabled]="!managerId || managerId <= 0">
+    Fetch Payrolls
+  </button>
+
+  <!-- Error Message -->
+  <div *ngIf="errorMessage" class="alert alert-danger mt-3">
+    {{ errorMessage }}
+  </div>
+
+  <!-- Payrolls Table -->
+  <div *ngIf="payrolls.length > 0 && formSubmitted" class="mt-4">
+    <table class="table table-bordered table-striped">
+      <thead>
+        <tr>
+          <th scope="col">Payroll ID</th>
+          <th scope="col">Employee ID</th>
+          <th scope="col">Payroll Date</th>
+          <th scope="col">Gross Pay</th>
+          <th scope="col">Net Pay</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let payroll of payrolls">
+          <td>{{ payroll.payrollId }}</td>
+        <td>{{ payroll.employee.employeeId }}</td>
+          <td>{{ payroll.payrollDate }}</td>
+          <td>{{ payroll.grossPay | currency:'INR' }}</td>
+          <td>{{ payroll.netPay | currency:'INR' }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- No Records Found -->
+  <div *ngIf="payrolls.length === 0 && formSubmitted" class="alert alert-info mt-3">
+    No payroll records found for the given Manager ID.
+  </div>
+</div>

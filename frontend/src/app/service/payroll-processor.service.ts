@@ -30,11 +30,21 @@ export class PayrollProcessorService {
     });
   }
   //-------------------------------------Payroll Calculations--------------------------------
-  calculatePayroll(employeeId: number, payrollDate: string): Observable<Payroll> {
-    return this.http.post<Payroll>(`${this.baseURL}/calculate/${employeeId}`, payrollDate, {
-      headers: { 'Content-Type': 'application/json' }
-    });
-  }
+ processPayments(employeeId: number, payrollDate: string): Observable<Payroll> {
+  const token = localStorage.getItem('authToken');  // Replace with your token key
+
+  const headers = new HttpHeaders({
+    'Content-Type': 'application/json',
+    'Authorization': `Bearer ${token}`
+  });
+
+  return this.http.post<Payroll>(
+    `${this.baseURL}calculate/${employeeId}/${payrollDate}`,
+    {},  
+    { headers }
+  );
+}
+
 
 
   //--------------------------------------Payroll Verification--------------------------------
@@ -76,9 +86,9 @@ updateBenefit(benefitId: number, benefit: Benefits): Observable<Benefits> {
     }
   
     // Get Deduction by ID
-    getDeductionById(id: number): Observable<Deductions> {
+    getDeductionById(deductionId: number): Observable<Deductions> {
       const headers = this.getAuthHeaders();
-      return this.http.get<Deductions>(`${this.baseURL}deductions/${id}`, { headers });
+      return this.http.get<Deductions>(`${this.baseURL}deductions/${deductionId}`, { headers });
     }
   
     // Update Deduction

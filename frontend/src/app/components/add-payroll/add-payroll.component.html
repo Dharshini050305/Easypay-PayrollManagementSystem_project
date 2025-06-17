@@ -5,33 +5,33 @@
   <div class="form-group">
     <label>Enter Benefits:</label>
     <input type="number" class="form-control" name="benefits" ngModel required placeholder="Enter Benefits">
-  </div>
-  
+  </div><br>
+
   <div class="form-group">
     <label>Enter Deductions:</label>
     <input type="number" class="form-control" name="deductions" ngModel required placeholder="Enter Deductions">
-  </div>
+  </div><br>
 
   <div class="form-group">
     <label>Enter Gross Pay:</label>
     <input type="number" class="form-control" name="grossPay" ngModel required placeholder="Enter Gross Pay">
-  </div>
+  </div><br>
 
   <div class="form-group">
     <label>Enter Net Pay:</label>
     <input type="number" class="form-control" name="netPay" ngModel required placeholder="Enter Net Pay">
-  </div>
+  </div><br>
 
   <div class="form-group">
     <label>Select Payroll Date:</label>
     <input type="date" class="form-control" name="payrollDate" ngModel required>
-  </div>
+  </div><br>
 
   <div class="form-group">
     <label>Enter Employee ID:</label>
     <input type="number" class="form-control" name="employeeId" ngModel required placeholder="Enter Employee ID">
-  </div>
+  </div><br>
 
-  <button type="submit" class="btn btn-primary mt-3">Submit Payroll</button>
+  <button type="submit" class="btn btn-primary" [disabled]="payrollForm.invalid">Submit Payroll</button>
 
 </form>

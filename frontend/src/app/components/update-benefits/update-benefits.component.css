@@ -1,0 +1,46 @@
+/* Center the form container */
+form.w-50.mx-auto {
+  background-color: #f9f9f9;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* Headings */
+h1, h2 {
+  text-align: center;
+  color: #343a40;
+  margin-bottom: 20px;
+}
+
+/* Labels */
+.form-label {
+  font-weight: bold;
+  color: #495057;
+}
+
+/* Input fields */
+.form-control {
+  border-radius: 8px;
+  border: 1px solid #ced4da;
+  padding: 10px;
+}
+
+/* Button styling */
+.btn-primary {
+  width: 100%;
+  padding: 10px;
+  font-weight: bold;
+  border-radius: 8px;
+}
+
+/* Validation error message */
+.text-danger {
+  font-size: 0.875rem;
+  margin-top: 5px;
+}
+
+/* Top spacing for the form block */
+.mt-4 {
+  margin-top: 2rem;
+}

@@ -1,0 +1,106 @@
+<div class="container mt-4">
+  <h2>Request Leave</h2>
+  <form #leaveForm="ngForm" (ngSubmit)="onSubmit()" novalidate>
+    
+    <!-- Employee ID -->
+    <div class="form-group">
+      <label for="employeeId">Employee ID</label>
+      <input
+        type="number"
+        id="employeeId"
+        name="employeeId"
+        class="form-control"
+        [(ngModel)]="leavesdata.employeeId"
+        required
+        #employeeId="ngModel"
+      />
+      <div *ngIf="employeeId.invalid && employeeId.touched" class="text-danger">
+        Employee ID is required.
+      </div>
+    </div>
+
+    <!-- Start Date -->
+    <div class="form-group">
+      <label for="startDate">Start Date</label>
+      <input
+        type="date"
+        id="startDate"
+        name="startDate"
+        class="form-control"
+        [(ngModel)]="leavesdata.startDate"
+        required
+        #startDate="ngModel"
+      />
+      <div *ngIf="startDate.invalid && startDate.touched" class="text-danger">
+        Start Date is required.
+      </div>
+    </div>
+
+    <!-- End Date -->
+    <div class="form-group">
+      <label for="endDate">End Date</label>
+      <input
+        type="date"
+        id="endDate"
+        name="endDate"
+        class="form-control"
+        [(ngModel)]="leavesdata.endDate"
+        required
+        #endDate="ngModel"
+      />
+      <div *ngIf="endDate.invalid && endDate.touched" class="text-danger">
+        End Date is required.
+      </div>
+    </div>
+
+    <!-- Leave Type -->
+    <div class="form-group">
+      <label for="leaveType">Leave Type</label>
+      <select
+        id="leaveType"
+        name="leaveType"
+        class="form-control"
+        [(ngModel)]="leavesdata.leaveType"
+        required
+        #leaveType="ngModel"
+      >
+        <option value="" disabled>Select Leave Type</option>
+        <option value="Sick Leave">Sick Leave</option>
+        <option value="Casual Leave">Casual Leave</option>
+        <option value="Paid Leave">Paid Leave</option>
+      </select>
+      <div *ngIf="leaveType.invalid && leaveType.touched" class="text-danger">
+        Please select a leave type.
+      </div>
+    </div>
+
+
+    <!-- Manager ID -->
+    <div class="form-group">
+      <label for="managerId">Manager ID</label>
+      <input
+        type="number"
+        id="managerId"
+        name="managerId"
+        class="form-control"
+        [(ngModel)]="leavesdata.managerID.managerId"
+        required
+        #managerId="ngModel"
+      />
+      <div *ngIf="managerId.invalid && managerId.touched" class="text-danger">
+        Manager ID is required.
+      </div>
+    </div>
+
+    <!-- Submit Button -->
+    <div class="form-group mt-3">
+      <button
+        type="submit"
+        class="btn btn-primary"
+        [disabled]="leaveForm.invalid"
+      >
+        Submit
+      </button>
+    </div>
+  </form>
+</div>

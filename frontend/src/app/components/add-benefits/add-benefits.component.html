@@ -1,16 +1,21 @@
 <h1>Add Benefit Details Here</h1>
 
-
 <form class="container col-md-6" #benefitsForm="ngForm" (ngSubmit)="submitBenefit(benefitsForm.value)">
 
-    Enter Benefit Name: 
-    <input type="text" class="form-control" name="benefitName" ngModel required placeholder="Enter Benefit Name"> 
-    <br>
+  <!-- Benefit Name -->
+  <div class="form-group">
+    <label>Enter Benefit Name:</label>
+    <input type="text" class="form-control" name="benefitName" ngModel required placeholder="Enter Benefit Name">
+  </div><br>
 
-    Enter Benefit Amount: 
-    <input type="number" class="form-control" name="benefitAmount" ngModel required placeholder="Enter Benefit Amount"> 
-    <br>
+  <!-- Benefit Amount -->
+  <div class="form-group">
+    <label>Enter Benefit Amount:</label>
+    <input type="number" class="form-control" name="benefitAmount" ngModel required placeholder="Enter Benefit Amount">
+  </div><br>
 
-    <button type="submit" class="btn btn-primary">Submit</button>
+  <!-- Submit Button -->
+  <button type="submit" class="btn btn-success" [disabled]="benefitsForm.invalid">Submit</button>
 
 </form>
+<router-outlet></router-outlet>

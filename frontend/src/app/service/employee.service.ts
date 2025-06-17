@@ -1,49 +1,54 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { catchError, Observable, throwError } from 'rxjs';
 import { Payroll } from '../model/Payroll';
 import { AttendanceDTO } from '../model/AttendanceDTO';
 import { EmpDTO } from '../model/EmpDTO';
-import { LeavesDTO } from '../model/LeavesDTO';
+import { LeaveDto } from '../model/LeaveDto';
+import { EmpuDto } from '../model/EmpuDto';
 
 @Injectable({
   providedIn: 'root'
 })
 export class EmployeeService {
+  [x: string]: any;
   private baseUrl="http://localhost:8080/api/employee";
 
   constructor(private http:HttpClient) {
    }
 
-   updateEmpPersonalInformation( updatedInfo: EmpDTO):Observable<EmpDTO>{ 
-    const token = localStorage.getItem('authToken');  // Retrieve token from localStorage
+   updateEmpPersonalInformation(updatedInfo: EmpuDto): Observable<EmpuDto> {
+    const token = localStorage.getItem('authToken');
+
     if (!token) {
-      return new Observable(observer => {
-        observer.error('No token found'); // Handle case where token is not found
-      });
+      return throwError(() => new Error('No token found'));
     }
 
     const headers = new HttpHeaders({
-      'Authorization': `Bearer ${token}`, // Add token to the Authorization header
+      'Authorization': `Bearer ${token}`,
       'Content-Type': 'application/json'
     });
 
-    const url=`${this.baseUrl}/updatepersonalinfo/${updatedInfo.employeeId}`;
+    const url = `${this.baseUrl}/updatepersonalinfo/${updatedInfo.employeeId}`;
 
-    return this.http.put<EmpDTO>(url,updatedInfo,{headers});
-    
-   }
+    return this.http.put<EmpuDto>(url, updatedInfo, { headers }).pipe(
+      catchError(error => {
+        console.error('Update failed:', error);
+        return throwError(() => error);
+      })
+    );
+  }
 
    getPayStubs(employeeId:number):Observable<Payroll[]>{
-    const token = localStorage.getItem('authToken');  // Retrieve token from localStorage
+    const token = localStorage.getItem('authToken');  
     if (!token) {
       return new Observable(observer => {
-        observer.error('No token found'); // Handle case where token is not found
+        observer.error('No token found'); 
       });
     }
 
     const headers = new HttpHeaders({
-      'Authorization': `Bearer ${token}`, // Add token to the Authorization header
+      'Authorization': `Bearer ${token}`, 
       'Content-Type': 'application/json'
     });
 
@@ -54,15 +59,15 @@ export class EmployeeService {
    }
 
    submitAttendance( attendance:AttendanceDTO):Observable<AttendanceDTO>{
-    const token = localStorage.getItem('authToken');  // Retrieve token from localStorage
+    const token = localStorage.getItem('authToken');  
     if (!token) {
       return new Observable(observer => {
-        observer.error('No token found'); // Handle case where token is not found
+        observer.error('No token found'); 
       });
     }
 
     const headers = new HttpHeaders({
-      'Authorization': `Bearer ${token}`, // Add token to the Authorization header
+      'Authorization': `Bearer ${token}`, 
       'Content-Type': 'application/json'
     });
 
@@ -72,21 +77,20 @@ export class EmployeeService {
    }
   
 
-   requestLeave( leaveRequest:LeavesDTO):Observable<LeavesDTO>{
-    const token = localStorage.getItem('authToken');  // Retrieve token from localStorage
-    if (!token) {
-      return new Observable(observer => {
-        observer.error('No token found'); // Handle case where token is not found
-      });
-    }
-
-    const headers = new HttpHeaders({
-      'Authorization': `Bearer ${token}`, // Add token to the Authorization header
-      'Content-Type': 'application/json'
+   requestLeave(leaveRequest: LeaveDto): Observable<LeaveDto> {
+  const token = localStorage.getItem('authToken');  
+  if (!token) {
+    return new Observable(observer => {
+      observer.error('No token found'); 
     });
+  }
 
-    const url=`${this.baseUrl}/requestleave/${leaveRequest.employeeId}`;
-    return this.http.post<LeavesDTO>(url, leaveRequest,{headers});    
-   }
+  const headers = new HttpHeaders({
+    'Authorization': `Bearer ${token}`, 
+    'Content-Type': 'application/json'
+  });
 
+  const url = `${this.baseUrl}/requestleave/${leaveRequest.employeeId}`;
+  return this.http.post<LeaveDto>(url, leaveRequest, { headers });
+}
 }
