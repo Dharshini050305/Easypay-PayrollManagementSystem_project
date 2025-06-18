@@ -21,20 +21,21 @@ export class UpdateempdetailsComponent {
 
   }
 
-  updateEmpPersonalInformation(empuDto:EmpuDto){
-
-    this.service.updateEmpPersonalInformation(empuDto).subscribe(
-
-      (response)=>{
-        console.log(response);
-        alert("Employee Details Updated Succesfully! ");
-      },
-      (err)=>{
-        console.log(err);
-        alert("Employee Update Unsuccesful")
-      }
-    );
-
+  updateEmpPersonalInformation(empuDto: EmpuDto): void {
+  if (!empuDto.employeeId) {
+    alert("Employee ID is required to update details.");
+    return;
   }
 
+  this.service.updateEmpPersonalInformation(empuDto).subscribe({
+    next: (response) => {
+      console.log("Update successful:", response);
+      alert("Employee details updated successfully!");
+    },
+    error: (err) => {
+      console.error("Update failed:", err);
+      alert("Failed to update employee details.");
+    }
+  });
+}
 }

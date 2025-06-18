@@ -16,9 +16,9 @@ export class UpdatePayrollComponent implements OnInit {
     grossPay: 0,
     netPay: 0,
     payrollDate:new Date(),
-    employee: {
+    
     employeeId: 0
-  }
+  
   };
 
   constructor(
@@ -34,19 +34,19 @@ export class UpdatePayrollComponent implements OnInit {
   }
 
   updatePayroll(): void {
-    if (this.payroll && this.payroll.payrollId) {
-      this.service.updatePayroll(this.payroll.payrollId, this.payroll).subscribe(
-        () => {
-          console.log('Payroll updated successfully');
-          alert('Payroll updated successfully!');
-        },
-        (error) => {
-          console.error('Error updating payroll:', error);
-          alert('Failed to update payroll. Please try again.');
-        }
-      );
-    } else {
-      alert('Payroll data is incomplete or invalid.');
-    }
+  if (this.payroll && this.payroll.payrollId && this.payroll.employeeId) {
+    this.service.updatePayroll(this.payroll.payrollId, this.payroll).subscribe(
+      (updatedPayroll) => {
+        this.payroll = updatedPayroll;   
+        alert('Payroll updated successfully!');
+      },
+      (error) => {
+        console.error('Error updating payroll:', error);
+        alert('Failed to update payroll. Please try again.');
+      }
+    );
+  } else {
+    alert('Payroll data is incomplete. Employee ID is missing.');
   }
+}
 }

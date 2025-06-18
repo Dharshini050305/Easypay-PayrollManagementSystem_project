@@ -1,27 +1,18 @@
-<div class="container">
-  <div class="row">
-    <div class="section">
-      <h3>Deductions Management</h3>
-      <div class="links">
-        <a routerLink="/payroll-processor-dashboard/add-deduction" class="btn btn-primary">Add Deduction</a>
-        <a routerLink="/payroll-processor-dashboard/get-deduction" class="btn btn-success">Get Deductions</a>
-      </div>
-    </div>
-    <div class="section">
-      <h3>Benefits Management</h3>
-      <div class="links">
-        <a routerLink="/payroll-processor-dashboard/add-benefits" class="btn btn-primary">Add Benefit</a>
-        <a routerLink="/payroll-processor-dashboard/get-benefits" class="btn btn-success">Get Benefits</a>
-      </div>
-    </div>
+<div class="payroll-processor-page d-flex">
+  <!-- Sidebar -->
+  <nav class="sidebar">
+    <h2 class="logo">Payroll</h2>
+    <ul class="nav-links">
+      <li><a routerLink="/payroll-processor-dashboard" routerLinkActive="active">Dashboard</a></li>
+      <li><a routerLink="/payroll-processor-dashboard/deductions" routerLinkActive="active">Deductions</a></li>
+      <li><a routerLink="/payroll-processor-dashboard/benefits" routerLinkActive="active">Benefits</a></li>
+      <li><a routerLink="/payroll-processor-dashboard/users" routerLinkActive="active">Payment Processing</a></li>
+    </ul>
+  </nav>
 
-    <div class="section">
-      <h3>Payment Processing</h3>
-      <div class="links">
-        <a routerLink="/payroll-processor-dashboard/process-payment" class="btn btn-info">Process Payment</a>
-      </div>
-    </div>
-    <div class="routed-content mt-5">
-    <router-outlet></router-outlet>
+  <div class="main-content p-4">
+  <div *ngIf="showWelcome" class="welcome-message mb-4">
+    <h3>Hi! {{ username }}</h3>
   </div>
-
+  <router-outlet></router-outlet>
+</div>

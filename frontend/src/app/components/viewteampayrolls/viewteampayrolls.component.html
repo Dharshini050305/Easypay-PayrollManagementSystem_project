@@ -44,7 +44,7 @@
       <tbody>
         <tr *ngFor="let payroll of payrolls">
           <td>{{ payroll.payrollId }}</td>
-        <td>{{ payroll.employee.employeeId }}</td>
+        <td>{{ payroll.employeeId }}</td>
           <td>{{ payroll.payrollDate }}</td>
           <td>{{ payroll.grossPay | currency:'INR' }}</td>
           <td>{{ payroll.netPay | currency:'INR' }}</td>

@@ -1,30 +1,53 @@
-.container {
-  margin-top: 20px;
+.custom-payroll-table tbody tr:nth-child(even) {
+  background-color: #e6f2ff; /* very light blue */
+}
+.custom-payroll-table tbody tr:nth-child(odd) {
+  background-color: #fdfdff; /* off-white */
 }
 
-.button-group {
-  display: flex;
-  gap: 10px;
-  margin-bottom: 15px;
-  flex-wrap: wrap;
+/* Table headers */
+.table-header {
+  background-color: #007acc;
+  color: white;
 }
 
-.search-form {
-  flex-grow: 1;
-  display: flex;
+/* Justify table content */
+.table td,
+.table th {
+  text-align: justify;
+  vertical-align: middle;
 }
 
-.search-form .input-group {
-  flex-grow: 1;
+/* Button Colors and Spacing */
+.btn-view {
+  background-color: #17a2b8;
+  color: white;
+}
+.btn-view:hover {
+  background-color: #138496;
+  color: white;
 }
 
-.table {
-  margin-top: 10px;
+.btn-update {
+  background-color: #ffc107;
+  color: black;
+}
+.btn-update:hover {
+  background-color: #e0a800;
+  color: black;
 }
 
-h1 {
-  text-align: center;
-  margin-bottom: 25px;
-  font-weight: bold;
-  color: #2c3e50;
+.btn-delete {
+  background-color: #dc3545;
+  color: white;
 }
+.btn-delete:hover {
+  background-color: #c82333;
+  color: white;
+}
+
+/* Ensure spacing between buttons */
+.d-flex.gap-3 > .btn {
+  min-width: 70px;
+}
+

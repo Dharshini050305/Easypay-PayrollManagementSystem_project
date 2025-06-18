@@ -1,0 +1,43 @@
+<div class="contact-container">
+  <h1>Contact Us</h1>
+
+  <p>If you have any questions, feedback, or need support, please feel free to reach out to us. We are here to help!</p>
+
+  <div class="contact-details">
+    <h3>EasyPay Headquarters</h3>
+    <p>123 Finance Street,<br>
+       Business City, 456789<br>
+       Country</p>
+
+    <h3>Phone</h3>
+    <p>+1 (234) 567-8901</p>
+
+    <h3>Email</h3>
+    <p>support@easypay.com</p>
+
+    <h3>Working Hours</h3>
+    <p>Monday - Friday: 9:00 AM to 6:00 PM</p>
+  </div>
+
+  <div class="contact-form">
+    <h3>Send Us a Message</h3>
+    <form (submit)="onSubmit(contactForm.value)" #contactForm="ngForm" novalidate>
+      <div class="form-group">
+        <label for="name">Your Name:</label>
+        <input type="text" id="name" name="name" ngModel required minlength="3" />
+      </div>
+
+      <div class="form-group">
+        <label for="email">Your Email:</label>
+        <input type="email" id="email" name="email" ngModel required email />
+      </div>
+
+      <div class="form-group">
+        <label for="message">Message:</label>
+        <textarea id="message" name="message" ngModel required minlength="10"></textarea>
+      </div>
+
+      <button type="submit" [disabled]="contactForm.invalid">Send Message</button>
+    </form>
+  </div>
+</div>

@@ -1,62 +1,83 @@
-<h1>Display Deductions</h1>
+<!-- Back Button -->
+<button class="btn btn-secondary" routerLink="/payroll-processor-dashboard/deductions">
+  <i class="bi bi-arrow-left"></i> Back
+</button>
 
-<div class="container">
-  <div class="button-group">
-    <form #deductionForm="ngForm" (ngSubmit)="getDeductionById(deductionForm.value.deductionId)" class="search-form">
-      <label for="deductionId" class="sr-only">Search Deduction by ID:</label>
-      <div class="input-group">
-        <input type="number" id="deductionId" name="deductionId" class="form-control" ngModel required placeholder="Enter Deduction ID" />
-        <button type="submit" class="btn btn-primary">Search</button>
-      </div>
-    </form>
+<!-- Wrapper -->
+<div class="dashboard-wrapper">
+  <div class="display-deductions-container container">
 
-    <button type="button" class="btn btn-success" (click)="getAllDeductions()">View All Deductions</button>
-  </div>
+    <!-- Page Title -->
+    <h1>Display Deductions</h1>
 
-  <br />
+    <!-- Search and View All Buttons -->
+    <div class="button-group">
+      <form #deductionForm="ngForm" (ngSubmit)="getDeductionById(deductionForm.value.deductionId)" class="search-form">
+        <div class="input-group">
+          <input type="number" id="deductionId" name="deductionId" class="form-control" ngModel required placeholder="Enter Deduction ID" />
+          <button type="submit" class="btn btn-primary">🔍 Search</button>
+        </div>
+      </form>
 
-  <div *ngIf="selectedDeduction" class="mt-4">
-    <h3>Deduction Details</h3>
-    <table class="table table-bordered">
-      <tr><th>Field</th><th>Value</th></tr>
-      <tr><td>Deduction ID</td><td>{{selectedDeduction.deductionId}}</td></tr>
-      <tr><td>Deduction Name</td><td>{{selectedDeduction.deductionName}}</td></tr>
-      <tr>
-        <td>Deduction Amount</td>
-        <td>{{selectedDeduction.deductionAmount}}</td>
-        <td>
-          <button [routerLink]="['/payroll-processor-dashboard/edited', selectedDeduction.deductionId]" class="btn btn-warning btn-sm">Update</button>
-          <button type="button" (click)="deleteDeduction(selectedDeduction.deductionId!)" class="btn btn-danger">Delete</button>
-        </td>
-      </tr>
-    </table>
-  </div>
+      <button type="button" class="btn btn-success" (click)="getAllDeductions()">View All Deductions</button>
+    </div>
 
-  <br />
+    <!-- Selected Deduction -->
+    <div *ngIf="selectedDeduction" class="mt-4">
+      <h3 class="text-primary fw-bold">Deduction Details</h3>
+      <table class="table custom-employee-table table-bordered">
+        <thead class="table-header">
+          <tr>
+            <th>Deduction ID</th>
+            <th>Deduction Name</th>
+            <th>Deduction Amount</th>
+            <th class="text-center">Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>{{ selectedDeduction.deductionId }}</td>
+            <td>{{ selectedDeduction.deductionName }}</td>
+            <td>{{ selectedDeduction.deductionAmount }}</td>
+            <td class="text-center">
+              <div class="d-flex gap-3 justify-content-center">
+                <button [routerLink]="['/payroll-processor-dashboard/editded', selectedDeduction.deductionId]" class="btn btn-update btn-sm">Update</button>
+                <button type="button" (click)="deleteDeduction(selectedDeduction.deductionId!)" class="btn btn-delete btn-sm">Delete</button>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
 
-  <div *ngIf="deductionList.length > 0" class="mt-4">
-    <h3>All Deductions</h3>
-    <table class="table table-dark">
-      <thead>
-        <tr>
-          <th>Deduction ID</th>
-          <th>Deduction Name</th>
-          <th>Deduction Amount</th>
-          <th>Actions</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let deduction of deductionList">
-          <td>{{deduction.deductionId}}</td>
-          <td>{{deduction.deductionName}}</td>
-          <td>{{deduction.deductionAmount}}</td>
-          <td>
-            <button [routerLink]="['/payroll-processor-dashboard/edited', deduction.deductionId]" class="btn btn-warning btn-sm">Update</button>
-            <button type="button" (click)="deleteDeduction(deduction.deductionId!)" class="btn btn-danger">Delete</button>
-          </td>
-        </tr>
-      </tbody>
-    </table>
+    <!-- All Deductions List -->
+    <div *ngIf="deductionList.length > 0" class="mt-4">
+      <h3 class="text-primary fw-bold">All Deductions</h3>
+      <table class="table custom-employee-table table-bordered">
+        <thead class="table-header">
+          <tr>
+            <th>Deduction ID</th>
+            <th>Deduction Name</th>
+            <th>Deduction Amount</th>
+            <th class="text-center">Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let deduction of deductionList">
+            <td>{{ deduction.deductionId }}</td>
+            <td>{{ deduction.deductionName }}</td>
+            <td>{{ deduction.deductionAmount }}</td>
+            <td class="text-center">
+              <div class="d-flex gap-3 justify-content-center">
+                <button [routerLink]="['/payroll-processor-dashboard/editded', deduction.deductionId]" class="btn btn-update btn-sm">Update</button>
+                <button type="button" (click)="deleteDeduction(deduction.deductionId!)" class="btn btn-delete btn-sm">Delete</button>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
   </div>
 </div>
 

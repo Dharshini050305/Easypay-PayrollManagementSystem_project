@@ -109,7 +109,7 @@ updateEmployee(employeeId: number, employee: Employee): Observable<Employee> {
   return this.http.put<Employee>(url, employee, { headers });
 
 }
-//-----------------------------------------Payroll----------------------------------------------------------
+//Payroll
 submitPayroll(payroll: Payroll): Observable<Payroll> {
   const token = localStorage.getItem('authToken');
   if (!token) {

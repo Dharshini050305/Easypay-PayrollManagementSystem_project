@@ -5,8 +5,8 @@ export interface Payroll {
   grossPay: number;
   netPay: number;
   payrollDate: Date;      
- employee: {
+ 
     employeeId: number;
-  };
+  
   
 }

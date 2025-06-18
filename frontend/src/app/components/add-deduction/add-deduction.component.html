@@ -1,20 +1,37 @@
-<h1>Add Deduction Details Here</h1>
+<div class="add-deduction-container d-flex flex-column align-items-center justify-content-center min-vh-100">
 
-<form class="container col-md-6" #deductionForm="ngForm" (ngSubmit)="submitDeduction(deductionForm.value)">
 
-  <!-- Deduction Name -->
-  <div class="form-group">
-    <label>Enter Deduction Name:</label>
-    <input type="text" class="form-control" name="deductionName" ngModel required placeholder="Enter Deduction Name">
-  </div><br>
+  <div class="w-100 d-flex justify-content-start mb-3 ps-5">
+    <button class="back-btn btn btn-light" routerLink="/payroll-processor-dashboard/deductions">← Back</button>
+  </div>
 
-  <!-- Deduction Amount -->
-  <div class="form-group">
-    <label>Enter Deduction Amount:</label>
-    <input type="number" class="form-control" name="deductionAmount" ngModel required placeholder="Enter Deduction Amount">
-  </div><br>
 
-  <!-- Submit Button -->
-  <button type="submit" class="btn btn-success" [disabled]="deductionForm.invalid">Submit</button>
+  <h2 class="text-primary fw-bold mb-4 text-center">Add Deduction Details</h2>
 
-</form>
+ 
+  <form #deductionForm="ngForm"
+        (ngSubmit)="submitDeduction(deductionForm.value)"
+        class="deduction-form shadow p-4 bg-white rounded col-md-6">
+
+  
+    <div class="mb-3">
+      <label class="form-label">Deduction Name</label>
+      <input type="text" class="form-control" name="deductionName" ngModel #deductionName="ngModel" required placeholder="Enter Deduction Name">
+      <div *ngIf="deductionName.invalid && deductionName.touched" class="error-msg">Deduction name is required</div>
+    </div>
+
+
+    <div class="mb-4">
+      <label class="form-label">Deduction Amount</label>
+      <input type="number" class="form-control" name="deductionAmount" ngModel #deductionAmount="ngModel" required placeholder="Enter Deduction Amount">
+      <div *ngIf="deductionAmount.invalid && deductionAmount.touched" class="error-msg">Deduction amount is required</div>
+    </div>
+
+    <div class="submit-btn-wrapper text-center">
+      <button type="submit" class="btn btn-success submit-btn" [disabled]="deductionForm.invalid">Submit</button>
+    </div>
+
+  </form>
+</div>
+
+<router-outlet></router-outlet>

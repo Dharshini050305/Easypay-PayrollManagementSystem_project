@@ -1,0 +1,44 @@
+.homepage-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-color: #f8fafc; /* Optional: soft background */
+}
+
+.content-container {
+  text-align: center;
+}
+
+.logo-img {
+  width: 200px;
+  height: auto;
+  margin-bottom: 20px;
+}
+
+.dashboard-buttons {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px; /* spacing between buttons */
+}
+
+.dashboard-btn {
+  width: 300px;
+  height: 55px;
+  font-size: 16px;
+  font-weight: 500;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  transition: background-color 0.3s ease;
+}
+
+.dashboard-btn:hover {
+  background-color: #0056b3;
+}

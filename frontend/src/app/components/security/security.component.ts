@@ -2,13 +2,14 @@ import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 
+
 @Component({
   selector: 'app-security',
   templateUrl: './security.component.html',
   styleUrls: ['./security.component.css']
 })
 export class SecurityComponent {
-   userName = '';
+  userName = '';
   password = '';
   redirectUrl = '';
 

@@ -1,23 +1,18 @@
-<div class="container">
-  <div class="row">
-    <div class="section">
-      <h3>Employee Management</h3>
-      <div class="links">
-        <a routerLink="/admin-dashboard/add-employee" class="btn btn-primary">Add Employee</a>
-        <a routerLink="/admin-dashboard/get-all-employee" class="btn btn-success">Get Employee</a>
-      </div>
-    </div>
-    
-   
+<div class="admin-page d-flex">
+  <!-- Sidebar -->
+  <nav class="sidebar">
+    <h2 class="logo">Admin</h2>
+    <ul class="nav-links">
+      <li><a routerLink="/admin-dashboard" routerLinkActive="active">Dashboard</a></li>
+      <li><a routerLink="/admin-dashboard/employees" routerLinkActive="active">Employees</a></li>
+      <li><a routerLink="/admin-dashboard/payroll" routerLinkActive="active">Payrolls</a></li>
+      <li><a routerLink="/admin-dashboard/users" routerLinkActive="active">Users</a></li>
+    </ul>
+  </nav>
 
-    <div class="section">
-      <h3>Payroll Management</h3>
-      <div class="links">
-        <a routerLink="/admin-dashboard/add-payroll" class="btn btn-primary">Add Payroll Policy</a>
-        <a routerLink="/admin-dashboard/get-payroll" class="btn btn-success">Get Payroll Policy</a>
-      </div>
-    </div>
+<div class="main-content p-4">
+  <div *ngIf="showWelcome" class="welcome-message mb-4">
+    <h3>Hi! {{ username }}</h3>
   </div>
+  <router-outlet></router-outlet>
 </div>
-
-<router-outlet></router-outlet>

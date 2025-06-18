@@ -1,7 +1,16 @@
+/* Container and Page Title */
 .container {
   margin-top: 20px;
 }
 
+h1 {
+  text-align: center;
+  margin-bottom: 25px;
+  font-weight: bold;
+  color: #2c3e50;
+}
+
+/* Button Group */
 .button-group {
   display: flex;
   gap: 10px;
@@ -9,6 +18,7 @@
   flex-wrap: wrap;
 }
 
+/* Search Form */
 .search-form {
   flex-grow: 1;
   display: flex;
@@ -18,13 +28,61 @@
   flex-grow: 1;
 }
 
+/* Table Layout */
 .table {
   margin-top: 10px;
 }
 
-h1 {
-  text-align: center;
-  margin-bottom: 25px;
-  font-weight: bold;
-  color: #2c3e50;
+/* Alternate Row Coloring */
+.custom-employee-table tbody tr:nth-child(even) {
+  background-color: #e6f2ff;
+}
+.custom-employee-table tbody tr:nth-child(odd) {
+  background-color: #fdfdff;
+}
+
+/* Table Headers */
+.table-header {
+  background-color: #007acc;
+  color: white;
+}
+
+/* Table Text Alignment */
+.table td,
+.table th {
+  text-align: justify;
+  vertical-align: middle;
+}
+
+/* Action Buttons */
+.btn-view {
+  background-color: #17a2b8;
+  color: white;
+}
+.btn-view:hover {
+  background-color: #138496;
+  color: white;
+}
+
+.btn-update {
+  background-color: #ffc107;
+  color: black;
+}
+.btn-update:hover {
+  background-color: #e0a800;
+  color: black;
+}
+
+.btn-delete {
+  background-color: #dc3545;
+  color: white;
+}
+.btn-delete:hover {
+  background-color: #c82333;
+  color: white;
+}
+
+/* Ensure spacing between action buttons */
+.d-flex.gap-3 > .btn {
+  min-width: 70px;
 }

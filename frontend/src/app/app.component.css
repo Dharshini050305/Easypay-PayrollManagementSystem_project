@@ -11,7 +11,7 @@ body {
 }
 
 .logo-img {
-    max-width: 200px;
+    max-width: 100px;
     height: auto;
     border-radius: 10px;
 }
@@ -49,4 +49,14 @@ h1 {
     font-family: 'Arial Black', sans-serif;
     letter-spacing: 2px;
     text-transform: uppercase;
+}
+.page-wrapper {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+/* This makes content area stretch and push footer to bottom */
+.flex-fill {
+  flex: 1;
 }

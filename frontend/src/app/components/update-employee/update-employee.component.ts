@@ -39,16 +39,11 @@ export class UpdateEmployeeComponent implements OnInit {
     this.service.updateEmployee(this.employee.employeeId, this.employee).subscribe(
       () => {
         console.log('Employee updated successfully');
-        alert('Employee updated successfully!');
-      },
-      (error) => {
-        console.error('Error updating employee:', error);
-        alert('Failed to update employee. Please try again.');
+        alert('Employee not updated successfully!');
       }
-    );
-  } else {
-    alert('Employee data is incomplete or invalid.');
-  }
-}
+      
+    )
 
+}
+  }
 }

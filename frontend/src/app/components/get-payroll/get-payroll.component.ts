@@ -52,10 +52,7 @@ export class GetPayrollComponent {
         this.payrollList = this.payrollList.filter(p => p.payrollId !== payrollId);
         console.log(`Payroll with ID ${payrollId} deleted successfully.`);
       },
-      (error) => {
-        console.error('Error deleting payroll:', error);
-        alert('Failed to delete payroll. Please try again.');
-      }
+      
     );
   }
   

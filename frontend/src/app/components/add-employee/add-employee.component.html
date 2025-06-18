@@ -1,74 +1,87 @@
-<h1>Add Employee Details Here</h1>
+<div class="add-employee-container d-flex flex-column align-items-center justify-content-center min-vh-100">
 
-<form class="container col-md-6" #employeeForm="ngForm" (ngSubmit)="submitEmployee(employeeForm.value)">
+  <!-- Back Button -->
+  <div class="w-100 d-flex justify-content-start mb-3 ps-5">
+    <button class="back-btn btn btn-light" routerLink="/admin-dashboard/employees">← Back</button>
+  </div>
 
-  <!-- Name -->
-  <div class="form-group">
-    <label>Enter Employee Name:</label>
-    <input type="text" class="form-control" name="employeeName" ngModel required placeholder="Enter Employee Name">
-  </div><br>
+  <!-- Title -->
+  <h2 class="text-primary fw-bold mb-4 text-center">Add Employee Details</h2>
 
-  <!-- Email -->
-  <div class="form-group">
-    <label>Enter Email:</label>
-    <input type="email" class="form-control" name="email" ngModel required placeholder="Enter Email">
-  </div><br>
+  <!-- Form -->
+  <form #employeeForm="ngForm"
+        (ngSubmit)="submitEmployee(employeeForm.value)"
+        class="employee-form shadow p-4 bg-white rounded">
 
-  <!-- Position -->
-  <div class="form-group">
-    <label>Enter Position:</label>
-    <input type="text" class="form-control" name="position" ngModel required placeholder="Enter Position">
-  </div><br>
+    <div class="row g-4">
+      <div class="col-md-6">
+        <label class="form-label">Employee Name</label>
+        <input type="text" class="form-control" name="employeeName" ngModel #employeeName="ngModel" required>
+        <div *ngIf="employeeName.invalid && employeeName.touched" class="error-msg">Name is required</div>
+      </div>
 
-  <!-- Salary -->
-  <div class="form-group">
-    <label>Enter Salary:</label>
-    <input type="number" class="form-control" name="employeeSalary" ngModel required placeholder="Enter Salary">
-  </div><br>
+      <div class="col-md-6">
+        <label class="form-label">Email</label>
+        <input type="email" class="form-control" name="email" ngModel #email="ngModel" required>
+        <div *ngIf="email.invalid && email.touched" class="error-msg">Valid email is required</div>
+      </div>
 
-  <!-- Join Date -->
-  <div class="form-group">
-    <label>Enter Joining Date:</label>
-    <input type="date" class="form-control" name="joinDate" ngModel required>
-  </div><br>
+      <div class="col-md-6">
+        <label class="form-label">Position</label>
+        <input type="text" class="form-control" name="position" ngModel #position="ngModel" required>
+        <div *ngIf="position.invalid && position.touched" class="error-msg">Position is required</div>
+      </div>
 
-  <!-- User ID -->
-  <div class="form-group">
-    <label>Enter User ID:</label>
-    <input type="number" class="form-control" name="userId" ngModel>
-  </div><br>
+      <div class="col-md-6">
+        <label class="form-label">Salary</label>
+        <input type="number" class="form-control" name="employeeSalary" ngModel #employeeSalary="ngModel" required>
+        <div *ngIf="employeeSalary.invalid && employeeSalary.touched" class="error-msg">Salary is required</div>
+      </div>
 
-  <!-- Deduction ID -->
-  <div class="form-group">
-    <label>Enter Deduction ID:</label>
-    <input type="number" class="form-control" name="deductionId" ngModel>
-  </div><br>
+      <div class="col-md-6">
+        <label class="form-label">Joining Date</label>
+        <input type="date" class="form-control" name="joinDate" ngModel #joinDate="ngModel" required>
+        <div *ngIf="joinDate.invalid && joinDate.touched" class="error-msg">Joining date is required</div>
+      </div>
 
-  <!-- Benefit ID -->
-  <div class="form-group">
-    <label>Enter Benefit ID:</label>
-    <input type="number" class="form-control" name="benefitId" ngModel>
-  </div><br>
+      <div class="col-md-6">
+        <label class="form-label">User ID</label>
+        <input type="number" class="form-control" name="userId" ngModel>
+      </div>
 
-  <!-- Role -->
-  <div class="form-group">
-    <label>Select Role:</label>
-    <select class="form-control" name="role" ngModel required>
-      <option value="" disabled selected>Select a role</option>
-      <option value="ADMIN">ADMIN</option>
-      <option value="MANAGER">MANAGER</option>
-      <option value="EMPLOYEE">EMPLOYEE</option>
-      <option value="PAYROLL_PROCESSOR">PAYROLL_PROCESSOR</option>
-    </select>
-  </div><br>
+      <div class="col-md-6">
+        <label class="form-label">Deduction ID</label>
+        <input type="number" class="form-control" name="deductionId" ngModel>
+      </div>
 
-  <!-- Manager ID -->
-  <div class="form-group">
-    <label>Enter Manager ID:</label>
-    <input type="number" class="form-control" name="managerId" ngModel>
-  </div><br>
+      <div class="col-md-6">
+        <label class="form-label">Benefit ID</label>
+        <input type="number" class="form-control" name="benefitId" ngModel>
+      </div>
 
-  <!-- Submit Button -->
-  <button type="submit" class="btn btn-success" [disabled]="employeeForm.invalid">Submit</button>
+      <div class="col-md-6">
+        <label class="form-label">Select Role</label>
+        <select class="form-select" name="role" ngModel #role="ngModel" required>
+          <option value="" disabled selected>Select a role</option>
+          <option value="ADMIN">ADMIN</option>
+          <option value="MANAGER">MANAGER</option>
+          <option value="EMPLOYEE">EMPLOYEE</option>
+          <option value="PAYROLL_PROCESSOR">PAYROLL_PROCESSOR</option>
+        </select>
+        <div *ngIf="role.invalid && role.touched" class="error-msg">Role is required</div>
+      </div>
 
-</form>
+      <div class="col-md-6">
+        <label class="form-label">Manager ID</label>
+        <input type="number" class="form-control" name="managerId" ngModel>
+      </div>
+    </div>
+
+   <div class="submit-btn-wrapper">
+  <button type="submit" class="btn btn-success submit-btn" [disabled]="employeeForm.invalid">
+    Submit
+  </button>
+</div>
+
+  </form>
+</div>

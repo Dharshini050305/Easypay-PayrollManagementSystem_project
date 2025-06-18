@@ -1,19 +1,18 @@
-<div class="container">
-    <div class="row">
-      <div class="section">
-        <h3>Team Payroll Management</h3>
-        <div class="links">
-          <a routerLink="/manager-dashboard/viewteampayrolls" class="btn">View Team Payrolls</a>
-        </div>
-      </div>
-      
-      <div class="section">
-        <h3>Leave Management</h3>
-        <div class="links">
-          <a routerLink="/manager-dashboard/updateleaverequest" class="btn">Update Leave Request</a>
-        </div>
-      </div>
-    </div>
+<div class="manager-page d-flex">
+  <!-- Sidebar -->
+  <nav class="sidebar">
+    <h2 class="logo">Admin</h2>
+    <ul class="nav-links">
+      <li><a routerLink="/manager-dashboard" routerLinkActive="active">Dashboard</a></li>
+      <li><a routerLink="/manager-dashboard/employees" routerLinkActive="active">Leave Approval</a></li>
+      <li><a routerLink="/manager-dashboard/payroll" routerLinkActive="active">view Leaves</a></li>
+      <li><a routerLink="/manager-dashboard/users" routerLinkActive="active">Review Payrolls</a></li>
+    </ul>
+  </nav>
+
+<div class="main-content p-4">
+  <div *ngIf="showWelcome" class="welcome-message mb-4">
+    <h3>Hi! {{ username }}</h3>
   </div>
-  
   <router-outlet></router-outlet>
+</div>

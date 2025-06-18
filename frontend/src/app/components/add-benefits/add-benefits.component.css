@@ -1,0 +1,37 @@
+.add-benefit-container {
+  padding: 20px;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.back-btn {
+  font-size: 14px;
+  padding: 4px 12px;
+  border-radius: 6px;
+  color: black;
+  background-color: white;
+  border: 1px solid #ccc;
+  transition: 0.3s ease;
+}
+
+.back-btn:hover {
+  background-color: #e2e8f0;
+  border-color: #aaa;
+  color: black;
+}
+
+.benefit-form {
+  background-color: #fff;
+  border-radius: 8px;
+}
+
+.submit-btn-wrapper {
+  margin-top: 20px;
+}
+
+.error-msg {
+  color: red;
+  font-size: 13px;
+  margin-top: 4px;
+}

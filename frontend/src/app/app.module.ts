@@ -31,6 +31,17 @@ import { GetPaystubsComponent } from './components/get-paystubs/get-paystubs.com
 import { SubmitattendanceComponent } from './components/submitattendance/submitattendance.component';
 import { RequestleaveComponent } from './components/requestleave/requestleave.component';
 import { UpdateempdetailsComponent } from './components/updateempdetails/updateempdetails.component';
+import { HeaderComponent } from './components/header/header.component';
+import { FooterComponent } from './components/footer/footer.component';
+import { AboutComponent } from './components/about/about.component';
+import { ContactComponent } from './components/contact/contact.component';
+import { HomeComponent } from './components/home/home.component';
+import { EmployeesComponent } from './components/employees/employees.component';
+import { ViewEmployeeComponent } from './components/view-employee/view-employee.component';
+import { DeductionsComponent } from './components/deductions/deductions.component';
+import { BenefitsComponent } from './components/benefits/benefits.component';
+import { PayrollComponent } from './components/payroll/payroll.component';
+import { EmployeeDetailsComponent } from './components/employee-details/employee-details.component';
 
 
 @NgModule({
@@ -60,7 +71,18 @@ import { UpdateempdetailsComponent } from './components/updateempdetails/updatee
     GetPaystubsComponent,
     SubmitattendanceComponent,
     RequestleaveComponent,
-    UpdateempdetailsComponent
+    UpdateempdetailsComponent,
+    HeaderComponent,
+    FooterComponent,
+    AboutComponent,
+    ContactComponent,
+    HomeComponent,
+    EmployeesComponent,
+    ViewEmployeeComponent,
+    DeductionsComponent,
+    BenefitsComponent,
+    PayrollComponent,
+    EmployeeDetailsComponent
   ],
   imports: [
     BrowserModule,

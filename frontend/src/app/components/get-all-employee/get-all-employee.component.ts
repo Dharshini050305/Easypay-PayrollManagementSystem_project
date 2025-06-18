@@ -30,8 +30,7 @@ export class GetAllEmployeeComponent {
   }
 
 
-
-  getEmployeeById(employeeId: number) {
+ getEmployeeById(employeeId: number) {
     this.service.getEmployeeById(employeeId).subscribe(
       (employee) => {
         this.selectedEmployee = employee;
@@ -48,6 +47,8 @@ export class GetAllEmployeeComponent {
       }
     );
   }
+
+  
 
 
   deleteEmployee(employeeId: number){

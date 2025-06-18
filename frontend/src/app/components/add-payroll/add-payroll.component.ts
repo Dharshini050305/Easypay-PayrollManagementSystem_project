@@ -8,7 +8,7 @@ import { AdminService } from 'src/app/service/admin.service';
   styleUrls: ['./add-payroll.component.css']
 })
 export class AddPayrollComponent {
-   constructor(private adminService: AdminService) {}
+  constructor(private adminService: AdminService) {}
 
   submitPayroll(formValue: any): void {
     const payrollPayload: Payroll = {
@@ -17,23 +17,31 @@ export class AddPayrollComponent {
       grossPay: Number(formValue.grossPay),
       netPay: Number(formValue.netPay),
       payrollDate: new Date(formValue.payrollDate),
-      employee: {
-        employeeId: Number(formValue.employeeId)
-      }
+      
+        employeeId: Number(formValue.employeeId),
+      
     };
 
     this.adminService.submitPayroll(payrollPayload).subscribe({
-      next: (response: Payroll) => {
+      next: (response) => {
         console.log('Payroll added successfully:', response);
         alert('Payroll added successfully!');
       },
-      error: (error: any) => {
+      error: (error) => {
         console.error('Error adding payroll:', error);
         alert('Failed to add payroll.');
       }
     });
   }
 }
+
+
+
+
+
+
+
+
 
 
 

@@ -1,21 +1,19 @@
-<div class="container">
-    <div class="row">
-      
-      <div class="section">
-        <h3>Payroll</h3>
-        <div class="links">
-          <a routerLink="/employee-dashboard/getpaystubs" class="btn">View PayStubs</a>
-        </div>
-      </div>
-  
-      <div class="section">
-        <h3>Attendance & Leave</h3>
-        <div class="links">
-          <a routerLink="/employee-dashboard/submitattendance" class="btn">Submit Attendance</a>
-          <a routerLink="/employee-dashboard/requestleave" class="btn">Request Leave</a>
-        </div>
-      </div>
-    </div>
+<div class="employee-page d-flex">
+  <!-- Sidebar -->
+  <nav class="sidebar">
+    <h2 class="logo">Employee</h2>
+    <ul class="nav-links">
+      <li><a routerLink="/employee-dashboard" routerLinkActive="active">Dashboard</a></li>
+  <li><a routerLink="/employee-dashboard/updateempdetails" routerLinkActive="active">UpdateDetails</a></li>
+      <li><a routerLink="/employee-dashboard/view-paystubs" routerLinkActive="active">Paystub</a></li>
+      <li><a routerLink="/employee-dashboard/attendance" routerLinkActive="active">Submit Attendance</a></li>
+    </ul>
+  </nav>
+
+
+<div class="main-content p-4">
+  <div *ngIf="showWelcome" class="welcome-message mb-4">
+    <h3>Hi! {{ username }}</h3>
   </div>
-  
   <router-outlet></router-outlet>
+</div>

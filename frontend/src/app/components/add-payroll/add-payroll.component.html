@@ -1,37 +1,62 @@
-<h1>Add Payroll Details</h1>
+<div class="add-payroll-container d-flex flex-column align-items-center justify-content-center min-vh-100">
 
-<form class="container col-md-6" #payrollForm="ngForm" (ngSubmit)="submitPayroll(payrollForm.value)">
+  <!-- Back Button -->
+  <div class="w-100 d-flex justify-content-start mb-3 ps-5">
+    <button class="back-btn btn btn-light" routerLink="/admin-dashboard/payroll">← Back</button>
+  </div>
 
-  <div class="form-group">
-    <label>Enter Benefits:</label>
-    <input type="number" class="form-control" name="benefits" ngModel required placeholder="Enter Benefits">
-  </div><br>
+  <!-- Title -->
+  <h2 class="text-primary fw-bold mb-4 text-center">Add Payroll Details</h2>
 
-  <div class="form-group">
-    <label>Enter Deductions:</label>
-    <input type="number" class="form-control" name="deductions" ngModel required placeholder="Enter Deductions">
-  </div><br>
+  <!-- Form -->
+  <form #payrollForm="ngForm"
+        (ngSubmit)="submitPayroll(payrollForm.value)"
+        class="payroll-form shadow p-4 bg-white rounded col-md-6">
 
-  <div class="form-group">
-    <label>Enter Gross Pay:</label>
-    <input type="number" class="form-control" name="grossPay" ngModel required placeholder="Enter Gross Pay">
-  </div><br>
+    <div class="row g-4">
 
-  <div class="form-group">
-    <label>Enter Net Pay:</label>
-    <input type="number" class="form-control" name="netPay" ngModel required placeholder="Enter Net Pay">
-  </div><br>
+      <div class="col-md-6">
+        <label class="form-label">Benefits</label>
+        <input type="number" class="form-control" name="benefits" ngModel #benefits="ngModel" required placeholder="Enter Benefits">
+        <div *ngIf="benefits.invalid && benefits.touched" class="error-msg">Benefits are required</div>
+      </div>
 
-  <div class="form-group">
-    <label>Select Payroll Date:</label>
-    <input type="date" class="form-control" name="payrollDate" ngModel required>
-  </div><br>
+      <div class="col-md-6">
+        <label class="form-label">Deductions</label>
+        <input type="number" class="form-control" name="deductions" ngModel #deductions="ngModel" required placeholder="Enter Deductions">
+        <div *ngIf="deductions.invalid && deductions.touched" class="error-msg">Deductions are required</div>
+      </div>
 
-  <div class="form-group">
-    <label>Enter Employee ID:</label>
-    <input type="number" class="form-control" name="employeeId" ngModel required placeholder="Enter Employee ID">
-  </div><br>
+      <div class="col-md-6">
+        <label class="form-label">Gross Pay</label>
+        <input type="number" class="form-control" name="grossPay" ngModel #grossPay="ngModel" required placeholder="Enter Gross Pay">
+        <div *ngIf="grossPay.invalid && grossPay.touched" class="error-msg">Gross pay is required</div>
+      </div>
 
-  <button type="submit" class="btn btn-primary" [disabled]="payrollForm.invalid">Submit Payroll</button>
+      <div class="col-md-6">
+        <label class="form-label">Net Pay</label>
+        <input type="number" class="form-control" name="netPay" ngModel #netPay="ngModel" required placeholder="Enter Net Pay">
+        <div *ngIf="netPay.invalid && netPay.touched" class="error-msg">Net pay is required</div>
+      </div>
 
-</form>
+      <div class="col-md-6">
+        <label class="form-label">Payroll Date</label>
+        <input type="date" class="form-control" name="payrollDate" ngModel #payrollDate="ngModel" required>
+        <div *ngIf="payrollDate.invalid && payrollDate.touched" class="error-msg">Payroll date is required</div>
+      </div>
+
+      <div class="col-md-6">
+        <label class="form-label">Employee ID</label>
+        <input type="number" class="form-control" name="employeeId" ngModel #employeeId="ngModel" required placeholder="Enter Employee ID">
+        <div *ngIf="employeeId.invalid && employeeId.touched" class="error-msg">Employee ID is required</div>
+      </div>
+
+    </div>
+
+    <!-- Submit Button -->
+    <div class="submit-btn-wrapper text-center mt-4">
+      <button type="submit" class="btn btn-success submit-btn" [disabled]="payrollForm.invalid">Submit Payroll</button>
+    </div>
+
+  </form>
+</div>

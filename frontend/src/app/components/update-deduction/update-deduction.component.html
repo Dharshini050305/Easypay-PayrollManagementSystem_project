@@ -1,7 +1,8 @@
-<h1>Update Deduction</h1>
+<button class="btn btn-secondary" routerLink="/payroll-processor-dashboard/get-deduction">
+  <i class="bi bi-arrow-left"></i> Back
+</button>
 
 <div *ngIf="deduction" class="mt-4">
-  <h2 class="mb-4">Edit Deduction</h2>
   <form (ngSubmit)="updateDeduction()" #deductionForm="ngForm" class="w-50 mx-auto">
 
     <!-- Deduction ID -->
