@@ -1,0 +1,38 @@
+<div class="container mt-4">
+  <h3 class="text-center mb-4">📋 Leave Status Checker</h3>
+
+  <div class="mb-3">
+    <label for="employeeId">Enter Employee ID:</label>
+    <input type="number" id="employeeId" [(ngModel)]="employeeId" class="form-control" placeholder="e.g. 101">
+  </div>
+
+  <button (click)="fetchLeaveStatus()" class="btn btn-primary">Check Leave Status</button>
+
+  <div class="mt-3" *ngIf="message" class="alert alert-info">
+    {{ message }}
+  </div>
+
+  <table *ngIf="leaveRequests.length" class="table table-bordered table-striped mt-4">
+    <thead class="table-dark">
+      <tr>
+        <th>Leave ID</th>
+        <th>Start Date</th>
+        <th>End Date</th>
+        <th>Type</th>
+        <th>Status</th>
+        <th>Manager ID</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let leave of leaveRequests">
+        <td>{{ leave.leaveId }}</td>
+        <td>{{ leave.startDate }}</td>
+        <td>{{ leave.endDate }}</td>
+        <td>{{ leave.leaveType }}</td>
+        <td>{{ leave.leaveStatus }}</td>
+        <td>{{ leave.managerId || 'N/A' }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+

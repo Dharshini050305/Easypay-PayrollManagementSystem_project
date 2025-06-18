@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { LeaveDto } from 'src/app/model/LeaveDto';
+import { NgForm } from '@angular/forms';
+import { LeaveRequest } from 'src/app/model/LeaveRequest';
 import { EmployeeService } from 'src/app/service/employee.service';
 
 @Component({
@@ -8,36 +9,28 @@ import { EmployeeService } from 'src/app/service/employee.service';
   styleUrls: ['./requestleave.component.css']
 })
 export class RequestleaveComponent {
-    leavesdata: LeaveDto={
-    employeeId:0,
+    leavesdata: LeaveRequest = {
+    employeeId: 0,
     startDate: new Date(),
-    endDate:new Date(),
+    endDate: new Date(),
     leaveType: '',
-     managerID:{
-        managerId :0
-    }
-    
+    managerId: 0,
+    leaveStatus: 'PENDING'
+  };
 
-  }
+  constructor(private leaveService: EmployeeService) {}
 
-  constructor(private employeeService: EmployeeService ) {
-  
-  }
-
-  onSubmit(): void {
-    
-
-    console.log("Request Payload: " , this.leavesdata);
-      this.employeeService['LeaveDto'](this.leavesdata).subscribe({
-        next: (response: any) => {
-          alert("Leave Request Submission Succesfull");
-          console.log(response);
+  onSubmit(form: NgForm) {
+    if (form.valid) {
+      this.leaveService.requestLeave(this.leavesdata).subscribe({
+        next: (response) => {
+          alert('Leave requested successfully!');
+          form.resetForm();
         },
-        error: (error: any) => {
-          alert("Leave Request Submission Unsuccesfull");
-          console.log(error);
+        error: (error) => {
+          alert('Error requesting leave: ' + error.message);
         }
       });
     }
-
+  }
 }

@@ -42,6 +42,13 @@ import { DeductionsComponent } from './components/deductions/deductions.componen
 import { BenefitsComponent } from './components/benefits/benefits.component';
 import { PayrollComponent } from './components/payroll/payroll.component';
 import { EmployeeDetailsComponent } from './components/employee-details/employee-details.component';
+import { PaymentProcessingComponent } from './components/payment-processing/payment-processing.component';
+import { CalculatePayrollComponent } from './components/calculate-payroll/calculate-payroll.component';
+import { LeaveApprovalComponent } from './components/leave-approval/leave-approval.component';
+import { LeaveStatusComponent } from './components/leave-status/leave-status.component';
+import { ManagerLeavesComponent } from './components/manager-leaves/manager-leaves.component';
+
+
 
 
 @NgModule({
@@ -82,7 +89,14 @@ import { EmployeeDetailsComponent } from './components/employee-details/employee
     DeductionsComponent,
     BenefitsComponent,
     PayrollComponent,
-    EmployeeDetailsComponent
+    EmployeeDetailsComponent,
+    PaymentProcessingComponent,
+    CalculatePayrollComponent,
+    LeaveApprovalComponent,
+    LeaveStatusComponent,
+    ManagerLeavesComponent,
+  
+  
   ],
   imports: [
     BrowserModule,

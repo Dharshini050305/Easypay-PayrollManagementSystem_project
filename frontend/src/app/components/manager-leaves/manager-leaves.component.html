@@ -1,0 +1,36 @@
+<div class="container mt-4">
+  <h3 class="text-center">Leaves Managed by Manager</h3>
+
+  <div class="form-group mb-3">
+    <label for="managerId">Manager ID:</label>
+    <input type="number" id="managerId" [(ngModel)]="managerId" class="form-control" placeholder="Enter Manager ID">
+  </div>
+
+  <button (click)="getLeaves()" class="btn btn-primary">Get Leaves</button>
+
+  <div *ngIf="message" class="alert alert-info mt-3">{{ message }}</div>
+
+  <table *ngIf="leaveList.length" class="table table-bordered mt-4">
+    <thead class="table-dark">
+      <tr>
+        <th>Leave ID</th>
+        <th>Employee ID</th>
+        <th>Start Date</th>
+        <th>End Date</th>
+        <th>Type</th>
+        <th>Status</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let leave of leaveList">
+        <td>{{ leave.leaveId }}</td>
+        <td>{{ leave.employeeId }}</td>
+        <td>{{ leave.startDate }}</td>
+        <td>{{ leave.endDate }}</td>
+        <td>{{ leave.leaveType }}</td>
+        <td>{{ leave.leaveStatus }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+

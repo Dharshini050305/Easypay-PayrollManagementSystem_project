@@ -41,7 +41,7 @@
           <th scope="col">Payroll Date</th>
           <th scope="col">Gross Pay</th>
           <th scope="col">Net Pay</th>
-          <th scope="col">Actions</th>
+        
         </tr>
       </thead>
       <tbody>
@@ -50,14 +50,7 @@
           <td>{{ formatDate(paystub.payrollDate) }}</td>
           <td>{{ formatCurrency(paystub.grossPay) }}</td>
           <td>{{ formatCurrency(paystub.netPay) }}</td>
-          <td>
-            <button
-              class="btn btn-info"
-              (click)="viewPaystubDetails(paystub)"
-            >
-              View Details
-            </button>
-          </td>
+          
         </tr>
       </tbody>
     </table>

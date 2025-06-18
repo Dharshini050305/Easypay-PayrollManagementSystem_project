@@ -1,6 +1,6 @@
 <div class="container mt-4">
   <h2>Request Leave</h2>
-  <form #leaveForm="ngForm" (ngSubmit)="onSubmit()" novalidate>
+ <form #leaveForm="ngForm" (ngSubmit)="onSubmit(leaveForm)" novalidate>
     
     <!-- Employee ID -->
     <div class="form-group">
@@ -74,7 +74,6 @@
       </div>
     </div>
 
-
     <!-- Manager ID -->
     <div class="form-group">
       <label for="managerId">Manager ID</label>
@@ -83,7 +82,7 @@
         id="managerId"
         name="managerId"
         class="form-control"
-        [(ngModel)]="leavesdata.managerID.managerId"
+        [(ngModel)]="leavesdata.managerId"
         required
         #managerId="ngModel"
       />

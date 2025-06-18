@@ -29,28 +29,37 @@ export class PayrollProcessorService {
       'Content-Type': 'application/json',
     });
   }
-  //-------------------------------------Payroll Calculations--------------------------------
- processPayments(employeeId: number, payrollDate: string): Observable<Payroll> {
-  const token = localStorage.getItem('authToken');  // Replace with your token key
+//calulate payroll
+  calculatePayroll(employeeId: number, payrollDate: string): Observable<Payroll> {
+  const token = localStorage.getItem('authToken');
 
   const headers = new HttpHeaders({
     'Content-Type': 'application/json',
     'Authorization': `Bearer ${token}`
   });
 
-  return this.http.post<Payroll>(
+  return this.http.get<Payroll>(
     `${this.baseURL}calculate/${employeeId}/${payrollDate}`,
-    {},  
     { headers }
+  );
+}
+  processPayments(employeeId: number, payrollDate: string): Observable<{ message: string; grossPay: number }> {
+  const token = localStorage.getItem('authToken');
+
+  const headers = new HttpHeaders({
+    'Content-Type': 'application/json',
+    'Authorization': `Bearer ${token}`
+  });
+
+  return this.http.post<{ message: string; grossPay: number }>(
+    `${this.baseURL}payment/process/${employeeId}/${payrollDate}`,
+    {},
+    { headers } 
   );
 }
 
 
 
-  //--------------------------------------Payroll Verification--------------------------------
-  verifyPayrollData(payroll: Payroll): Observable<boolean> {
-    return this.http.post<boolean>(`${this.baseURL}/verify`, payroll);
-  }
 // ---------------------------------------Benefits  service-----------------------------------
 
 submitBenefit(benefits: Benefits): Observable<Benefits> {

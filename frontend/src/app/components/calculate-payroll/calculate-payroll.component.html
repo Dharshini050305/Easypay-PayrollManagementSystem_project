@@ -1,0 +1,58 @@
+
+<div class="container mt-4">
+  <h2>Calculate Payroll</h2>
+
+  <form (ngSubmit)="onCalculate()" #payrollForm="ngForm" novalidate>
+    <div class="mb-3">
+      <label for="employeeId" class="form-label">Employee ID:</label>
+      <input
+        type="number"
+        id="employeeId"
+        name="employeeId"
+        class="form-control"
+        [(ngModel)]="employeeId"
+        required
+        min="1"
+        #employeeIdInput="ngModel"
+      />
+      <div *ngIf="employeeIdInput.invalid && employeeIdInput.touched" class="text-danger">
+        Employee ID is required and must be positive.
+      </div>
+    </div>
+
+    <div class="mb-3">
+      <label for="payrollDate" class="form-label">Payroll Date:</label>
+      <input
+        type="date"
+        id="payrollDate"
+        name="payrollDate"
+        class="form-control"
+        [(ngModel)]="payrollDate"
+        required
+        #payrollDateInput="ngModel"
+      />
+      <div *ngIf="payrollDateInput.invalid && payrollDateInput.touched" class="text-danger">
+        Payroll Date is required.
+      </div>
+    </div>
+
+    <button type="submit" class="btn btn-primary" [disabled]="payrollForm.invalid || isLoading">
+      {{ isLoading ? 'Calculating...' : 'Calculate Payroll' }}
+    </button>
+  </form>
+
+  <div *ngIf="errorMessage" class="alert alert-danger mt-3">
+    {{ errorMessage }}
+  </div>
+
+  <div *ngIf="payrollResult" class="mt-4">
+    <h3>Payroll Result:</h3>
+    <ul>
+      <li><strong>Gross Pay:</strong> {{ payrollResult.grossPay | currency }}</li>
+      <li><strong>Benefits:</strong> {{ payrollResult.benefits | currency }}</li>
+      <li><strong>Deductions:</strong> {{ payrollResult.deductions | currency }}</li>
+      <li><strong>Net Pay:</strong> {{ payrollResult.netPay | currency }}</li>
+      <li><strong>Payroll Date:</strong> {{ payrollResult.payrollDate | date }}</li>
+    </ul>
+  </div>
+</div>

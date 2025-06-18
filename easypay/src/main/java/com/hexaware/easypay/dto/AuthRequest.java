@@ -1,33 +1,27 @@
 package com.hexaware.easypay.dto;
 
+
+
 public class AuthRequest {
-	private String username;
+	private String userName;
 	private String password;
-
-	public AuthRequest() {
-		super();
+	public String getUserName() {
+		return userName;
 	}
-
-	public AuthRequest(String username, String password) {
-		super();
-		this.username = username;
-		this.password = password;
+	public void setUserName(String userName) {
+		this.userName = userName;
 	}
-
-	public String getUsername() {
-		return username;
-	}
-
-	public void setUsername(String username) {
-		this.username = username;
-	}
-
 	public String getPassword() {
 		return password;
 	}
-
 	public void setPassword(String password) {
 		this.password = password;
 	}
+	@Override
+	public String toString() {
+		return "AuthRequest [userName=" + userName + ", password=" + password + "]";
+	}
+	
+	
 
 }

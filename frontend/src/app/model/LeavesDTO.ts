@@ -4,7 +4,8 @@ export interface LeavesDTO{
     startDate:Date;
     endDate:Date;
     leaveType:string;
-    leaveStatus:string;
+    leaveStatus:'Pending' | 'Approved' | 'Rejected';
+    managerId: number;
   
 
 }

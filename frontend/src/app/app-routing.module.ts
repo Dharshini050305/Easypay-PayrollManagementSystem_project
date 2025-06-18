@@ -32,6 +32,14 @@ import { ViewEmployeeComponent } from './components/view-employee/view-employee.
 import { BenefitsComponent } from './components/benefits/benefits.component';
 import { DeductionsComponent } from './components/deductions/deductions.component';
 import { PayrollComponent } from './components/payroll/payroll.component';
+import { PaymentProcessingComponent } from './components/payment-processing/payment-processing.component';
+import { CalculatePayrollComponent } from './components/calculate-payroll/calculate-payroll.component';
+import { UpdateempdetailsComponent } from './components/updateempdetails/updateempdetails.component';
+import { LeaveApprovalComponent } from './components/leave-approval/leave-approval.component';
+import { LeaveStatusComponent } from './components/leave-status/leave-status.component';
+import { ManagerLeavesComponent } from './components/manager-leaves/manager-leaves.component';
+
+
 
 
 const routes: Routes = [
@@ -51,7 +59,6 @@ const routes: Routes = [
   { path: 'employees', component: EmployeesComponent },
     { path: 'add-employee', component: AddEmployeeComponent },
     { path: 'get-all-employee', component: GetAllEmployeeComponent },
-    { path: 'view-employee', component: ViewEmployeeComponent },
     { path: 'edit/:employeeId', component: UpdateEmployeeComponent },
   { path: 'payroll', component: PayrollComponent },
     { path: 'add-payroll', component: AddPayrollComponent },
@@ -61,7 +68,7 @@ const routes: Routes = [
 
 ]},
 {path: 'payroll-processor-dashboard', component: PayrollProcessorDashboardComponent, children:[
-  { path: 'benefits', component: BenefitsComponent },
+     { path: 'benefits', component: BenefitsComponent },
   { path: 'add-benefits', component: AddBenefitsComponent },
   { path: 'get-benefits', component: GetBenefitsComponent },
   { path: 'editben/:benefitId', component: UpdateBenefitsComponent},
@@ -69,22 +76,27 @@ const routes: Routes = [
   { path: 'add-deduction', component: AddDeductionComponent },
   { path: 'get-deduction', component: GetDeductionComponent },
   { path: 'editded/:deductionId', component: UpdateDeductionComponent},
-  { path: 'process-payment', component: ProcessPaymentComponent }
+    { path: 'payment-processing', component: PaymentProcessingComponent},
+  { path: 'process-payment', component: ProcessPaymentComponent },
+  { path: 'calculate-payroll', component: CalculatePayrollComponent },
 ]
 
 },
 { path: 'manager-dashboard', component: ManagerDashboardComponent, children:[
+   { path:'leave-approval',component: LeaveApprovalComponent},
   { path:'viewteampayrolls',component:ViewteampayrollsComponent },
   { path:'updateleaverequest',component:UpdateleaverequestComponent },
+    { path:'manager-leaves',component: ManagerLeavesComponent },
   
 ]
 },
 
 { path: 'employee-dashboard', component: EmployeeDashboardComponent, children:[
-  { path:'updateempdetails',component:UpdateEmployeeComponent },
-   { path:'getpaystubs',component:GetPaystubsComponent },
+  { path:'updateempdetails',component:UpdateempdetailsComponent },
+   { path:'get-paystubs',component:GetPaystubsComponent },
   { path:'submitattendance',component:SubmitattendanceComponent },
-  { path: 'requestleave',component:RequestleaveComponent}
+  { path: 'requestleave',component:RequestleaveComponent},
+  { path: 'leave-status',component:LeaveStatusComponent},
 ]
 
 
