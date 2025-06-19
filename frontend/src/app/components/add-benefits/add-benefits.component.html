@@ -16,20 +16,46 @@
     <!-- Benefit Name -->
     <div class="mb-3">
       <label class="form-label">Benefit Name</label>
-      <input type="text" class="form-control" name="benefitName" ngModel #benefitName="ngModel" required placeholder="Enter Benefit Name">
-      <div *ngIf="benefitName.invalid && benefitName.touched" class="error-msg">Benefit name is required</div>
+      <input
+        type="text"
+        class="form-control"
+        name="benefitName"
+        ngModel
+        #benefitName="ngModel"
+        required
+        placeholder="Enter Benefit Name"
+      >
+      <div *ngIf="benefitName.invalid && benefitName.touched" class="error-msg">
+        Benefit name is required
+      </div>
     </div>
 
     <!-- Benefit Amount -->
     <div class="mb-4">
       <label class="form-label">Benefit Amount</label>
-      <input type="number" class="form-control" name="benefitAmount" ngModel #benefitAmount="ngModel" required placeholder="Enter Benefit Amount">
-      <div *ngIf="benefitAmount.invalid && benefitAmount.touched" class="error-msg">Benefit amount is required</div>
+      <input
+        type="number"
+        class="form-control"
+        name="benefitAmount"
+        ngModel
+        #benefitAmount="ngModel"
+        required
+        placeholder="Enter Benefit Amount"
+      >
+      <div *ngIf="benefitAmount.invalid && benefitAmount.touched" class="error-msg">
+        Benefit amount is required
+      </div>
     </div>
 
     <!-- Submit Button -->
     <div class="submit-btn-wrapper text-center">
-      <button type="submit" class="btn btn-success submit-btn" [disabled]="benefitsForm.invalid">Submit</button>
+      <button
+        type="submit"
+        class="btn btn-success submit-btn"
+        [disabled]="benefitsForm.invalid"
+      >
+        Submit
+      </button>
     </div>
 
   </form>

@@ -1,89 +1,98 @@
-<div class="container mt-5">
-  <!-- Card for attendance form -->
-  <div class="card">
-    <div class="card-header">
-      <h4>Submit Attendance</h4>
+<!-- Back Button -->
+  <div class="w-100 d-flex justify-content-start mb-3 ps-5">
+    <button class="back-btn btn btn-light" routerLink="/employee-dashboard">← Back</button>
+  </div>
+<div class="container add-employee-container">
+  <div class="card shadow">
+    <div class="card-header bg-primary text-white">
+      <h4 class="mb-0">📝 Submit Attendance</h4>
     </div>
+
     <div class="card-body">
-      <form #attendanceForm="ngForm" (ngSubmit)="submitAttendance(attendance)" novalidate>
-        
-        <!-- Employee ID -->
-        <div class="mb-3">
-          <label for="employeeId" class="form-label">Employee ID</label>
-          <input 
-            type="number" 
-            id="employeeId" 
-            name="employeeId"
-            [(ngModel)]="attendance.employeeId" 
-            class="form-control"
-            [class.is-invalid]="employeeId.invalid && employeeId.touched"
-            required 
-            #employeeId="ngModel" 
-          />
-          <div *ngIf="employeeId.invalid && employeeId.touched" class="invalid-feedback">
-            Employee ID is required.
+      <form #attendanceForm="ngForm" (ngSubmit)="submitAttendance(attendance)" class="employee-form" novalidate>
+        <div class="row g-3 align-items-end">
+          <!-- Employee ID -->
+          <div class="col-md-3">
+            <label for="employeeId" class="form-label">Employee ID</label>
+            <input
+              type="number"
+              id="employeeId"
+              name="employeeId"
+              [(ngModel)]="attendance.employeeId"
+              class="form-control"
+              required
+              #employeeId="ngModel"
+              [class.is-invalid]="employeeId.invalid && employeeId.touched"
+            />
+            <div *ngIf="employeeId.invalid && employeeId.touched" class="error-msg">
+              Required.
+            </div>
+          </div>
+
+          <!-- Work Date -->
+          <div class="col-md-3">
+            <label for="workDate" class="form-label">Work Date</label>
+            <input
+              type="date"
+              id="workDate"
+              name="workDate"
+              [(ngModel)]="attendance.workDate"
+              class="form-control"
+              required
+              #workDate="ngModel"
+              [class.is-invalid]="workDate.invalid && workDate.touched"
+            />
+            <div *ngIf="workDate.invalid && workDate.touched" class="error-msg">
+              Required.
+            </div>
+          </div>
+
+          <!-- Hours Worked -->
+          <div class="col-md-3">
+            <label for="hoursWorked" class="form-label">Hours Worked</label>
+            <input
+              type="number"
+              id="hoursWorked"
+              name="hoursWorked"
+              [(ngModel)]="attendance.hoursWorked"
+              class="form-control"
+              min="0"
+              max="24"
+              required
+              #hoursWorked="ngModel"
+              [class.is-invalid]="hoursWorked.invalid && hoursWorked.touched"
+            />
+            <div *ngIf="hoursWorked.invalid && hoursWorked.touched" class="error-msg">
+              Required.
+            </div>
+          </div>
+
+          <!-- Status -->
+          <div class="col-md-3">
+            <label for="status" class="form-label">Status</label>
+            <input
+              type="text"
+              id="status"
+              name="status"
+              [(ngModel)]="attendance.status"
+              class="form-control"
+              placeholder="Present / Absent / Leave"
+              required
+              #status="ngModel"
+              [class.is-invalid]="status.invalid && status.touched"
+            />
+            <div *ngIf="status.invalid && status.touched" class="error-msg">
+              Required.
+            </div>
           </div>
         </div>
 
-        <!-- Work Date -->
-        <div class="mb-3">
-          <label for="workDate" class="form-label">Work Date</label>
-          <input 
-            type="date" 
-            id="workDate" 
-            name="workDate"
-            [(ngModel)]="attendance.workDate" 
-            class="form-control"
-            [class.is-invalid]="workDate.invalid && workDate.touched"
-            required 
-            #workDate="ngModel" 
-          />
-          <div *ngIf="workDate.invalid && workDate.touched" class="invalid-feedback">
-            Work date is required.
-          </div>
+        <!-- Submit Button -->
+        <div class="submit-btn-wrapper">
+          <button type="submit" class="btn btn-primary submit-btn" [disabled]="attendanceForm.invalid">
+            Submit
+          </button>
         </div>
-
-        <!-- Hours Worked -->
-        <div class="mb-3">
-          <label for="hoursWorked" class="form-label">Hours Worked</label>
-          <input 
-            type="number" 
-            id="hoursWorked" 
-            name="hoursWorked"
-            [(ngModel)]="attendance.hoursWorked" 
-            class="form-control"
-            [class.is-invalid]="hoursWorked.invalid && hoursWorked.touched"
-            required 
-            min="0" 
-            max="24" 
-            #hoursWorked="ngModel" 
-          />
-          <div *ngIf="hoursWorked.invalid && hoursWorked.touched" class="invalid-feedback">
-            Hours worked is required
-          </div>
-        </div>
-
-        <!-- Attendance Status -->
-        <div class="mb-3">
-          <label for="attendanceStatus" class="form-label">Attendance Status</label>
-          <input 
-            type="text" 
-            id="attendanceStatus" 
-            name="status"
-            [(ngModel)]="attendance.status" 
-            class="form-control"
-            [class.is-invalid]="status.invalid && status.touched"
-            required 
-            #status="ngModel" 
-          />
-          <div *ngIf="status.invalid && status.touched" class="invalid-feedback">
-           Required Present Absent or On Leave
-          </div>
-        
-        </div>
-        
-
-        <button type="submit" class="btn btn-primary" [disabled]="attendanceForm.invalid">Submit</button>
       </form>
     </div>
   </div>

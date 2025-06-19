@@ -1,5 +1,10 @@
 package com.hexaware.easypay.controller;
-
+/**
+ * REST controller for employee-related operations in the Payroll Management System.
+ * * 
+ * @author Dharshini
+ * @version 1.0
+ * */
 import java.util.List;
 
 
@@ -18,7 +23,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.hexaware.easypay.dto.AttendanceDTO;
-import com.hexaware.easypay.dto.EmployeeDTO;
 import com.hexaware.easypay.dto.LeaveRequestDTO;
 import com.hexaware.easypay.dto.PayrollDTO;
 import com.hexaware.easypay.entity.Attendance;
@@ -66,7 +70,7 @@ public class EmployeeController {
 
 	    LeaveRequest leaveRequest = service.requestLeave(employeeId, leaveRequestDTO);
 
-	    // Convert Entity to DTO for response
+	   
 	    LeaveRequestDTO responseDTO = new LeaveRequestDTO(
 	            leaveRequest.getLeaveId(),
 	            leaveRequest.getEmployee().getEmployeeId(),
@@ -80,6 +84,7 @@ public class EmployeeController {
 	    return new ResponseEntity<>(responseDTO, HttpStatus.CREATED);
 	}
 
+	//check leave status
 @GetMapping("/leave-status/{employeeId}")
 @PreAuthorize("hasAuthority('EMPLOYEE') or hasAuthority('MANAGER') or hasAuthority('HR')")
 public ResponseEntity<List<LeaveRequestDTO>> getLeaveStatusByEmployeeId(@PathVariable int employeeId) {

@@ -16,7 +16,8 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.web.authentication.WebAuthenticationDetailsSource;
 import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;
-import com.hexaware.easypay.security.UserDService;
+
+import com.hexaware.easypay.config.UserDService;
 import com.hexaware.easypay.service.JwtService;
 
 import jakarta.servlet.FilterChain;
@@ -61,7 +62,8 @@ public class JwtAuthFilter extends OncePerRequestFilter{
 	                System.out.println("Authenticated user: " + userDetails.getUsername());
 	                System.out.println("Authorities: " + userDetails.getAuthorities());
 	               
-	                Collection<? extends GrantedAuthority> authorities = userDetails.getAuthorities();
+	                @SuppressWarnings("unused")
+					Collection<? extends GrantedAuthority> authorities = userDetails.getAuthorities();
 	            
 	                //it actually creates a Spring Security Authentication object that represents a fully authenticated user.
 	                UsernamePasswordAuthenticationToken authToken =
@@ -80,13 +82,12 @@ public class JwtAuthFilter extends OncePerRequestFilter{
 	    
 	}
 	
-	//the JWT filter will not run for these request.
-	 @Override
-	    protected boolean shouldNotFilter(HttpServletRequest request) {
-	        String path = request.getServletPath();
-	        return path.startsWith("/api/users/**") ||
-	               path.startsWith("/swagger-ui") ||
-	               path.startsWith("/v3/api-docs") ||
-	               path.equals("/swagger-ui.html");
-	    }
+	@Override
+	protected boolean shouldNotFilter(HttpServletRequest request) {
+	    String path = request.getServletPath();
+	    return path.startsWith("/v3/api-docs")
+	            || path.startsWith("/swagger-ui")
+	            || path.equals("/swagger-ui.html")
+	            || path.startsWith("/users"); // or your actual public path
+	}
 }

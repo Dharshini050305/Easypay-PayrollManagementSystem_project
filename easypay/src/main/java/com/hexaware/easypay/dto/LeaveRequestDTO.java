@@ -4,8 +4,6 @@ import java.time.LocalDate;
 
 import jakarta.validation.constraints.Pattern;
 
-
-
 public class LeaveRequestDTO {
    private int leaveId;
    private int employeeId;

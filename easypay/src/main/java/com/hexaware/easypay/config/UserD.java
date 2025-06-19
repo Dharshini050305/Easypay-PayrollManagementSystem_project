@@ -1,5 +1,9 @@
-package com.hexaware.easypay.security;
-
+package com.hexaware.easypay.config;
+/**
+ * class that defines userdetails by implementing UserDetails
+ * @author dharshini
+ * @version 1.0
+ */
 import java.util.Collection;
 import java.util.List;
 
@@ -10,9 +14,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import com.hexaware.easypay.entity.User;
 
 public class UserD implements UserDetails{
-	/**
-	 * 
-	 */
+	
 	private static final long serialVersionUID = 1L;
 	private String name;
 	    private String password;

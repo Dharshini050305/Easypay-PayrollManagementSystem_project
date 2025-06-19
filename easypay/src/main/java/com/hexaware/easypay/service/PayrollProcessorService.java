@@ -1,5 +1,9 @@
 package com.hexaware.easypay.service;
-
+/**
+ * Service interface for managing Payroll-Processor operations in the Payroll Management System.
+ * @author Dharshini
+ * @version 1.0
+ */
 import java.time.LocalDate;
 import java.util.List;
 

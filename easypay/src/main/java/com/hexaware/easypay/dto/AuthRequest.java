@@ -8,6 +8,13 @@ public class AuthRequest {
 	public String getUserName() {
 		return userName;
 	}
+	
+	public AuthRequest(String userName, String password) {
+		super();
+		this.userName = userName;
+		this.password = password;
+	}
+
 	public void setUserName(String userName) {
 		this.userName = userName;
 	}
@@ -17,6 +24,7 @@ public class AuthRequest {
 	public void setPassword(String password) {
 		this.password = password;
 	}
+	
 	@Override
 	public String toString() {
 		return "AuthRequest [userName=" + userName + ", password=" + password + "]";

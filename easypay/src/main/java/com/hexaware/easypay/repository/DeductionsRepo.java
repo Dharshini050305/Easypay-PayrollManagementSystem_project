@@ -10,7 +10,7 @@ import com.hexaware.easypay.entity.Deductions;
 @Repository
 public interface DeductionsRepo extends JpaRepository<Deductions, Integer>{
 
-    // Custom query to find deduction amount by employee ID using subquery
+  
     @Query("SELECT d.deductionAmount FROM Deductions d WHERE d.deductionId = " +
            "(SELECT e.deduction.deductionId FROM Employee e WHERE e.employeeId = :employeeId)")
     Double findDeductionAmountByEmployeeId(@Param("employeeId") int employeeId);

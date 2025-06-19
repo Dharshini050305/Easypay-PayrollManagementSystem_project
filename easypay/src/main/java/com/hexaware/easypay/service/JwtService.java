@@ -1,5 +1,9 @@
 package com.hexaware.easypay.service;
-
+/**
+ * Service implementation for managing jwt operations in the Payroll Management System.
+ * @author Dharshini
+ * @version 1.0
+ */
 import java.security.Key;
 import java.util.Date;
 import java.util.HashMap;

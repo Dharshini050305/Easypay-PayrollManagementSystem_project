@@ -4,7 +4,12 @@
 .custom-payroll-table tbody tr:nth-child(odd) {
   background-color: #fdfdff; /* off-white */
 }
-
+h2 {
+  font-weight: 600;
+  color: #007acc; /* Your primary blue */
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
 /* Table headers */
 .table-header {
   background-color: #007acc;
@@ -18,7 +23,30 @@
   vertical-align: middle;
 }
 
-/* Button Colors and Spacing */
+
+.btn-update {
+  background-color: #ffc107;
+  color: black;
+}
+.btn-update:hover {
+  background-color: #e0a800;
+  color: black;
+}
+
+.btn-delete {
+  background-color: #dc3545;
+  color: white;
+}
+.btn-delete:hover {
+  background-color: #c82333;
+  color: white;
+}
+
+/* Ensure spacing between buttons */
+.d-flex.gap-3 > .btn {
+  min-width: 70px;
+}
+
 .btn-view {
   background-color: #17a2b8;
   color: white;
@@ -50,4 +78,3 @@
 .d-flex.gap-3 > .btn {
   min-width: 70px;
 }
-

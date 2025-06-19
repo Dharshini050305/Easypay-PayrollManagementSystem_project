@@ -1,5 +1,9 @@
 package com.hexaware.easypay.service;
-
+/**
+ * Service implementation for managing Employee operations in the Payroll Management System.
+ * @author Dharshini
+ * @version 1.0
+ */
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -7,7 +11,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.hexaware.easypay.dto.AttendanceDTO;
-import com.hexaware.easypay.dto.EmployeeDTO;
 import com.hexaware.easypay.dto.LeaveRequestDTO;
 import com.hexaware.easypay.dto.PayrollDTO;
 import com.hexaware.easypay.entity.Attendance;
@@ -16,8 +19,6 @@ import com.hexaware.easypay.entity.LeaveRequest;
 import com.hexaware.easypay.entity.Payroll;
 import com.hexaware.easypay.exception.EmployeeNotFoundException;
 import com.hexaware.easypay.repository.AttendanceRepo;
-import com.hexaware.easypay.repository.BenefitsRepo;
-import com.hexaware.easypay.repository.DeductionsRepo;
 import com.hexaware.easypay.repository.EmployeeRepo;
 import com.hexaware.easypay.repository.LeaveRequestRepo;
 import com.hexaware.easypay.repository.PayrollRepo;

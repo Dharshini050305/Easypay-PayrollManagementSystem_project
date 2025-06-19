@@ -1,8 +1,29 @@
+h2 {
+  font-weight: 600;
+  color: #007acc; /* Your primary blue */
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
 .add-benefit-container {
-  padding: 20px;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
+  background-color: #f0f4f8;
+  padding: 30px;
+}
+
+.benefit-form .form-control,
+.benefit-form .form-select {
+  height: 44px;
+  font-size: 16px;
+  width: 100%;
+}
+
+.benefit-form .form-label {
+  font-weight: 500;
+}
+
+.error-msg {
+  color: red;
+  font-size: 13px;
+  margin-top: 4px;
 }
 
 .back-btn {
@@ -21,17 +42,13 @@
   color: black;
 }
 
-.benefit-form {
-  background-color: #fff;
-  border-radius: 8px;
-}
-
 .submit-btn-wrapper {
-  margin-top: 20px;
+  text-align: center;
+  margin-top: 30px;
 }
 
-.error-msg {
-  color: red;
-  font-size: 13px;
-  margin-top: 4px;
+.submit-btn {
+  font-size: 16px;
+  padding: 10px 40px;
+  border-radius: 6px;
 }

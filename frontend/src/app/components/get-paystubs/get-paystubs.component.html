@@ -1,83 +1,107 @@
-<div class="container mt-5">
-  <h2>Get Pay Stubs</h2>
+<!-- Back Button -->
+<div class="mb-3">
+  <button class="btn btn-secondary" routerLink="/employee-dashboard">
+    <i class="bi bi-arrow-left"></i> Back
+  </button>
+</div>
 
-  <!-- Form to input empId -->
-  <div class="mb-3">
-    <label for="employeeId" class="form-label">Employee ID</label>
-    <input
-      type="number"
-      [(ngModel)]="employeeId"
-      #empIdInput="ngModel"
-      name="employeeId"
-      id="employeeId"
-      class="form-control"
-      required
-    />
-    <!-- Validation Error Message -->
-    <div *ngIf="empIdInput.invalid && empIdInput.touched" class="text-danger">
-      Employee ID is required and must be valid.
+<div class="container mt-4">
+  <h2 class="text-center mb-4">📄 Pay Stubs</h2>
+
+  <!-- Form to Input Employee ID -->
+  <div class="row justify-content-center mb-4">
+    <div class="col-md-6">
+      <form (ngSubmit)="onEmployeeIdSubmit()" #empForm="ngForm" class="d-flex gap-2">
+        <input
+          type="number"
+          name="employeeId"
+          id="employeeId"
+          class="form-control"
+          [(ngModel)]="employeeId"
+          #empIdInput="ngModel"
+          required
+          placeholder="Enter Employee ID"
+        />
+        <button
+          type="submit"
+          class="btn btn-primary"
+          [disabled]="empIdInput.invalid"
+        >
+          Get Pay Stubs
+        </button>
+      </form>
+
+      <!-- Validation Error -->
+      <div *ngIf="empIdInput.invalid && empIdInput.touched" class="text-danger mt-2">
+        Employee ID is required and must be valid.
+      </div>
     </div>
   </div>
 
-  <!-- Submit Button -->
-  <button
-    (click)="onEmployeeIdSubmit()"
-    class="btn btn-primary"
-    [disabled]="empIdInput.invalid">Get Pay Stubs</button>
- 
-
   <!-- Error Message -->
-  <div *ngIf="errorMessage" class="alert alert-danger mt-3">
+  <div *ngIf="errorMessage" class="alert alert-danger text-center">
     {{ errorMessage }}
   </div>
 
- 
-  <!-- Pay Stubs Table -->
+  <!-- All Paystubs Table -->
   <div *ngIf="paystubs.length > 0" class="mt-4">
-    <table class="table table-striped">
-      <thead>
-        <tr>
-          <th scope="col">Payroll ID</th>
-          <th scope="col">Payroll Date</th>
-          <th scope="col">Gross Pay</th>
-          <th scope="col">Net Pay</th>
-        
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let paystub of paystubs">
-          <td>{{ paystub.payrollId }}</td>
-          <td>{{ formatDate(paystub.payrollDate) }}</td>
-          <td>{{ formatCurrency(paystub.grossPay) }}</td>
-          <td>{{ formatCurrency(paystub.netPay) }}</td>
-          
-        </tr>
-      </tbody>
-    </table>
+    <h4 class="text-center mb-3">📊 All Pay Stubs</h4>
+    <div class="table-responsive">
+      <table class="table table-bordered align-middle shadow-sm text-center custom-payroll-table">
+        <thead class="table-header">
+          <tr>
+            <th>Payroll ID</th>
+            <th>Payroll Date</th>
+            <th>Gross Pay</th>
+            <th>Net Pay</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let paystub of paystubs">
+            <td>{{ paystub.payrollId }}</td>
+            <td>{{ formatDate(paystub.payrollDate) }}</td>
+            <td>{{ formatCurrency(paystub.grossPay) }}</td>
+            <td>{{ formatCurrency(paystub.netPay) }}</td>
+            <td>
+              <div class="d-flex justify-content-center gap-3">
+                <button
+                  class="btn btn-view btn-sm"
+                  (click)="viewPaystubDetails(paystub)"
+                >
+                  View Details
+                </button>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
   </div>
 
-  <!-- Paystub Details -->
+  <!-- Selected Paystub Table -->
   <div *ngIf="selectedPaystub" class="mt-4">
-    <h4>Paystub Details</h4>
-    <div>
-      <strong>Payroll ID:</strong> {{ selectedPaystub.payrollId }}
+    <h4 class="text-center mb-3">🧾 Paystub Details</h4>
+    <div class="table-responsive">
+      <table class="table table-bordered align-middle shadow-sm text-center custom-payroll-table">
+        <thead class="table-header">
+          <tr>
+            <th>Field</th>
+            <th>Value</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>Payroll ID</td><td>{{ selectedPaystub.payrollId }}</td></tr>
+          <tr><td>Payroll Date</td><td>{{ formatDate(selectedPaystub.payrollDate) }}</td></tr>
+          <tr><td>Gross Pay</td><td>{{ formatCurrency(selectedPaystub.grossPay) }}</td></tr>
+          <tr><td>Net Pay</td><td>{{ formatCurrency(selectedPaystub.netPay) }}</td></tr>
+          <tr><td>Benefits</td><td>{{ formatCurrency(selectedPaystub.benefits) }}</td></tr>
+          <tr><td>Deductions</td><td>{{ formatCurrency(selectedPaystub.deductions) }}</td></tr>
+        </tbody>
+      </table>
     </div>
-    <div>
-      <strong>Payroll Date:</strong> {{ formatDate(selectedPaystub.payrollDate) }}
-    </div>
-    <div>
-      <strong>Gross Pay:</strong> {{ formatCurrency(selectedPaystub.grossPay) }}
-    </div>
-    <div>
-      <strong>Net Pay:</strong> {{ formatCurrency(selectedPaystub.netPay) }}
-    </div>
-    <div>
-      <strong>Benefits:</strong> {{ formatCurrency(selectedPaystub.benefits) }}
-    </div>
-    <div>
-      <strong>Deductions:</strong> {{ formatCurrency(selectedPaystub.deductions) }}
-    </div>
-    <div>
+
+    <div class="text-center">
       <button
         (click)="closeDetails()"
         class="btn btn-secondary mt-3"

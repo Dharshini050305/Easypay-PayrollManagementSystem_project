@@ -19,7 +19,7 @@ import { AddPayrollComponent } from './components/add-payroll/add-payroll.compon
 import { GetPayrollComponent } from './components/get-payroll/get-payroll.component';
 import { UpdatePayrollComponent } from './components/update-payroll/update-payroll.component';
 import { ProcessPaymentComponent } from './components/process-payment/process-payment.component';
-import { ViewteampayrollsComponent } from './components/viewteampayrolls/viewteampayrolls.component';
+
 import { UpdateleaverequestComponent } from './components/updateleaverequest/updateleaverequest.component';
 import { GetPaystubsComponent } from './components/get-paystubs/get-paystubs.component';
 import { SubmitattendanceComponent } from './components/submitattendance/submitattendance.component';
@@ -34,7 +34,7 @@ import { DeductionsComponent } from './components/deductions/deductions.componen
 import { PayrollComponent } from './components/payroll/payroll.component';
 import { PaymentProcessingComponent } from './components/payment-processing/payment-processing.component';
 import { CalculatePayrollComponent } from './components/calculate-payroll/calculate-payroll.component';
-import { UpdateempdetailsComponent } from './components/updateempdetails/updateempdetails.component';
+
 import { LeaveApprovalComponent } from './components/leave-approval/leave-approval.component';
 import { LeaveStatusComponent } from './components/leave-status/leave-status.component';
 import { ManagerLeavesComponent } from './components/manager-leaves/manager-leaves.component';
@@ -84,7 +84,6 @@ const routes: Routes = [
 },
 { path: 'manager-dashboard', component: ManagerDashboardComponent, children:[
    { path:'leave-approval',component: LeaveApprovalComponent},
-  { path:'viewteampayrolls',component:ViewteampayrollsComponent },
   { path:'updateleaverequest',component:UpdateleaverequestComponent },
     { path:'manager-leaves',component: ManagerLeavesComponent },
   
@@ -92,7 +91,7 @@ const routes: Routes = [
 },
 
 { path: 'employee-dashboard', component: EmployeeDashboardComponent, children:[
-  { path:'updateempdetails',component:UpdateempdetailsComponent },
+ 
    { path:'get-paystubs',component:GetPaystubsComponent },
   { path:'submitattendance',component:SubmitattendanceComponent },
   { path: 'requestleave',component:RequestleaveComponent},

@@ -8,7 +8,7 @@ public class DeductionsDTO {
     
 	public DeductionsDTO() {
 		super();
-		// TODO Auto-generated constructor stub
+		
 	}
 	public DeductionsDTO(int deductionId, String deductionName, double deductionAmount) {
 		super();

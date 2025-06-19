@@ -1,0 +1,77 @@
+.container {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+h3.text-primary {
+  color: #007acc;
+  font-weight: 600;
+}
+
+.form-label {
+  font-weight: 500;
+  color: #007acc;
+}
+
+.form-control {
+  height: 44px;
+  font-size: 16px;
+  border-radius: 6px;
+  border: 1px solid #007acc;
+  width: 100%;
+  transition: border-color 0.3s ease;
+}
+
+.form-control:focus {
+  border-color: #138496;
+  box-shadow: 0 0 0 0.2rem rgba(19, 132, 150, 0.25);
+}
+
+.btn-primary {
+  background-color: #007acc;
+  border-color: #007acc;
+  padding: 10px 30px;
+  border-radius: 6px;
+  font-size: 16px;
+  transition: background-color 0.3s ease;
+}
+
+.btn-primary:hover {
+  background-color: #005fa3;
+  border-color: #005fa3;
+}
+
+.alert-info {
+  background-color: #d1ecf1;
+  color: #0c5460;
+  border-radius: 6px;
+  padding: 1rem;
+  font-weight: 500;
+}
+
+.custom-employee-table {
+  width: 100%;
+  font-size: 1rem;
+  border-collapse: collapse;
+}
+
+.custom-employee-table tbody tr:nth-child(even) {
+  background-color: #e6f2ff;
+}
+
+.custom-employee-table tbody tr:nth-child(odd) {
+  background-color: #fdfdff;
+}
+
+.table-header {
+  background-color: #007acc;
+  color: white;
+  font-weight: 600;
+}
+
+.table th,
+.table td {
+  text-align: justify;
+  vertical-align: middle;
+  padding: 0.75rem;
+}

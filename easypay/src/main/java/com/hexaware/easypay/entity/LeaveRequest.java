@@ -38,7 +38,7 @@ public class LeaveRequest {
 	private String leaveType;
 	
 	@NotBlank(message="LeaveStatus should not be null")
-	@Pattern(regexp = "Pending|Approved", message = "Leave status must be 'Pending', or 'Approved'")
+	@Pattern(regexp = "Pending|Approved|Rejected", message = "Leave status must be 'Pending','Rejected' or 'Approved'")
 	private String leaveStatus;
 	
 	@ManyToOne
@@ -54,7 +54,7 @@ public class LeaveRequest {
 
 	public LeaveRequest(int leaveId, Employee employee, LocalDate startDate, LocalDate endDate,
 			@NotBlank(message = "LeaveType should not be null") String leaveType,
-			@NotBlank(message = "LeaveStatus should not be null") @Pattern(regexp = "Pending|Approved", message = "Leave status must be 'Pending', or 'Approved'") String leaveStatus, Employee manager) {
+			@NotBlank(message = "LeaveStatus should not be null") @Pattern(regexp = "Pending|Approved|Rejected", message = "Leave status must be 'Pending','Rejected' or 'Approved'") String leaveStatus, Employee manager) {
 		super();
 		this.leaveId = leaveId;
 		this.employee = employee;

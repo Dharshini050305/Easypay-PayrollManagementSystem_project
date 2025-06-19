@@ -5,7 +5,12 @@
 .custom-employee-table tbody tr:nth-child(odd) {
   background-color: #fdfdff; /* off-white */
 }
-
+h2 {
+  font-weight: 600;
+  color: #007acc; /* Your primary blue */
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
 /* Table headers */
 .table-header {
   background-color: #007acc;

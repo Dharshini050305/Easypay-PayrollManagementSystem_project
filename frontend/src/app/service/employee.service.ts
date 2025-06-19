@@ -19,27 +19,9 @@ export class EmployeeService {
   constructor(private http:HttpClient) {
    }
 
-   updateEmpPersonalInformation(updatedInfo: EmpuDto): Observable<EmpuDto> {
-    const token = localStorage.getItem('authToken');
 
-    if (!token) {
-      return throwError(() => new Error('No token found'));
-    }
 
-    const headers = new HttpHeaders({
-      'Authorization': `Bearer ${token}`,
-      'Content-Type': 'application/json'
-    });
 
-    const url = `${this.baseUrl}/updatepersonalinfo/${updatedInfo.employeeId}`;
-
-    return this.http.put<EmpuDto>(url, updatedInfo, { headers }).pipe(
-      catchError(error => {
-        console.error('Update failed:', error);
-        return throwError(() => error);
-      })
-    );
-  }
 
    getPayStubs(employeeId:number):Observable<Payroll[]>{
     const token = localStorage.getItem('authToken');  

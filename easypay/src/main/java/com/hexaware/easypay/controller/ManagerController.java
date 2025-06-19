@@ -1,5 +1,10 @@
 package com.hexaware.easypay.controller;
-
+/**
+ * REST controller for manager-related operations in the Payroll Management System.
+ * * 
+ * @author Dharshini
+ * @version 1.0
+ * */
 import java.util.List;
 
 import org.slf4j.Logger;
@@ -18,7 +23,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.hexaware.easypay.dto.LeaveRequestDTO;
 import com.hexaware.easypay.dto.PayrollDTO;
-import com.hexaware.easypay.entity.LeaveRequest;
 import com.hexaware.easypay.service.ManagerServiceImpl;
 @CrossOrigin("http://localhost:4200")
 @RestController
@@ -41,7 +45,7 @@ public class ManagerController {
 	    return new ResponseEntity<>(payrollDTOs, HttpStatus.OK);
 	}
 
-	
+	//approve leave
 	
 	@PutMapping("/approveleave/{managerId}/{leaveId}")
 	@PreAuthorize("hasAuthority('MANAGER')")
@@ -55,6 +59,8 @@ public class ManagerController {
 	    logger.info("Approval/Rejection of Leave Request Successful");
 	    return ResponseEntity.ok(updatedLeaveDTO);
 	}
+	
+	//get leave by managerId
 	@GetMapping("/manager-leaves/{managerId}")
 	@PreAuthorize("hasAuthority('MANAGER') ")
 	public ResponseEntity<List<LeaveRequestDTO>> getAllLeavesByManager(@PathVariable int managerId) {

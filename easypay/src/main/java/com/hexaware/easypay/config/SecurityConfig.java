@@ -1,4 +1,4 @@
-package com.hexaware.easypay.security;
+package com.hexaware.easypay.config;
 /**
  * Defines the security filter chain for HTTP requests.
  * @author Dharshini
@@ -26,27 +26,40 @@ import com.hexaware.easypay.filter.JwtAuthFilter;
 
 @Configuration
 @EnableWebSecurity
-@EnableMethodSecurity
+@EnableMethodSecurity(prePostEnabled = true)
 public class SecurityConfig {
 	@Autowired
 	JwtAuthFilter authFilter;
 	@Autowired
 	private UserDService userDetailsService;
 
+
 	@Bean
 	SecurityFilterChain   securityFilterChain(HttpSecurity http) throws Exception {
 		
-		
-		 return http.cors().and().csrf().disable()
-			        .authorizeHttpRequests()
+		 return http
+			        .csrf(csrf -> csrf.disable())
+			        .authorizeHttpRequests(auth -> auth
+			        		.requestMatchers("/v3/api-docs/**").permitAll()
+			            .requestMatchers("/users/**").permitAll()
+			        
+			            .requestMatchers("/swagger-ui/**").permitAll()
+			            .requestMatchers("/swagger-ui.html").permitAll()
+			            .requestMatchers("/swagger-ui/index.html").permitAll()
+	
+			
+				        
+				      
 			        .requestMatchers(HttpMethod.POST, "/users/login/authenticate").permitAll()
 			        .requestMatchers(HttpMethod.POST, "/users/registration/new").permitAll()
+			        
 			        .requestMatchers("/api/admin/**").permitAll()
 			        .requestMatchers("/api/manager/**").permitAll()
 			        .requestMatchers("/api/employee/**").permitAll()
 			        .requestMatchers("/api/payroll/**").permitAll()
+			        .requestMatchers("/api/deduction/**").permitAll()
 			        .anyRequest().authenticated()
-			        .and()
+			       )
 			        .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
 			        .authenticationProvider(authenticationProvider())
 			        .addFilterBefore(authFilter, UsernamePasswordAuthenticationFilter.class)

@@ -25,12 +25,12 @@ import { UpdateDeductionComponent } from './components/update-deduction/update-d
 import { UpdateEmployeeComponent } from './components/update-employee/update-employee.component';
 import { UpdatePayrollComponent } from './components/update-payroll/update-payroll.component';
 import { ProcessPaymentComponent } from './components/process-payment/process-payment.component';
-import { ViewteampayrollsComponent } from './components/viewteampayrolls/viewteampayrolls.component';
+
 import { UpdateleaverequestComponent } from './components/updateleaverequest/updateleaverequest.component';
 import { GetPaystubsComponent } from './components/get-paystubs/get-paystubs.component';
 import { SubmitattendanceComponent } from './components/submitattendance/submitattendance.component';
 import { RequestleaveComponent } from './components/requestleave/requestleave.component';
-import { UpdateempdetailsComponent } from './components/updateempdetails/updateempdetails.component';
+
 import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { AboutComponent } from './components/about/about.component';
@@ -73,12 +73,12 @@ import { ManagerLeavesComponent } from './components/manager-leaves/manager-leav
     UpdateEmployeeComponent,
     UpdatePayrollComponent,
     ProcessPaymentComponent,
-    ViewteampayrollsComponent,
+ 
     UpdateleaverequestComponent,
     GetPaystubsComponent,
     SubmitattendanceComponent,
     RequestleaveComponent,
-    UpdateempdetailsComponent,
+  
     HeaderComponent,
     FooterComponent,
     AboutComponent,

@@ -1,5 +1,10 @@
 package com.hexaware.easypay.controller;
-
+/**
+ * REST controller for payroll-related operations in the Payroll Management System.
+ * * 
+ * @author Dharshini
+ * @version 1.0
+ * */
 import java.time.LocalDate;
 import java.util.HashMap;
 import java.util.List;

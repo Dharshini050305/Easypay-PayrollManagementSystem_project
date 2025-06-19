@@ -1,17 +1,31 @@
-<div class="container mt-4">
-  <h3 class="text-center">Leaves Managed by Manager</h3>
+<button class="btn btn-secondary" routerLink="/manager-dashboard">
+    <i class="bi bi-arrow-left"></i> Back
+  </button>
+<div class="container mt-4" style="max-width: 900px; margin: auto;">
+  <h3 class="text-primary fw-bold text-center mb-4">Leaves Managed by Manager</h3>
 
-  <div class="form-group mb-3">
-    <label for="managerId">Manager ID:</label>
-    <input type="number" id="managerId" [(ngModel)]="managerId" class="form-control" placeholder="Enter Manager ID">
+  <div class="mb-3">
+    <label for="managerId" class="form-label">Manager ID:</label>
+    <input
+      type="number"
+      id="managerId"
+      [(ngModel)]="managerId"
+      name="managerId"
+      class="form-control"
+      placeholder="Enter Manager ID"
+    />
   </div>
 
-  <button (click)="getLeaves()" class="btn btn-primary">Get Leaves</button>
+  <div class="text-center mb-3">
+    <button class="btn btn-primary" (click)="getLeaves()">Get Leaves</button>
+  </div>
 
-  <div *ngIf="message" class="alert alert-info mt-3">{{ message }}</div>
+  <div *ngIf="message" class="alert alert-info mt-3 rounded">
+    {{ message }}
+  </div>
 
-  <table *ngIf="leaveList.length" class="table table-bordered mt-4">
-    <thead class="table-dark">
+  <table *ngIf="leaveList.length" class="table custom-employee-table table-bordered mt-4">
+    <thead class="table-header">
       <tr>
         <th>Leave ID</th>
         <th>Employee ID</th>

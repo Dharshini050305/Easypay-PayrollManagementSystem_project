@@ -20,23 +20,7 @@ export class ManagerService {
 
    }
    
-   reviewTeamPayrolls(managerId:number):Observable<Payroll[]>{
-    const token = localStorage.getItem('authToken');
-    if (!token) {
-      return new Observable(observer => {
-        observer.error('No token found');
-      });
-    }
-
-    const headers = new HttpHeaders({
-      'Authorization': `Bearer ${token}`,
-      'Content-Type': 'application/json'
-    });
-
-    const url = `${this.baseUrl}/teampayrolls/${managerId}`;
-
-    return this.http.get<Payroll[]>(url ,{headers});
-   }
+  
 
 getAllLeavesByManagerId(managerId: number): Observable<LeavesDTO[]> {
   const token = localStorage.getItem('authToken');

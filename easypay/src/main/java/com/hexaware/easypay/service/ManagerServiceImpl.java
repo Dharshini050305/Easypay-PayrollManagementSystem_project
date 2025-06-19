@@ -1,5 +1,9 @@
 package com.hexaware.easypay.service;
-
+/**
+ * Service implementation for managing Manager operations in the Payroll Management System.
+ * @author Dharshini
+ * @version 1.0
+ */
 import java.util.List;
 import java.util.stream.Collectors;
 

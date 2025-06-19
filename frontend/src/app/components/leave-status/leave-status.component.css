@@ -1,0 +1,124 @@
+/* Container max width and padding */
+.container {
+  max-width: 700px;
+}
+
+/* Heading styling */
+h2 {
+  font-weight: 600;
+  color: #007acc; /* Your primary blue */
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+/* Input field styling */
+input.form-control {
+  border-radius: 4px;
+  border: 1px solid #007acc; /* primary blue border */
+  transition: border-color 0.3s ease;
+}
+
+input.form-control:focus {
+  border-color: #138496; /* your btn-view hover blue */
+  box-shadow: 0 0 0 0.2rem rgba(19, 132, 150, 0.25);
+}
+
+/* Button styling using your palette */
+button.btn-primary {
+  background-color: #17a2b8; /* btn-view bg */
+  color: white;
+  min-width: 160px;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  transition: background-color 0.3s ease;
+  border: none;
+  border-radius: 4px;
+  padding: 0.5rem 1rem;
+  margin-top: 0.5rem;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+button.btn-primary:hover {
+  background-color: #138496; /* btn-view hover */
+  color: white;
+}
+
+/* Alert styling */
+.alert-info {
+  background-color: #e6f2ff; /* very light blue */
+  color: #007acc; /* primary blue text */
+  font-size: 1rem;
+  font-weight: 500;
+  margin-top: 1rem;
+  border: none;
+  border-radius: 4px;
+}
+
+/* Table Styling using your palette */
+table.table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 1.5rem;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+/* Table headers */
+thead.table-dark th,
+.table-header {
+  background-color: #007acc; /* your primary blue */
+  color: white;
+  font-weight: 600;
+  text-align: justify;
+  vertical-align: middle;
+  padding: 0.75rem 1rem;
+}
+
+/* Alternate row coloring */
+table tbody tr:nth-child(even) {
+  background-color: #e6f2ff; /* very light blue */
+}
+table tbody tr:nth-child(odd) {
+  background-color: #fdfdff; /* off-white */
+}
+
+/* Table cells */
+table td {
+  padding: 0.75rem 1rem;
+  text-align: justify;
+  vertical-align: middle;
+  color: #333;
+  font-size: 0.95rem;
+}
+
+/* Responsive adjustments (optional) */
+@media (max-width: 576px) {
+  table thead {
+    display: none;
+  }
+  table tbody tr {
+    display: block;
+    margin-bottom: 1rem;
+    border: 1px solid #e6f2ff;
+    border-radius: 6px;
+    padding: 0.75rem;
+    background-color: #fdfdff;
+  }
+  table tbody tr td {
+    display: flex;
+    justify-content: space-between;
+    padding: 0.25rem 0.5rem;
+    border: none;
+    font-size: 0.9rem;
+  }
+  table tbody tr td::before {
+    content: attr(data-label);
+    font-weight: 600;
+    flex-basis: 45%;
+    color: #007acc;
+    text-align: left;
+  }
+}

@@ -1,9 +1,13 @@
 package com.hexaware.easypay.controller;
-
+/**
+ * REST controller for admin-related operations in the Payroll Management System.
+ * * 
+ * @author Dharshini
+ * @version 1.0
+ * */
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Optional;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -27,7 +31,6 @@ import com.hexaware.easypay.entity.Employee;
 import com.hexaware.easypay.entity.Payroll;
 import com.hexaware.easypay.entity.User;
 import com.hexaware.easypay.exception.PayrollNotFoundException;
-import com.hexaware.easypay.repository.EmployeeRepo;
 import com.hexaware.easypay.service.AdminServiceImpl;
 @CrossOrigin("http://localhost:4200")
 @RestController
@@ -67,7 +70,7 @@ public class AdminController {
         Map<String, String> response = new HashMap<>();
         response.put("message", "Employee with ID " + employeeId + " deleted successfully.");
 
-        return ResponseEntity.ok(response); // ✅ returns valid JSON
+        return ResponseEntity.ok(response); 
     }
 
 
@@ -83,7 +86,7 @@ public class AdminController {
     @PreAuthorize("hasAuthority('ADMIN')")
     public List<EmployeeDTO> getAllEmployees() {
         logger.info("Fetching all employees.");
-        List<EmployeeDTO> employees = service.getAllEmployees();  // service now returns DTOs
+        List<EmployeeDTO> employees = service.getAllEmployees();  
         logger.info("Total employees fetched: {}", employees.size());
         return employees;
     }

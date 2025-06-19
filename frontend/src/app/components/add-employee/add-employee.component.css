@@ -2,7 +2,12 @@
   background-color: #f0f4f8;
   padding: 30px;
 }
-
+h2 {
+  font-weight: 600;
+  color: #007acc; /* Your primary blue */
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
 .employee-form .form-control,
 .employee-form .form-select {
   height: 44px;

@@ -1,5 +1,9 @@
 package com.hexaware.easypay.service;
-
+/**
+ * Service interface for managing Employee operations in the Payroll Management System.
+ * @author Dharshini
+ * @version 1.0
+ */
 import java.util.List;
 
 import com.hexaware.easypay.dto.AttendanceDTO;

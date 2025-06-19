@@ -1,5 +1,10 @@
 package com.hexaware.easypay.controller;
-
+/**
+ * REST controller for user-related operations in the Payroll Management System.
+ * * 
+ * @author Dharshini
+ * @version 1.0
+ * */
 import org.slf4j.Logger;
 
 import org.slf4j.LoggerFactory;
@@ -48,7 +53,7 @@ public class UserController {
 
 		if (authentication.isAuthenticated()) {
 
-			// call generate token method from jwtService class
+		
 
 			token = jwtService.generateToken(authRequest.getUserName());
 

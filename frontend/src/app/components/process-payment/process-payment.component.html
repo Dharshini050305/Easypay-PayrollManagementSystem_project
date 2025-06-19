@@ -1,10 +1,15 @@
-<div class="container mt-4">
-  <h2>Process Payroll Payment</h2>
+<button class="btn btn-secondary" routerLink="/payroll-processor-dashboard/payment-processing">
+    <i class="bi bi-arrow-left"></i> Back
+  </button>
+<div class="container mt-4" style="max-width: 600px;">
 
-  <form (ngSubmit)="onProcessPayment()" #processForm="ngForm">
+  <h2 class="text-primary fw-bold mb-4 text-center">Process Payroll Payment</h2>
+
+  <form (ngSubmit)="onProcessPayment()" #processForm="ngForm" class="shadow p-4 bg-white rounded">
+
     <!-- Employee ID -->
-    <div class="form-group mb-3">
-      <label for="employeeId">Employee ID:</label>
+    <div class="mb-3">
+      <label for="employeeId" class="form-label">Employee ID:</label>
       <input
         type="number"
         id="employeeId"
@@ -12,12 +17,14 @@
         name="employeeId"
         [(ngModel)]="employeeId"
         required
+        placeholder="Enter Employee ID"
       />
+      <div *ngIf="processForm.submitted && !employeeId" class="error-msg">Employee ID is required</div>
     </div>
 
     <!-- Payroll Date -->
-    <div class="form-group mb-3">
-      <label for="payrollDate">Payroll Date:</label>
+    <div class="mb-3">
+      <label for="payrollDate" class="form-label">Payroll Date:</label>
       <input
         type="date"
         id="payrollDate"
@@ -26,17 +33,20 @@
         [(ngModel)]="payrollDate"
         required
       />
+      <div *ngIf="processForm.submitted && !payrollDate" class="error-msg">Payroll date is required</div>
     </div>
 
-    <button class="btn btn-success" type="submit" [disabled]="processForm.invalid">
-      Process Payment
-    </button>
+    <div class="text-center">
+      <button class="btn btn-success submit-btn" type="submit" [disabled]="processForm.invalid">Process Payment</button>
+    </div>
   </form>
 
- <div *ngIf="message" class="alert mt-3" [ngClass]="{'alert-success': isSuccess, 'alert-danger': !isSuccess}">
-  {{ message }}
-</div>
+  <div *ngIf="message" class="alert mt-3" [ngClass]="{'alert-success': isSuccess, 'alert-danger': !isSuccess}">
+    {{ message }}
+  </div>
 
-<div *ngIf="grossPay != null" class="mt-2">
-  <strong>Gross Pay:</strong> ₹{{ grossPay }}
+  <div *ngIf="grossPay != null" class="mt-2">
+    <strong>Gross Pay:</strong> ₹{{ grossPay }}
+  </div>
+
 </div>

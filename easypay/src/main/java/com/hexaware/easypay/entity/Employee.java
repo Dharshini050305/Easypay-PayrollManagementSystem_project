@@ -25,7 +25,6 @@ import jakarta.validation.constraints.PastOrPresent;
 
 
 @Entity
-
 public class Employee {
 	 @Id
 	    @GeneratedValue(strategy = GenerationType.IDENTITY)

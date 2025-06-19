@@ -1,8 +1,12 @@
-
+<button class="btn btn-secondary" routerLink="/payroll-processor-dashboard/payment-processing">
+    <i class="bi bi-arrow-left"></i> Back
+  </button>
 <div class="container mt-4">
-  <h2>Calculate Payroll</h2>
 
-  <form (ngSubmit)="onCalculate()" #payrollForm="ngForm" novalidate>
+  <h2 class="text-primary fw-bold mb-4 text-center">Calculate Payroll</h2>
+
+  <form (ngSubmit)="onCalculate()" #payrollForm="ngForm" novalidate class="shadow p-4 bg-white rounded" style="max-width: 600px; margin: auto;">
+
     <div class="mb-3">
       <label for="employeeId" class="form-label">Employee ID:</label>
       <input
@@ -14,8 +18,9 @@
         required
         min="1"
         #employeeIdInput="ngModel"
+        placeholder="Enter Employee ID"
       />
-      <div *ngIf="employeeIdInput.invalid && employeeIdInput.touched" class="text-danger">
+      <div *ngIf="employeeIdInput.invalid && employeeIdInput.touched" class="error-msg">
         Employee ID is required and must be positive.
       </div>
     </div>
@@ -31,28 +36,31 @@
         required
         #payrollDateInput="ngModel"
       />
-      <div *ngIf="payrollDateInput.invalid && payrollDateInput.touched" class="text-danger">
+      <div *ngIf="payrollDateInput.invalid && payrollDateInput.touched" class="error-msg">
         Payroll Date is required.
       </div>
     </div>
 
-    <button type="submit" class="btn btn-primary" [disabled]="payrollForm.invalid || isLoading">
-      {{ isLoading ? 'Calculating...' : 'Calculate Payroll' }}
-    </button>
+    <div class="text-center">
+      <button type="submit" class="btn btn-primary submit-btn" [disabled]="payrollForm.invalid || isLoading">
+        {{ isLoading ? 'Calculating...' : 'Calculate Payroll' }}
+      </button>
+    </div>
   </form>
 
-  <div *ngIf="errorMessage" class="alert alert-danger mt-3">
+  <div *ngIf="errorMessage" class="alert alert-danger mt-3 rounded">
     {{ errorMessage }}
   </div>
 
-  <div *ngIf="payrollResult" class="mt-4">
-    <h3>Payroll Result:</h3>
-    <ul>
-      <li><strong>Gross Pay:</strong> {{ payrollResult.grossPay | currency }}</li>
-      <li><strong>Benefits:</strong> {{ payrollResult.benefits | currency }}</li>
-      <li><strong>Deductions:</strong> {{ payrollResult.deductions | currency }}</li>
-      <li><strong>Net Pay:</strong> {{ payrollResult.netPay | currency }}</li>
-      <li><strong>Payroll Date:</strong> {{ payrollResult.payrollDate | date }}</li>
+  <div *ngIf="payrollResult" class="mt-4" style="max-width: 600px; margin: auto;">
+    <h3 class="text-primary fw-bold mb-3">Payroll Result:</h3>
+    <ul class="list-group">
+      <li class="list-group-item"><strong>Gross Pay:</strong> {{ payrollResult.grossPay | currency }}</li>
+      <li class="list-group-item"><strong>Benefits:</strong> {{ payrollResult.benefits | currency }}</li>
+      <li class="list-group-item"><strong>Deductions:</strong> {{ payrollResult.deductions | currency }}</li>
+      <li class="list-group-item"><strong>Net Pay:</strong> {{ payrollResult.netPay | currency }}</li>
+      <li class="list-group-item"><strong>Payroll Date:</strong> {{ payrollResult.payrollDate | date }}</li>
     </ul>
   </div>
+
 </div>

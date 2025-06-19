@@ -1,0 +1,61 @@
+h2 {
+  font-weight: 600;
+  color: #007acc; /* Your primary blue */
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+.custom-payroll-table tbody tr:nth-child(even) {
+  background-color: #e6f2ff; /* very light blue */
+}
+.custom-payroll-table tbody tr:nth-child(odd) {
+  background-color: #fdfdff; /* off-white */
+}
+
+/* Table headers */
+.table-header {
+  background-color: #007acc;
+  color: white;
+}
+
+/* Table cell alignment */
+.table td,
+.table th {
+  text-align: justify;
+  vertical-align: middle;
+}
+
+/* View Button Styling */
+.btn-view {
+  background-color: #17a2b8;
+  color: white;
+}
+.btn-view:hover {
+  background-color: #138496;
+  color: white;
+}
+
+/* Update Button Styling */
+.btn-update {
+  background-color: #ffc107;
+  color: black;
+}
+.btn-update:hover {
+  background-color: #e0a800;
+  color: black;
+}
+
+/* Delete Button Styling */
+.btn-delete {
+  background-color: #dc3545;
+  color: white;
+}
+.btn-delete:hover {
+  background-color: #c82333;
+  color: white;
+}
+
+/* Minimum width and spacing for buttons in a flex container */
+.d-flex.gap-3 > .btn,
+.d-flex.gap-2 > .btn {
+  min-width: 70px;
+}

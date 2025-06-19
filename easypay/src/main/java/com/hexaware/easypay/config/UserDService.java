@@ -1,4 +1,4 @@
-package com.hexaware.easypay.security;
+package com.hexaware.easypay.config;
 /**
  * class that defines UserDService by implementing UserDetailsService
  * @author Dharshini

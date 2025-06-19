@@ -1,13 +1,12 @@
-/* Container and Page Title */
 .container {
   margin-top: 20px;
 }
 
-h1 {
+h1{
+  font-weight: 600;
+  color: #007acc; /* Your primary blue */
   text-align: center;
-  margin-bottom: 25px;
-  font-weight: bold;
-  color: #2c3e50;
+  margin-bottom: 1.5rem;
 }
 
 /* Button Group */
@@ -85,4 +84,24 @@ h1 {
 /* Ensure spacing between action buttons */
 .d-flex.gap-3 > .btn {
   min-width: 70px;
+}
+.display-benefits-container {
+  max-width: 800px;       /* wider container */
+  margin: 0 auto;         /* center horizontally */
+  padding: 20px;
+}
+
+.custom-employee-table {
+  width: 100%;            
+  font-size: 1rem;        
+}
+
+.table-header {
+  background-color: #007acc;
+  color: white;
+  font-weight: 600;
+}
+
+.text-center {
+  text-align: center;
 }
